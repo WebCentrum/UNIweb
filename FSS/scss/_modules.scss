@@ -1,0 +1,298 @@
+@import "mixins";
+
+.container-module, a .container-module {
+  width: 100%;
+  margin-bottom: 1em;
+    
+  .outer {
+    @include outer-cont;
+      
+    .inner {
+      @include inner-cont;
+        
+      .module {
+        position: absolute;
+        background: none;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1100;
+        @include transition(all 0.3s ease);
+             
+        h3 {
+          @include cont-header(rem-calc(15), 0.15em);
+          position: absolute;
+          clear: both;
+          background: $gray-dark-color;
+          bottom: 0;
+          width: 100%;
+          margin: 0;
+          padding: rem-calc(5);
+          border-left: rem-calc(20) solid $primary-color;
+          @include transition(all 0.3s ease);
+        }
+              
+        p {
+          position: absolute;
+          background: $gray-dark-color;
+          color: $white;
+          font-size: rem-calc(13);
+          letter-spacing: 0.025em;
+          line-height: 1.2em;
+          bottom: -100%;
+          width: 100%;
+          margin: 0;
+          padding: rem-calc(8 10 8 25);
+          @include transition(all 0.3s ease);
+        }
+      }
+    }
+  }
+  @media #{$large-up} { //@media pro container-module, a .container-module
+    margin-bottom: 0;
+  }
+}
+
+@media #{$medium-up} { //@media speciálně pro a .container-module - úprava pozadí hover efektu
+  a .container-module {
+    &:hover {
+      .outer {
+        .inner {
+          .module {
+            background: rgba(0,0,0,0.4);
+            h3 {
+              bottom: 100%; 
+              @include transform(translateY(100%)); 
+            }
+              
+            p {
+              bottom: 0; 
+              background: $secondary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// SLIDESHOW --------------------------------------------------------------------------------------------------------
+
+.slideshow-module {
+  width: 100%;
+  margin-bottom: $column-gutter;
+  
+  .outer {
+    @include outer-cont;
+      
+    .inner {
+      @include inner-cont;
+        
+        .perex-position {
+          position: absolute;
+          background: none;
+          bottom: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          z-index: 1200;
+          @include transition(background 0.3s ease);
+            
+          .perex-cont {
+            position: relative;
+            top: 100%;
+            width: 100%;
+            @include transform(translateY(-100%));
+              
+            .title {
+              position: relative;
+              font-size: rem-calc(20);
+              font-weight: $font-weight-normal;
+              letter-spacing: 0.03em;
+              width: 100%;  
+              margin: 0;
+              padding: 0;
+                
+              &:last-child  { bottom: 50px; }
+              &:first-child { bottom: 0; }
+                        
+              @include transition(all 0.3s ease);
+                        
+              .highlight { 
+                @include slide-highlight(rem-calc(15), 0.15em, 20px); 
+                padding: rem-calc(5 10); 
+              }
+                  
+              .name { 
+                display: none; 
+                visibility: hidden; 
+              }
+            }
+          }
+        }
+            
+        @media #{$medium-up} { //@media pro .slideshow-module .outer .inner
+          .perex-position {
+            padding: 0 2em 0 0;
+              
+            .perex-cont {
+              top: 15%;
+              @include transform(translateY(0));
+                
+              .title {
+                width: 85%;
+              }
+            }
+          }
+            
+          //element queries pro .perex-position    
+            
+          .perex-position[min-width~="0px"][max-width~="273px"] {
+            padding: 0; 
+              
+            .perex-cont {
+              top: 100%;
+              @include transform(translateY(-100%));
+                
+              .title {
+                line-height: 1em;
+                width: 100%;
+                margin-bottom: 0 !important;
+                  
+                .highlight { 
+                  @include slide-highlight(rem-calc(11), 0.15em, 20px);
+                  display: inline-block;
+                  width: 100%;
+                  padding: rem-calc(5 10);
+                }
+              }
+            }
+          }
+              
+          .perex-position[min-width~="274px"][max-width~="400px"] {
+            padding: 0; 
+              
+            .perex-cont {
+              top: 100%;
+              @include transform(translateY(-100%));
+                
+              .title {
+                line-height: 1.2em;
+                width: 100%;
+                margin-bottom: 0 !important;
+                  
+                .highlight {
+                  @include slide-highlight(rem-calc(15), 0.15em, 20px);
+                  display: inline-block;
+                  width: 100%;
+                  padding: rem-calc(5 10);
+                }
+              }
+            }
+          }
+        }
+        
+        @media #{$medium-only} {
+          .perex-position {
+            .perex-cont {
+              .title {
+                margin-bottom: rem-calc(20);
+                  
+                .highlight, .name {
+                  padding: rem-calc(5 15); 
+                  @include transition(background 0.1s ease); 
+                }
+                  
+                .highlight { 
+                  @include slide-highlight(rem-calc(20), 0.05em, 30px);
+                }
+                  
+                .name {
+                  @include slide-highlight(rem-calc(14), 0.025em, 0);
+                  text-transform: none;
+                  border-left: none;
+                  margin: rem-calc(50) 0 0 rem-calc(30);
+                  visibility: visible;
+                }
+              }
+            }
+          }
+        }
+    
+        @media #{$large-up} {
+          .perex-position {
+            .perex-cont {
+              .title {
+                margin-bottom: rem-calc(20);
+                .highlight, .name { padding: rem-calc(5 20); @include transition(background 0.1s ease); }
+                .highlight { @include slide-highlight(rem-calc(24), 0.05em, 40px); }
+                .name {
+                  @include slide-highlight(rem-calc(15), 0.025em, 0);
+                  text-transform: none;
+                  border-left: none;
+                  margin: rem-calc(50 0 0 40);
+                  visibility: visible;
+                }
+              }
+            }
+          }
+        } 
+    }
+  }
+}
+
+@media #{$medium-up} {
+  a .slideshow-module {
+    &:hover {
+      .outer {
+        .inner {
+          .perex-position {
+            background: rgba(0,0,0,0.25);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Firefox hack pro korekce pozice perexu ve slideshow
+
+@-moz-document url-prefix() {
+  @media #{$xlarge-up} {
+    .slideshow-module {
+      .outer {
+        .inner {
+          .perex-position { 
+            left: 1px; 
+          }
+        }
+      }
+    }
+      
+    .container-module, a .container-module {
+      .outer {
+        .inner {
+          .module {
+            h3 { 
+              left: 1px; 
+            }
+          }
+        }
+      }
+        
+      &:hover {
+        .outer {
+          .inner {
+            .module {
+              h3 { 
+                left: 0px; 
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
