@@ -1,0 +1,862 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+// Úprava na Main Bar
+
+@import "../bower_components/foundation/scss/foundation/components/global";
+@import "../bower_components/foundation/scss/foundation/components/grid";
+@import "../bower_components/foundation/scss/foundation/components/buttons";
+@import "../bower_components/foundation/scss/foundation/components/forms";
+
+//
+// Main Bar Variables
+//
+$include-html-main-bar-classes: $include-html-classes !default;
+
+// Background color for the top bar
+$mainbar-bg-color: $primary-color !default;
+$mainbar-bg: $mainbar-bg-color !default;
+
+// Height and margin
+$mainbar-height: 47px !default;
+$mainbar-margin-bottom: 0 !default;
+
+// Controlling the styles for the title in the top bar
+$mainbar-title-weight: $font-weight-normal !default;
+$mainbar-title-font-size: rem-calc(17) !default;
+
+// Set the link colors and styles for top-level nav
+$mainbar-link-color: $white !default;
+$mainbar-link-color-hover: $secondary-color !default;
+$mainbar-link-color-active: $gray-dark-color !default;
+$mainbar-link-color-active-hover: $secondary-color !default;
+$mainbar-link-weight: $font-weight-bold !default;
+$mainbar-link-font-size: rem-calc(14) !default;
+$mainbar-link-hover-lightness: -10% !default; // Darken by 10%
+$mainbar-link-bg: $mainbar-bg-color !default;
+$mainbar-link-bg-hover: $white !default;
+$mainbar-link-bg-color-hover: $white !default;
+$mainbar-link-bg-active: $body-bg !default;
+$mainbar-link-bg-active-hover: $white !default;
+$mainbar-link-font-family: $body-font-family !default;
+$mainbar-link-text-transform: uppercase !default;
+$mainbar-link-padding: $mainbar-height / 4 !default;
+$mainbar-back-link-size: rem-calc(14) !default;
+$mainbar-link-dropdown-padding: 20px !default;
+$mainbar-button-font-size: 0.75rem !default;
+$mainbar-button-top: 7px !default;
+
+// Style the top bar dropdown elements
+$mainbar-dropdown-bg: $white !default;
+$mainbar-dropdown-link-color: $anchor-font-color !default;
+$mainbar-dropdown-link-color-hover: $anchor-font-color-hover !default;
+$mainbar-dropdown-link-bg: $white !default;
+$mainbar-dropdown-link-weight: $font-weight-normal !default;
+$mainbar-dropdown-toggle-size: 4px !default;
+$mainbar-dropdown-toggle-color: $white !default;
+$mainbar-dropdown-toggle-alpha: 1 !default;
+$mainbar-back-link-color: $mainbar-link-color !default;
+$mainbar-back-link-color-hover: scale-color($mainbar-bg, $lightness: 50%) !default;
+
+$mainbar-dropdown-label-color: $gray-dark-color !default;
+$mainbar-dropdown-label-text-transform: uppercase !default;
+$mainbar-dropdown-label-font-weight: $font-weight-bold !default;
+$mainbar-dropdown-label-font-size: rem-calc(10) !default;
+$mainbar-dropdown-label-bg: $white !default;
+
+// Top menu icon styles
+$mainbar-menu-link-transform: uppercase !default;
+$mainbar-menu-link-font-size: rem-calc(13) !default;
+$mainbar-menu-link-weight: $font-weight-bold !default;
+$mainbar-menu-link-color: $white !default;
+$mainbar-menu-icon-color: $white !default;
+$mainbar-menu-link-color-toggled: $white !default;
+$mainbar-menu-icon-color-toggled: $white !default;
+
+// Transitions and breakpoint styles
+$mainbar-transition-speed: 300ms !default;
+// Using rem-calc for the below breakpoint causes issues with top bar
+$mainbar-breakpoint: #{lower-bound($medium-range)} !default; // Change to 9999px for always mobile layout
+$mainbar-media-query: $medium-up !default;
+
+// Divider Styles
+$mainbar-divider-border-bottom: solid 1px scale-color($mainbar-bg-color, $lightness: 13%) !default;
+$mainbar-divider-border-top: solid 1px scale-color($mainbar-bg-color, $lightness: -50%) !default;
+
+// Sticky Class
+$mainbar-sticky-class: ".sticky" !default;
+$mainbar-arrows: true !default; //Set false to remove the triangle icon from the menu item
+$mainbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text from dropdown subnavigation li
+
+$mainbar-primnav-border: 1px solid $primary-light-color;
+
+
+// Accessibility mixins for hiding and showing the menu dropdown items
+@mixin mainbar-hide-dropdown {
+  // Makes an element visually hidden by default, but visible when focused.
+  display: block;
+  @include element-invisible();
+}
+
+@mixin mainbar-show-dropdown {
+  display: block;
+  @include element-invisible-off();
+  position: absolute !important; // Reset the position from static to absolute
+}
+
+@include exports("main-bar") {
+
+  @if $include-html-main-bar-classes {
+
+    // Used to provide media query values for javascript components.
+    // This class is generated despite the value of $include-html-main-bar-classes
+    // to ensure width calculations work correctly.
+    meta.foundation-mq-mainbar {
+      font-family: "/" + unquote($mainbar-media-query) + "/";
+      width: $mainbar-breakpoint;
+    }
+
+    /* Wrapped around .main-bar to contain to grid width */
+    .contain-to-grid {
+      width: 100%;
+      background: $mainbar-bg;
+     
+      .main-bar { 
+          margin-bottom: $mainbar-margin-bottom; 
+      }
+    }
+
+    // Wrapped around .main-bar to make it stick to the top
+    .fixed {
+      width: 100%;
+      #{$default-float}: 0;
+      position: fixed;
+      top: 0;
+      z-index: 9990;
+      background: $primary-darker-color;
+        
+      @media #{$medium-up} {
+          border-top: 4px solid $primary-dark-color;
+          //height: $mainbar-height + 6px;
+        }
+        
+      .main-bar {
+        background: $primary-darker-color;
+        
+        @media #{$small-only} {
+          border-top: 6px solid $primary-dark-color;
+          height: $mainbar-height + 6px;
+        }
+        
+        @media #{$medium-up} {
+          padding: 0 ($column-gutter / 2); //zarovná okraje sticky menu s obsahem
+        }
+        
+        .main-bar-section {
+            ul li {
+                &.active > a {
+                    border-top: none;
+                    border-bottom: none;
+                }
+            }
+        }
+      }
+        
+      &.expanded:not(.main-bar) {
+        overflow-y: auto;
+        height: auto;
+        width: 100%;
+        max-height: 100%;
+
+        .title-area {
+          position: fixed;
+          width: 100%;
+          z-index: 9999;
+        }
+        // Ensure you can scroll the menu on small screens
+        .main-bar-section {
+          z-index: 9998;
+          margin-top: $mainbar-height;
+        }
+      }
+    }
+
+    .main-bar {
+      overflow: hidden;
+      height: $mainbar-height;
+      line-height: $mainbar-height;
+      position: relative;
+      background: $mainbar-bg;
+      margin-bottom: $mainbar-margin-bottom;
+      
+      // mainbar Global list Styles
+      ul {
+        margin-bottom: 0;
+        list-style: none;
+          li {
+              list-style-image: none !important;
+          }
+      }
+
+      .row { max-width: none; }
+
+      form,
+      input { margin-bottom: 0; }
+
+      input { height: 1.8rem; padding-top: .35rem; padding-bottom: .35rem; font-size: $mainbar-button-font-size; }
+
+      .button, button {
+        padding-top: .35rem + rem-calc(1);
+        padding-bottom: .35rem + rem-calc(1);
+        margin-bottom: 0;
+        font-size: $mainbar-button-font-size;
+          // position: relative;
+          // top: -1px;
+
+        // Corrects a slight misalignment when put next to an input field
+        @media #{$small-only} {
+          position: relative;
+          top: -1px;
+        }
+      }
+
+      // Title Area
+      .title-area {
+        position: relative;
+        margin: 0;
+      }
+
+      .name {
+        height: $mainbar-height;
+        margin: 0;
+        font-size: $rem-base;
+
+        h1 {
+          line-height: $mainbar-height;
+          font-size: $mainbar-title-font-size;
+          margin: 0;
+          a {
+            font-weight: $mainbar-title-weight;
+            color: $mainbar-link-color;
+            width: 75%;
+            display: block;
+            padding: 0 $mainbar-link-padding;
+            text-decoration: none;
+          }
+        }
+      }
+
+      // Menu toggle button on small devices
+      .toggle-mainbar {
+        position: absolute;
+        #{$opposite-direction}: 0;
+        top: 0;
+
+        a {
+          color: $mainbar-link-color;
+          text-transform: $mainbar-menu-link-transform;
+          font-size: $mainbar-menu-link-font-size;
+          font-weight: $mainbar-menu-link-weight;
+          position: relative;
+          display: block;
+          padding: 0 $mainbar-link-padding;
+          height: $mainbar-height;
+          line-height: $mainbar-height;
+          text-decoration: none;
+        }
+
+        // Adding the class "menu-icon" will add the 3-line icon people love and adore.
+        &.menu-icon {
+          top: 50%;
+          margin-top: -16px;
+
+          a {
+            @if $text-direction == rtl {
+              text-indent: -58px;
+            }
+            height: 34px;
+            line-height: 33px;
+            padding: 0 $mainbar-link-padding+25 0 $mainbar-link-padding;
+            color: $mainbar-menu-link-color;
+            position: relative;
+
+            & {
+              // @include hamburger icon
+              //
+              // We use this to create the icon with three lines aka the hamburger icon, the menu-icon or the navicon
+              // $width - Width of hamburger icon
+              // $left - If false, icon will be centered horizontally || explicitly set value in rem
+              // $top - If false, icon will be centered vertically || explicitly set value in rem
+              // $thickness - thickness of lines in hamburger icon, set value in px
+              // $gap - spacing between the lines in hamburger icon, set value in px
+              // $color - icon color
+              // $hover-color - icon color during hover, here it isn't set b/c it would override $mainbar-menu-icon-color-toggled
+              // $offcanvas - Set to false of @include in mainbar
+              @include hamburger(16px, false, 0, 1px, 6px, $mainbar-menu-icon-color, "", false);
+            }
+          }
+        }
+      }
+
+      // Change things up when the main-bar is expanded
+      &.expanded {
+        height: auto;
+        background: transparent;
+        
+        .title-area { background: $mainbar-bg; }
+
+        .toggle-mainbar {
+          a { 
+            color: $mainbar-menu-link-color-toggled;
+            //padding: 0 $mainbar-link-padding;
+              
+			span::after {
+              // Shh, don't tell, but box-shadows create the menu icon :)
+              // Change the color of the bars when the menu is expanded, using given thickness from hamburger() above
+              box-shadow: 0 0px 0 1px $mainbar-menu-icon-color-toggled,
+                          0 7px 0 1px $mainbar-menu-icon-color-toggled,
+                          0 14px 0 1px $mainbar-menu-icon-color-toggled;
+            }
+          }
+        }
+      }
+    }
+
+    // Right and Left Navigation that stacked by default
+    .main-bar-section {
+      #{$default-float}: 0;
+      position: relative;
+      width: auto;
+      @include single-transition($default-float, $mainbar-transition-speed);
+
+      ul {
+        padding: 0;
+        background: $mainbar-bg;
+        width: 100%;
+        height: auto;
+        display: block;
+        font-size: $rem-base;
+        letter-spacing: 0.1em;
+        margin: 0;
+        @media #{$small-only} { padding: 0 0 10px 0; border-top: $mainbar-primnav-border; }
+      }
+
+      .divider,
+      [role="separator"] {
+        border-top: $mainbar-divider-border-top;
+        clear: both;
+        height: 1px;
+        width: 100%;
+      }
+
+      ul li {
+        background: $mainbar-bg;
+        @media #{$small-only} {
+          border-bottom: $mainbar-primnav-border;
+        }
+        & > a {
+          display: block;
+          width: 100%;
+          color: $mainbar-link-color;
+          padding: 12px 0 12px 0;
+          padding-#{$default-float}: $mainbar-link-padding;
+          font-family: $mainbar-link-font-family;
+          font-size: $mainbar-link-font-size;
+          font-weight: $mainbar-link-weight;
+          text-transform: $mainbar-link-text-transform;
+          text-decoration: none;
+            @media (min-width:#{lower-bound($medium-range)}) and (max-width: 702px) {
+                font-size: rem-calc(9.5);
+                letter-spacing: 0.01em;
+            }
+        
+            @media (min-width:703px) and (max-width: 1024px) {  //jinak min-width: 703px
+                font-size: rem-calc(12);
+                letter-spacing: 0.01em;
+            }
+
+          &.button {
+            font-size: $mainbar-link-font-size;
+            padding-#{$opposite-direction}: $mainbar-link-padding;
+            padding-#{$default-float}: $mainbar-link-padding;
+            @include button-style($bg:$primary-color);
+          }
+          &.button.secondary { @include button-style($bg:$secondary-color); }
+          &.button.success { @include button-style($bg:$success-color); }
+          &.button.alert { @include button-style($bg:$alert-color); }
+          &.button.warning { @include button-style($bg:$warning-color); }
+        }
+
+        > button {
+          font-size: $mainbar-link-font-size;
+          padding-#{$opposite-direction}: $mainbar-link-padding;
+          padding-#{$default-float}: $mainbar-link-padding;
+          @include button-style($bg:$primary-color);
+
+          &.secondary { @include button-style($bg:$secondary-color); }
+          &.success { @include button-style($bg:$success-color); }
+          &.alert { @include button-style($bg:$alert-color); }
+          &.warning { @include button-style($bg:$warning-color); }
+        }
+
+        // Apply the hover link color when it has that class
+        &:hover:not(.has-form) > a {
+          background-color: $mainbar-link-bg-color-hover;
+          @if ($mainbar-link-bg-hover) {
+            background: $mainbar-link-bg-hover;
+          }
+          color: $mainbar-link-color-hover;
+        }
+
+        // Apply the active link color when it has that class
+        &.active > a {
+          background: $mainbar-link-bg-active;
+          color: $mainbar-link-color-active;
+          border-top: 1px solid $gray-light-color;
+          border-bottom: 1px solid $body-bg;
+          display: block;
+          height: ($mainbar-height - 1px);
+            
+          &:hover {
+                background: $mainbar-link-bg-active-hover;
+                color: $mainbar-link-color-active-hover;
+          }
+        }
+      }
+
+      // Add some extra padding for list items contains buttons
+      .has-form {
+        padding: $mainbar-link-padding;
+          input {
+              border: none;
+            }
+      }
+
+      // Styling for list items that have a dropdown within them.
+      .has-dropdown {
+        position: relative;
+
+        & > a {
+          &::after {
+            @if ($mainbar-arrows){
+              @include css-triangle($mainbar-dropdown-toggle-size, rgba($mainbar-dropdown-toggle-color, $mainbar-dropdown-toggle-alpha), $default-float);
+            }
+            margin-#{$opposite-direction}: $mainbar-link-padding;
+            margin-top: -($mainbar-dropdown-toggle-size / 2) - 2;
+            position: absolute;
+            top: 50%;
+            #{$opposite-direction}: 0;
+          }
+          &:hover {
+            &::after {
+                @if ($mainbar-arrows){
+                  @include css-triangle($mainbar-dropdown-toggle-size, rgba($mainbar-dropdown-link-color-hover, $mainbar-dropdown-toggle-alpha), $default-float);
+                }
+                margin-#{$opposite-direction}: $mainbar-link-padding;
+                margin-top: -($mainbar-dropdown-toggle-size / 2) - 2;
+                position: absolute;
+                top: 50%;
+                #{$opposite-direction}: 0;
+            }
+          }
+        }
+
+        &.moved { position: static;
+          & > .dropdown {
+            @include mainbar-show-dropdown();
+            width: 100%;
+          }
+          & > a:after {
+            display: none;
+          }
+        }
+      }
+
+      // Styling elements inside of dropdowns
+      .dropdown {
+        background: $mainbar-bg;
+        padding: 0 0 10px 0;
+        position: absolute;
+        #{$default-float}: 100%;
+        top: 0;
+        z-index: 99;
+        @media #{$small-only} { padding: 0 0 15px 0; }
+        @include mainbar-hide-dropdown();
+          
+        li {
+          display: block;
+          width: 100%;
+          height: auto;
+            
+          a {
+            color: $white;
+            display: inline-block;
+            font-weight: $mainbar-dropdown-link-weight;
+            padding: 12px $mainbar-link-padding;
+            letter-spacing: 0.01em;
+            //text-transform: none;
+            width: 100%;
+            &.parent-link {
+              font-weight: $font-weight-bold;
+              text-transform: uppercase;
+            }
+          }
+
+          &.title h5 {
+            // Back Button
+            margin-bottom: 0;
+            margin-top: 0;
+            font-size: $mainbar-back-link-size;
+            a {
+              color: $mainbar-back-link-color;
+              display: block;
+              &:hover { background: transparent; color: $mainbar-back-link-color-hover; }
+            }
+          }
+          &.has-form { 
+            padding: 0 $mainbar-link-padding; 
+            input {
+              border: none;
+            }
+          }
+          .button, button { top: auto; }
+        }
+
+        label {
+          padding: 8px $mainbar-link-padding 2px;
+          margin-bottom: 0;
+          text-transform: $mainbar-dropdown-label-text-transform;
+          color: $mainbar-dropdown-label-color;
+          font-weight: $mainbar-dropdown-label-font-weight;
+          font-size: $mainbar-dropdown-label-font-size;
+        }
+      }
+    }
+
+    .js-generated { display: block; }
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // Top Bar styles intended for screen sizes above the breakpoint.
+    @media #{$mainbar-media-query} {
+      .main-bar {
+        background: $mainbar-bg;
+        @include clearfix;
+        overflow: visible;
+
+        .toggle-mainbar { display: none; }
+
+        .title-area { float: $default-float; }
+        .name h1 a { width: auto; }
+
+        input,
+       .button,
+        button {
+          font-size: rem-calc(14);
+          position: relative;
+          top: $mainbar-button-top;
+        }
+
+        &.expanded { background: $mainbar-bg; }
+      }
+
+      .contain-to-grid .main-bar {
+        max-width: $row-width;
+        margin: 0 auto;
+        margin-bottom: $mainbar-margin-bottom;
+      }
+
+      .main-bar-section {
+        @include single-transition(none,0,0);
+        #{$default-float}: 0 !important;
+
+        ul {
+          width: auto;
+          height: auto !important;
+          display: inline;
+
+          li {
+            float: left;
+            text-align: center;
+            .js-generated { display: none; }
+          }
+        }
+
+        li {
+          //display: block;
+          height: $mainbar-height;
+          border-right: 1px solid $primary-light-color;
+          &:last-child { border-right: none; }
+          &.hover {
+            > a:not(.button) {
+              //background-color: $mainbar-link-bg-color-hover;
+             // @if ($mainbar-link-bg-hover) {
+                //background: $mainbar-link-bg-hover;
+             //}
+              color: $mainbar-link-color-hover;
+            }
+          }
+          &:not(.has-form) {
+            a:not(.button) {
+              padding: 0 $mainbar-link-padding;
+              line-height: 1.2em;
+              display: block;
+              height: $mainbar-height;
+              //background: $mainbar-link-bg;
+              &:hover {
+                //background-color: $mainbar-link-bg-color-hover;
+                //@if ($mainbar-link-bg-hover) {
+                  //background: $mainbar-link-bg-hover;
+                //}
+              }
+                &::before {
+                    content: '';
+                    display: inline-block;
+                    height: 100%;
+                    margin: 0; 
+                    padding: 0;
+                    vertical-align: middle;
+                }
+                span { 
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 100%;
+                }
+            }
+          }
+          &.active:not(.has-form) {
+            a:not(.button) {
+              padding: 0 $mainbar-link-padding;
+              //line-height: $mainbar-height;
+              color: $mainbar-link-color-active;
+              background: $mainbar-link-bg-active;
+              &:hover {
+                background: $mainbar-link-bg-active-hover;
+                color: $mainbar-link-color-active-hover;
+              }
+            }
+            &.has-dropdown {
+                a:not(.button) {
+                    background: $mainbar-link-bg-active;
+                    &:hover {
+                        background: $mainbar-link-bg-active-hover;
+                    }
+                }
+            }
+          }
+        }
+
+        .has-dropdown {
+          @if($mainbar-arrows){
+            & > a {
+              padding-#{$opposite-direction}: $mainbar-link-padding;
+              //padding-#{$opposite-direction}: $mainbar-link-padding + $mainbar-link-dropdown-padding !important;
+              &::after {
+                  display: none; // css-triangle je true pro zobrazení v nižších úrovních, proto je zde pro první úroveň jejich zneviditelnění a korekce paddingu
+                    /*@include css-triangle($mainbar-dropdown-toggle-size, rgba($mainbar-dropdown-toggle-color, $mainbar-dropdown-toggle-alpha), top);
+                    margin-top: -($mainbar-dropdown-toggle-size / 2);
+                    top: $mainbar-height / 2;*/
+              }
+              &:hover, &:focus {
+                &::after {
+                    display: none;
+                    /*@include css-triangle($mainbar-dropdown-toggle-size, rgba($secondary-color, $mainbar-dropdown-toggle-alpha), top);
+                    margin-top: -($mainbar-dropdown-toggle-size / 2);
+                    top: $mainbar-height / 2;*/
+                }
+              }
+            }
+          } 
+
+          &.moved { position: relative;
+            & > .dropdown {
+              @include mainbar-hide-dropdown();
+            }
+          }
+
+          &.hover, &.not-click:hover {
+            border-bottom-color: white;
+            & > .dropdown {
+              @include mainbar-show-dropdown();
+            }
+          }
+          > a:focus + .dropdown {
+            @include mainbar-show-dropdown();
+          }
+
+          .dropdown li.has-dropdown {
+            & > a {
+            padding-right: 30px;
+            @if ($mainbar-dropdown-arrows){
+				&::after {
+                    border: none;
+                    display: block;
+                    content: "\203A";
+                    top: 0;
+                    margin-top: 3px;
+                    #{$opposite-direction}: 0px;
+                    line-height: 1.2;
+				}
+              }
+            }
+          }
+
+        }
+
+        .dropdown {
+          z-index: 8000;
+          #{$default-float}: -1px;
+          top: $mainbar-height;
+          background: $white;
+          min-width: 125%;
+          padding: rem-calc(10 0 8 0);
+          border-left: 1px solid rgb(211,211,211);
+          border-right: 1px solid rgb(211,211,211);
+          border-bottom: 1px solid rgb(211,211,211);
+          border-top: none;
+          border-collapse: collapse;
+          -webkit-box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.1);
+             -moz-box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.1);
+                  box-shadow: 0px 5px 6px 0px rgba(0, 0, 0, 0.1);
+          
+          &.right {
+              right: -1px;
+              left: auto;
+              li { 
+                .dropdown { right: 100%; left: auto; }
+              }
+          }
+            
+          li {
+              border-right: none;
+              border-bottom: none;
+              &.active:not(.has-form) {
+                a:not(.button) {
+                  padding: 0 $mainbar-link-padding;
+                  //line-height: $mainbar-height;
+                  color: $mainbar-link-color-active;
+                  background: $white;
+                  &:hover {
+                    background: $white;
+                    color: $mainbar-link-color-active-hover;
+                  }
+                }
+              }
+            a {
+              color: $anchor-font-color;
+              display: inline-block;
+              white-space: nowrap;
+              letter-spacing: 0.01em;
+              padding: 0 $mainbar-link-padding;
+              background: $mainbar-dropdown-link-bg;
+              text-align: left;
+              text-transform: none;
+              height: $mainbar-height - 20px !important;
+            }
+
+            &:not(.has-form):not(.active) {
+              & > a:not(.button) {
+                color: $anchor-font-color;
+                background: $mainbar-dropdown-link-bg;
+              }
+
+              &:hover > a:not(.button) {
+                color: $anchor-font-color-hover;
+                background-color: $mainbar-dropdown-link-bg;
+                @if ($mainbar-link-bg-hover) {
+                  background: $mainbar-link-bg-hover;
+                }
+              }
+            }
+
+            label {
+              white-space: nowrap;
+              background: $mainbar-dropdown-label-bg;
+            }
+
+            // Second Level Dropdowns
+            .dropdown {
+              #{$default-float}: 100%;
+              top: -11px;
+              border-top: 1px solid rgb(211,211,211);
+              min-width: 100%;
+            }
+          }
+        }
+
+        & > ul > .divider,
+        & > ul > [role="separator"] {
+          border-bottom: none;
+          border-top: none;
+          border-#{$opposite-direction}: $mainbar-divider-border-bottom;
+          clear: none;
+          height: $mainbar-height;
+          width: 0;
+        }
+
+        .has-form {
+          background: $mainbar-link-bg;
+          padding: 0 $mainbar-height / 3;
+          height: $mainbar-height;
+        }
+          
+        /*
+        // Position overrides for ul.right and ul.left
+        .#{$opposite-direction} {
+          li .dropdown {
+            #{$default-float}: auto;
+            #{$opposite-direction}: 0;
+
+            li .dropdown { #{$opposite-direction}: 100%; }
+          }
+        }
+        .#{$default-float} {
+          li .dropdown {
+            #{$opposite-direction}: auto;
+            #{$default-float}: 0;
+
+            li .dropdown { #{$default-float}: 100%; }
+          }
+        } */
+      }
+
+      // Degrade gracefully when Javascript is disabled. Displays dropdown and changes
+      // background & text color on hover.
+      .no-js .main-bar-section {
+        ul li {
+          // Apply the hover link color when it has that class
+          &:hover > a {
+            background-color: $mainbar-link-bg-color-hover;
+            @if ($mainbar-link-bg-hover) {
+              background: $mainbar-link-bg-hover;
+            }
+            color: $mainbar-link-color-hover;
+          }
+
+          // Apply the active link color when it has that class
+          &:active > a {
+            background: $mainbar-link-bg-active;
+            color: $mainbar-link-color-active;
+          }
+        }
+
+        .has-dropdown {
+          &:hover {
+            & > .dropdown {
+              @include mainbar-show-dropdown();
+            }
+          }
+          > a:focus + .dropdown {
+            @include mainbar-show-dropdown();
+          }
+        }
+      }
+    }
+  }
+}
+
+@media #{$medium-only} {
+    .main-tablet-hide-dropdown {
+        .dropdown { display: none !important; }
+    }
+}

@@ -1,0 +1,67 @@
+
+ $white       : #FFFFFF;
+// $ghost       : #FAFAFA;
+// $snow        : #F9F9F9;
+// $vapor       : #F6F6F6;
+// $white-smoke : #F5F5F5;
+// $silver      : #EFEFEF;
+// $smoke       : #EEEEEE;
+// $gainsboro   : #DDDDDD;
+// $iron        : #CCCCCC;
+// $base        : #AAAAAA;
+// $aluminum    : #999999;
+// $jumbo       : #888888;
+// $monsoon     : #777777;
+// $steel       : #666666;
+// $charcoal    : #555555;
+// $tuatara     : #444444;
+// $oil         : #333333;
+// $jet         : #222222;
+// $black       : #000000;
+
+// We use these as default colors throughout
+ $primary-color:            rgb(175, 136, 83);                              // bronzová Cerit pro pozadí bloků, menu apod. 
+ $primary-darker-color:     scale-color($primary-color, $lightness: -10%);  // bronzová Cerit pro pozadí header apod.
+ $primary-dark-color:       rgb(48, 48, 49);                                // tmavá šedá Cerit např. pro horní lištu
+ $primary-light-color:      rgb(199, 155, 94);                              // světlá barva, nevyrazná, linky mezi položky menu
+ $primary-very-light-color: rgb(208, 166, 108);                             // světlá výraznější, .active položka menu
+ $primary-events-color:     $primary-color;                                 // bronzová pro barvu na datumy u Events nebo pozadí ikon sociálních sítí
+ 
+ $secondary-color: $primary-dark-color;  //tmavá modrá Cerit SP pro hover efekty
+ $third-color:     $primary-color; //fialová pro URL
+ 
+ $gray-color:                rgb(71, 71, 71); //šedá FSS, H1 nadpis
+ $gray-transparent-color:    rgba($gray-color, 0.85); //tmavší šedá s průhledností pro pozadí nadpisů v blocích a modulech
+ $gray-dark-color:           rgb(42, 42, 42);
+ $gray-lighter-color:        rgb(112, 112, 112);
+ $gray-light-color:          rgb(188, 188, 188);
+ $gray-very-light-color:     rgb(241, 241, 241);
+ $gray-tab-content-switcher: rgb(127, 127, 127);
+ 
+ $gray-footer-link-color:       rgb(225, 229, 233);
+ $gray-footer-link-hover-color: rgb(140, 140, 140);
+ $gray-footer-box-color:        rgb(69, 70, 74);
+ $gray-footer-bg-color:         rgb(61, 62, 66);
+  
+// social networks colors - http://designpieces.com/2012/12/social-media-colours-hex-and-rgb/
+
+ $facebook-color:  rgb(59, 89, 152); //http://designpieces.com/2012/12/facebook-colour-palette/
+ $twitter-color:   rgb(0, 172, 237); //http://designpieces.com/2012/12/twitter-colour-palette/
+ $google-color:    rgb(221, 75, 57);
+ $youtube-color:   rgb(187, 0, 0);
+ $linkedin-color:  rgb(0, 123, 182);
+ $instagram-color: rgb(81, 127, 164);
+ $pinterest-color: rgb(203, 32, 39);
+ $flickr-color:    rgb(255, 0, 132);
+ $tumblr-color:    rgb(0, 80, 109);
+ $vimeo-color:     rgb(170, 212, 80);
+
+// $alert-color: #f04124;
+// $success-color: #43AC6A;
+// $warning-color: #f08a24;
+// $info-color: #a0d3e8;
+
+$cerit-sc-color: rgb(238, 53, 42);
+$cerit-sp-color: rgb(29, 182, 234);
+$cerit-re-color: rgb(242, 167, 1);
+$czech-cybercrime-centre: rgb(154, 188, 64);
