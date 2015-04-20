@@ -297,8 +297,8 @@ hr, .row hr {
   position: relative;
   display: block;
   //float: left;
-  height: 80px;
-  width: 80%; //121px;
+  height: 100px;
+  width: 90%; //121px;
   margin: rem-calc(20 20 23 15);
   z-index: 200;
   text-decoration: none;
@@ -313,7 +313,7 @@ hr, .row hr {
   }
 
   @media #{$medium-up} {
-    height: 134px;
+    height: 150px;
     margin: rem-calc(50 70 78 15);
   }
 }

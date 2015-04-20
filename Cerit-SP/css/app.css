@@ -5421,8 +5421,8 @@ hr, .row hr {
 .logo {
   position: relative;
   display: block;
-  height: 80px;
-  width: 80%;
+  height: 100px;
+  width: 90%;
   margin: 1.25rem 1.25rem 1.4375rem 0.9375rem;
   z-index: 200;
   text-decoration: none; }
@@ -5433,7 +5433,7 @@ hr, .row hr {
     background-size: contain; }
   @media only screen and (min-width: 37.5em) {
     .logo {
-      height: 134px;
+      height: 150px;
       margin: 3.125rem 4.375rem 4.875rem 0.9375rem; } }
 
 .logo-faculty {
