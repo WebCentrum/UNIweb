@@ -1,0 +1,477 @@
+// a. Breadcrumbs
+// b. Buttons
+// c. Typography
+// d. Tabs
+// e. Tables
+// f. Dropdowns
+// g. Orbit
+
+// I. media queries
+
+// -----------------------------------------------------------------------
+
+
+// a. Breadcrumbs
+
+.breadcrumbs {
+  @include crumb-container;
+  display: inline-block;
+  background: transparent;
+  font-family: $font-family-sans-serif;
+  font-size: $crumb-font-size;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.066em;
+  margin: 0;
+  padding: rem-calc(10 0);
+    
+  li {
+    @include crumbs;
+      
+    &::before {
+      content: "";
+      display: inline-block;
+      background: transparent url(../images/breadcrumbs-arrow.svg) no-repeat center;
+      background-size: 3px;
+      height: $crumb-font-size;
+      width: $crumb-font-size;
+      top: 0;
+      vertical-align: middle;
+    }
+      
+    &:first-child {
+      &::before { 
+        background: url("../images/breadcrumbs-list-square.svg") no-repeat left center;
+        background-size: rem-calc(8);
+        height: $crumb-font-size; 
+        margin-right: rem-calc(5);
+        padding-left: 0;
+        top: -1px;
+        vertical-align: middle;
+      }
+    }
+      
+    a {
+      //vertical-align: middle;
+      text-decoration: none;
+      &:hover { 
+        color: $secondary-color; 
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------
+
+
+// b. Buttons
+
+.button, button {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+    
+  .fa {
+    margin-left: 0.5em;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// -----------------------------------------------------------------------
+
+
+// c. Typography
+
+h1, h2, h3, h4, h5, h6 {
+  @include font-smoothing;
+}
+
+h1 {
+  color: $primary-color;
+  font-weight: $font-weight-bold;
+  margin: rem-calc(10 0 10 0);
+}
+
+h2 {
+  color: $gray-color;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+h3 {
+  color: $gray-color;
+  font-family: $font-family-sans-narrow;
+  font-size: rem-calc(26);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+h4 {
+    color: $primary-color;
+    font-weight: $font-weight-bold;
+}
+
+h5 {
+    color: $gray-dark-color;
+    font-weight: $font-weight-bold;
+}
+
+a {
+  font-weight: $font-weight-bold;
+  @include transition(color 0.1s ease);
+  
+  //class pro kotvy a jejich posun od horního okraje, překrývá ji pak main-bar
+  &.anchor {
+    /*&:before {
+      display: block; 
+      content: " "; 
+      top: 120px; 
+      visibility: hidden;
+    }*/
+  }
+    
+  &.facebook {
+    &:hover { 
+      color: $facebook-color; 
+    }
+  }
+  &.twitter {
+    &:hover { 
+      color: $twitter-color; 
+    }
+  }
+  &.google {
+    &:hover {
+      color: $google-color; 
+    }
+  }
+  &.youtube {
+    &:hover { 
+      color: $youtube-color; 
+    }
+  }
+  &.linkedin {
+    &:hover { 
+      color: $linkedin-color; 
+    }
+  }
+  &.instagram {
+    &:hover { 
+      color: $instagram-color; 
+    }
+  }
+  &.pinterest {
+    &:hover { 
+      color: $pinterest-color; 
+    }
+  }
+  &.flickr {
+    &:hover { 
+      color: $flickr-color; 
+    }
+  }
+  &.tumblr {
+    &:hover { 
+      color: $tumblr-color; 
+    }
+  }
+  &.vimeo {
+    &:hover { 
+      color: $vimeo-color; 
+    }
+  }
+}
+
+.footer-upper, .footer-lower {
+  a {
+    font-weight: $font-weight-normal;
+  }
+}
+
+strong {
+  &.color { 
+    color: $primary-color; 
+  }
+}
+
+ul {
+  li {
+    list-style-image: url('../images/list-arrow.png');
+  }
+}
+
+a {
+  font-weight: $font-weight-normal;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.language-choice {
+    text-decoration: none;
+    img {
+      height: 15px;
+      margin: rem-calc(-3 12 0 0);
+      width: auto;
+    }
+}
+
+
+// -----------------------------------------------------------------------
+
+
+// d. Tabs
+
+$tab-border-color: $gray-light-color;
+$tab-border-hover-color: $secondary-color;
+$tab-border-active-color: rgb(134,134,134);
+
+dl {
+  border-bottom: 1px solid $tab-border-active-color;
+  &.tabs {
+    dd {
+      margin: rem-calc(0 10 0 0);
+        
+      &:first-child {
+        margin-left: rem-calc(10);
+      }
+      
+      a {
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: $font-weight-bold;
+        border-top: 1px solid $tab-border-color;
+        border-right: 1px solid $tab-border-color;
+        border-left: 1px solid $tab-border-color;
+        margin-top: rem-calc(5);
+        padding: rem-calc(5 25);
+          
+        &:hover {
+          color: $white;
+          border-top: 1px solid $tab-border-hover-color;
+          border-right: 1px solid $tab-border-hover-color;
+          border-left: 1px solid $tab-border-hover-color;
+        }
+          
+        @media #{$large-up} {
+          padding: rem-calc(10 25);
+        }
+      }
+        
+      &.active {
+        a {
+          border-top: 1px solid $tab-border-active-color;
+          border-right: 1px solid $tab-border-active-color;
+          border-left: 1px solid $tab-border-active-color;
+          border-bottom: 1px solid $gray-very-light-color;
+          margin-top: 0;
+          margin-bottom: -1px;
+          padding: rem-calc(10 25 5 25);
+          
+          &:hover{
+            //background: $secondary-color;
+            color: $secondary-color;
+            border-top: 1px solid $tab-border-active-color;
+            border-right: 1px solid $tab-border-active-color;
+            border-left: 1px solid $tab-border-active-color;
+            //border-bottom: 1px solid $secondary-color;
+          }
+            
+          @media #{$large-up} {
+            padding: rem-calc(15 25 10 25);
+          }
+        }
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------
+
+
+// e. Tables
+
+$border-table: 1px solid $gray-light-color;
+
+table {
+  border-left: none;
+  border-right: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-bottom-width: 2px;
+    
+  th {
+    border-bottom: $border-table;
+  }
+    
+  td {
+    border-right: $border-table;
+    border-left: $border-table;
+      
+    &:first-child {
+      border-left: none;
+    }
+    &:last-child {
+      border-right: none;
+    }
+  }
+  
+  a {
+    text-decoration: none;
+    font-weight: $font-weight-bold;
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
+    
+  &.fullwidth {
+    width: 100%;
+  }
+}
+
+
+// -----------------------------------------------------------------------
+
+
+// f. Dropdowns
+
+.f-dropdown {
+  z-index: 9999;
+    li {
+      list-style-image: none !important;
+    }
+  &#language-choice {
+    max-width: 150px;
+    a {
+      font-size: rem-calc(12);
+      text-decoration: none;
+    }
+    img {
+      height: 12px;
+      margin: rem-calc(0 0 0 8);
+      width: auto;
+    }
+  }
+}
+
+
+// -----------------------------------------------------------------------
+
+
+// g. Orbit
+
+.orbit-container {
+    li {
+      list-style-image: none !important;
+    }
+    
+  .orbit-slides-container {
+      
+    .slide-content {
+      padding: rem-calc(35);
+        
+      h3 {
+        font-size: rem-calc(17);
+        font-family: $font-family-sans-serif;
+        line-height: 1.3em;
+        letter-spacing: 0.033em;
+        text-transform: uppercase;
+      }
+      h4 {
+        font-size: rem-calc(15);
+      }
+    }
+      
+    .orbit-caption {
+      padding: rem-calc(10 0);
+      background: transparent;
+      h3 {
+        font-size: rem-calc(15);
+        font-family: $font-family-sans-serif;
+        line-height: 1.5em;
+        letter-spacing: 0.033em;
+        text-transform: uppercase;
+      }
+      font-size: rem-calc(13);
+    }
+  }
+    
+  .orbit-prev,
+  .orbit-next {
+    top: 25%;
+    margin-top: 0; 
+    width: 20px;
+    height: 20px;
+    @include radius($radius:20px);
+      
+      & > span {
+          width: 0;
+          height: 0;
+          border: none;
+        }
+  }
+  .orbit-prev {
+    background: rgba(0, 0, 0, 0.05) url('../images/orbit-arrow-left.svg') no-repeat center center;
+    background-size: 9px;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+  }
+  .orbit-next {
+    background: rgba(0, 0, 0, 0.05) url('../images/orbit-arrow-right.svg') no-repeat center center;
+    background-size: 9px;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+  }
+}
+
+// -----------------------------------------------------------------------
+
+
+// h. th thumbs
+
+.th {
+  box-shadow: 0px 0px 6px rgba($gray-dark-color, 0.15);
+  -webkit-box-shadow: 0px 0px 6px rgba($gray-dark-color, 0.15);
+  -moz-box-shadow: 0px 0px 6px rgba($gray-dark-color, 0.15);
+  border: none;
+  
+  &.people-photo {
+    @media #{$medium-up} {
+      margin-top: .8rem;
+    }
+  }
+}
+
+.clearing-thumbs {
+  li {
+    img {
+      @include thumb;
+    }
+  }
+}
+
+.clearing-assembled {
+  z-index: 11000;
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------
+
+
+// I. media queries
+
+// @media #{$medium-only} {}
+// @media #{$medium-only} and (orientation: landscape) {}
+// @media #{$medium-up} {}
+// @media #{$large-only} {}
+// @media #{$xlarge-only } {}
+// @media #{$xxlarge-only} {}
