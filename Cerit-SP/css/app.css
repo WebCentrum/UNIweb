@@ -5311,20 +5311,15 @@ hr, .row hr {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     position: relative;
-    margin: 1.875rem 0 1.875rem 0; }
-    @media (min-width: 0px) and (max-width: 422px) {
+    margin: 0 0 0.625rem 1.25rem; }
+    @media only screen and (max-width: 37.4375em) {
       .top-header .title-a {
-        margin: 0 0 1.875rem 0.9375rem; } }
-    @media (min-width: 37.5em) and (max-width: 732px) {
-      .top-header .title-a {
-        font-size: 1.125rem !important;
-        line-height: 1.5rem !important;
-        margin: 2.875rem 0 1.875rem 0 !important; } }
+        margin: 0 0 1.25rem 1.25rem; } }
     @media only screen and (min-width: 37.5em) {
       .top-header .title-a {
         font-size: 1.375rem;
         line-height: 2rem;
-        margin: 5.625rem 0 1.875rem 0; } }
+        margin: 5.625rem 0 1.25rem 0; } }
     .top-header .title-a a {
       color: #474747;
       -webkit-transition: all 0.1s ease;
@@ -5426,33 +5421,38 @@ hr, .row hr {
 .logo {
   position: relative;
   display: block;
-  float: left;
-  height: 80px;
-  width: 121px;
+  height: 100px;
+  width: 90%;
   margin: 1.25rem 1.25rem 1.4375rem 0.9375rem;
   z-index: 200;
-  text-decoration: none;
-  /*
-@media (min-width: 0px) and (max-width: 37.4375em) {
-  height: 80px !important;
-  width: 121px !important; 
-  margin: rem-calc(30 30 58 15) !important;     
-} */ }
+  text-decoration: none; }
   .logo:hover {
     text-decoration: none; }
   .logo.l-top-header {
-    background: transparent url("../images/cerit-science-park-logo.svg") no-repeat center center;
+    background: transparent url("../images/cerit-science-park-logo.svg") no-repeat left center;
     background-size: contain; }
-  @media (min-width: 37.5em) and (max-width: 732px) {
-    .logo {
-      height: 80px !important;
-      width: 121px !important;
-      margin: 1.875rem 1.875rem 3.625rem 0.9375rem !important; } }
   @media only screen and (min-width: 37.5em) {
     .logo {
-      height: 134px;
-      width: 202px;
+      height: 150px;
       margin: 3.125rem 4.375rem 4.875rem 0.9375rem; } }
+
+.logo-faculty {
+  height: 70px;
+  width: 70px;
+  display: inline-block;
+  margin: 0 0.3125rem 0.625rem 0; }
+  .logo-faculty:first-child {
+    margin-left: 1.25rem; }
+  @media only screen and (min-width: 37.5em) and (max-width: 74.9375em) {
+    .logo-faculty:first-child {
+      margin-left: 0; } }
+  @media only screen and (min-width: 75em) {
+    .logo-faculty {
+      height: 90px;
+      width: 90px;
+      margin: 0 0.3125rem 1.25rem 0; }
+      .logo-faculty:first-child {
+        margin-left: -0.3125rem; } }
 
 @media only screen and (min-width: 75em) {
   .prezi {
@@ -6311,11 +6311,13 @@ a {
   -ms-transition: color 0.1s ease;
   -o-transition: color 0.1s ease;
   transition: color 0.1s ease; }
-  a.anchor:before {
-    display: block;
-    content: " ";
-    height: 75px;
-    visibility: hidden; }
+  a.anchor {
+    /*&:before {
+      display: block; 
+      content: " "; 
+      top: 120px; 
+      visibility: hidden;
+    }*/ }
   a.facebook:hover {
     color: #3b5998; }
   a.twitter:hover {
