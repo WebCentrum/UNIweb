@@ -153,23 +153,18 @@ hr, .row hr {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     position: relative;
-    margin: rem-calc(30 0 30 0);
+    margin: rem-calc(0 0 10 20);
       
-    @media (min-width: 0px) and (max-width: 422px) {
-      margin: rem-calc(0 0 30 15);
-    }
-    
-    @media (min-width:#{lower-bound($medium-range)}) and (max-width: 732px) {
-      font-size: rem-calc(18) !important;
-      line-height: rem-calc(24) !important;
-      margin: rem-calc(46 0 30 0) !important;
+    @media #{$small-only} {
+      margin: rem-calc(0 0 20 20);
     }
     
     @media #{$medium-up} {
       font-size: rem-calc(22);
       line-height: rem-calc(32);
-      margin: rem-calc(90 0 30 0);
+      margin: rem-calc(90 0 20 0);
     }
+
     a {
       color: $gray-color;
       @include transition(all 0.1s ease);
@@ -301,37 +296,44 @@ hr, .row hr {
 .logo {
   position: relative;
   display: block;
-  float: left;
+  //float: left;
   height: 80px;
-  width: 121px;
+  width: 80%; //121px;
   margin: rem-calc(20 20 23 15);
-  z-index: 2000;
+  z-index: 200;
   text-decoration: none;
+    
   &:hover {
     text-decoration: none;
   }
     
   &.l-top-header {
-    background: transparent url("../images/cerit-science-park-logo.svg") no-repeat center center;
+    background: transparent url("../images/cerit-science-park-logo.svg") no-repeat left center;
     background-size: contain; 
-  }
-    /*
-  @media (min-width: 0px) and (max-width: #{upper-bound($small-range)}) {
-    height: 80px !important;
-    width: 121px !important; 
-    margin: rem-calc(30 30 58 15) !important;     
-  } */
-
-  @media (min-width: #{lower-bound($medium-range)}) and (max-width: 732px) {
-    height: 80px !important;
-    width: 121px !important; 
-    margin: rem-calc(30 30 58 15) !important;     
   }
 
   @media #{$medium-up} {
     height: 134px;
-    width: 202px;
     margin: rem-calc(50 70 78 15);
+  }
+}
+
+.logo-faculty {
+  height: 70px;
+  width: 70px;
+  display: inline-block;
+  margin: rem-calc(0 5 10 0);
+  &:first-child { margin-left: rem-calc(20); }
+    
+  @media #{$medium-only} {
+    &:first-child { margin-left: rem-calc(0); }
+  }
+
+  @media #{$large-up} {
+    height: 90px;
+    width: 90px;
+    margin: rem-calc(0 5 20 0);
+    &:first-child { margin-left: rem-calc(-5); }
   }
 }
 
