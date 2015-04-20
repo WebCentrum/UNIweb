@@ -315,7 +315,7 @@ hr, .row hr {
   float: left;
   height: 75px;
   width: 230px;
-  margin: rem-calc(20 0 40 20);
+  margin: rem-calc(20 0 10 20);
   z-index: 200;
   text-decoration: none;
   &:hover {
@@ -330,13 +330,32 @@ hr, .row hr {
   @media #{$medium-only} {
     height: 75px;
     width: 301px;
-    margin: rem-calc(40 0 100 20);
+    margin: rem-calc(40 0 20 20);
   }
 
   @media #{$large-up} {
     height: 75px;
     width: 301px;
-    margin: rem-calc(60 0 160 0);
+    margin: rem-calc(60 0 10 0);
+  }
+}
+
+.logo-faculty {
+  height: 70px;
+  width: 70px;
+  display: inline-block;
+  margin: rem-calc(10 5 20 0);
+  &:first-child { margin-left: rem-calc(20); }
+    
+  @media #{$medium-only} {
+    margin: rem-calc(15 5 30 0);
+  }
+
+  @media #{$large-up} {
+    height: 90px;
+    width: 90px;
+    margin: rem-calc(20 5 40 0);
+    &:first-child { margin-left: rem-calc(0); }
   }
 }
 
