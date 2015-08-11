@@ -1,8 +1,22 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="cs">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+      
     <title>Fakulta sociálních studií Masarykovy univerzity</title>
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="css/font-awesome.css" />
@@ -17,18 +31,24 @@
 	    }
 	  </style>
   <![endif]-->
+<div id="has-footer">
+  <div id="main">
   	<div class="row-wide  above-header-bar">
   		<div class="row">
   			<div class="large-10  columns  small-uncentered  large-centered">
   				<div class="row">
-		  			<div class="medium-3  columns  hide-for-small-only">
-	  					<span><a href="http://www.muni.cz">MUNI.CZ</a></span>
+		  			<div class="medium-5  columns  hide-for-small-only">
+	  					<span><a href="http://www.muni.cz">Masarykova univerzita</a></span>
 		  			</div>
-		  			<div class="medium-9  columns  hide-for-small-only  text-right">
+		  			<div class="medium-7  columns  hide-for-small-only  text-right">
 	  					<span><a href="http://www.muni.cz">Struktura MU</a></span>
 	  					<span><a href="http://is.muni.cz">IS MU</a></span>
 	  					<span><a href="http://inet.muni.cz">INET</a></span>
-	  					<span><a>čeština<img src="images/flag-czech.png"></a></span>
+	  					<span><a href="#" data-dropdown="language-choice" data-options="is_hover:true">čeština<img src="images/flags/CzechRepublic.png"></a></span>
+                            <ul id="language-choice" class="f-dropdown" data-dropdown-content>
+                                <li><a href="#">Deutsch<img src="images/flags/Germany.png"></a></li>
+                                <li><a href="#">English<img src="images/flags/UnitedKingdom.png"></a></li>
+                            </ul>
 		  			</div>
   				</div>
   			</div>
@@ -40,36 +60,38 @@
 	      <div class="large-1  columns  show-for-large-up">
               <a class="logo  l-white">&nbsp;</a>
 	      </div>
-	      <div class="large-6  medium-9  columns  hide-for-small-only">
+	      <div class="large-8  medium-8  columns  hide-for-small-only">
 	      	<a class="logo  l-white  show-for-medium-only">&nbsp;</a>
-               <p class="title-a" href="http://www.muni.cz"><a>Masarykova univerzita</a></p>
-              <p class="title-b" href="index.html"><a>Fakulta sociálních studií</a></p>
+            <a href="index.html">
+              <p class="title-a">Masarykova univerzita</p>
+              <p class="title-b">Fakulta sociálních studií</p>
+            </a>
 	      </div>
-	      <div class="large-4  medium-3  columns  end  hide-for-small-only">
-	      	<div class="secondary-menu">
-              <div id="sb-search" class="sb-search">
-				<form>
-				  <input class="sb-search-input" placeholder="Enter your search term..." type="search" value="" name="search" id="search">
-				  <input class="sb-search-submit" type="submit" value="">
-				  <span class="sb-icon-search"><i class="fa  fa-search"></i></span>
-				</form>
+	      <div class="large-2  medium-4  columns  end  hide-for-small-only secondary-menu">
+              <div class="row collapse search-row">
+                <div class="small-9 columns">
+                  <input type="text" placeholder="Hledej" />
+                </div>
+                <div class="small-3 columns">
+                  <a class="button transparent postfix"><i class="fa fa-search"></i></a>
+                </div>
               </div>
-        	</div>
 	      </div>
 	      <div class="columns  show-for-small-only">
 	      	    <a class="logo  l-white" href="index.html">&nbsp;</a>
-	            <span class="title-a" href="index.html">FSS MU</span>
+	            <a href="index.html"><span class="title-a" href="index.html">FSS MU</span></a>
 	      </div>
 	    </div>
-	    <div class="row  small-wide">
+        
+        <div class="row  small-wide">
 	    	<div class="large-10  columns  large-centered  small-uncentered">
-                <div class="contain-to-grid  sticky">
-                <nav class="main-bar" data-mainbar role="navigation"> 
+                <div class="contain-to-grid">
+                <nav class="top-bar" data-topbar role="navigation"> 
                     <ul class="title-area"> 
                         <li class="name"></li>
-                        <li class="toggle-mainbar  menu-icon"><a href="#"><span></span></a></li> 
+                        <li class="toggle-topbar  menu-icon"><a href="#"><span></span></a></li> 
                     </ul> 
-                    <section class="main-bar-section  nav-align"> 
+                    <section class="top-bar-section"> 
                         <ul> 
                             <li class="has-form  hide-for-small-up">
                                 <div class="row">
@@ -88,7 +110,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="has-dropdown  active">
+                            <li class="has-dropdown">
                                 <a href="index.html"><span>Úvod</span></a>
                                 <ul class="dropdown">
                                     <li><a href="#">Úřední deska</a></li>
@@ -118,42 +140,17 @@
                             <li class="has-dropdown">
                                 <a href="druha-uroven.html"><span>Studium</span></a>
                                 <ul class="dropdown">
-                                    <li class="has-dropdown">
+                                    <li>
                                         <a href="#">Bakalářské studium</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Studijní obory</a></li>
-                                            <li><a href="#">Kombinace oborů</a></li>
-                                            <li><a href="#">Přihláška</a></li>
-                                            <li><a href="#">SCIO testy</a></li>
-                                            <li><a href="#">Studijní oddělení</a></li>
-                                        </ul>
                                     </li>
-                                    <li class="has-dropdown">
+                                    <li>
                                         <a href="#">Magisterské studium</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Studijní obory</a></li>
-                                            <li><a href="#">Kombinace oborů</a></li>
-                                            <li><a href="#">Přihláška</a></li>
-                                            <li><a href="#">SCIO testy</a></li>
-                                            <li><a href="#">Studijní oddělení</a></li>
-                                        </ul>
                                     </li>
-                                    <li class="has-dropdown">
+                                    <li>
                                         <a href="#">Doktorské studium</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Studijní obory</a></li>
-                                            <li><a href="#">Kombinace oborů</a></li>
-                                            <li><a href="#">Přihláška</a></li>
-                                            <li><a href="#">SCIO testy</a></li>
-                                            <li><a href="#">Studijní oddělení</a></li>
-                                        </ul>
                                     </li>
-                                    <li class="has-dropdown">
+                                    <li>
                                         <a href="#">Studijní obory</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#">Prezenční forma studia</a></li>
-                                            <li><a href="#">Kombinovaná forma studia</a></li>
-                                        </ul>
                                     </li>
                                     <li><a href="#">Přijímací řízení</a></li>
                                     <li><a href="#">Den otevřených dveří</a></li>
@@ -201,244 +198,156 @@
                             </li>
                         </ul> 
                     </section> 
-                </nav>
+                  </nav>
                 </div>
             </div>
 	    </div>
 	</div>
-	<div class="row">
-	    <div class="small-12  large-10  columns  small-uncentered  large-centered">
-	    	<div class="row">
-		    	<div class="columns  small-wide  medium-wide">
-                    <div class="slideshow-module">
-						    <div class="outer  r8x3">
-						        <div class="inner">
-						        	<div class="perex-position">
-                                        <div class="perex-cont">
-                                            <span class="title"><span class="highlight">Moderní fakulta. Skvěle vybavená knihovna. Přímo v&nbsp;centru. Teď mám vše na&nbsp;dosah.</span><span class="hide-for-small-only"><br /><br /></span><span class="name">Jan, student politologie</span></span>
-                                        </div>
-                                    </div>
-						        	<img src="res/images/chcinafss.jpg"/>
-						        </div>
-						    </div>
-				    </div>
-		      	</div>
-	      	</div>
-	      <div class="row  editorial">
-	    	<div class="medium-9  small-12  columns">
-	      		<h1>Chci <strong>studovat</strong> na&nbsp;FSS</h1>
-	      	</div>
-	      	<div class="medium-3  small-12  columns">
-	      		<a class="button  expand  small  main-h1  show-for-large-up">Virtuální prohlídka<i class="fa  fa-caret-right"></i></a>
-	      		<a class="button  expand  small  main-h1  show-for-medium-only">Prohlídka<i class="fa  fa-caret-right"></i></a>
-	      	</div>
-	      	<div class="small-12  columns">
-	      		<p>
-	      			Fakulta sociálních studií poskytuje prestižní vzdělání univerzitního typu v&nbsp;sociálních vědách ve třech typech studijních programů: v&nbsp;bakalářských, v&nbsp;navazujících magisterských a&nbsp;v&nbsp;doktorských.&ensp;Nabízíme dvouoborové i&nbsp;jednooborové studium, včetně kombinované formy.&ensp;Naši učitelé jsou odborníci pracující v&nbsp;mezinárodních vědeckých týmech a&nbsp;lektoři z&nbsp;praxe.&ensp;Naše výuka vychází z&nbsp;nejnovějšího 
-bádání.&ensp;Naši absolventi reprezentují jméno Masarykovy univerzity po celém světě.
-				</p>
-	      	</div>
-	      </div>
-	      <div class="row">
-	    	<div class="large-3  medium-6  columns">
-                <a>
-	      			<div class="container-module">
-					    <div class="outer  r16x9">
-					        <div class="inner">
-					        	<div class="module">
-					        		<h3>Magisterské studium</h3>
-					        		<p>Pokračuj ve svém oboru, máš u nás dvanáct možností.</p>
-					        	</div>
-					            <img src="res/images/students.jpg"/>
-					        </div>
-					    </div>
-					</div>
-				</a>
-	      	</div>
-	      	<div class="large-3  medium-6  columns">
-				<a>
-	      			<div class="container-module">
-					    <div class="outer r16x9">
-					        <div class="inner">
-					        	<div class="module">
-					        		<h3>Magisterské studium</h3>
-					        		<p>Pokračuj ve svém oboru, máš u nás dvanáct možností.</p>
-					        	</div>
-					            <img src="res/images/students.jpg"/>
-					        </div>
-					    </div>
-					</div>
-				</a>
-	      	</div>
-	      	<div class="large-3  medium-6 columns">
-	      		<a>
-	      			<div class="container-module">
-					    <div class="outer  r16x9">
-					        <div class="inner">
-					        	<div class="module">
-					        		<h3>Doktorské studium</h3>
-					        		<p>Pojď bádat s námi. Devět oborů čeká na nové talenty.</p>
-					        	</div>
-					            <img src="res/images/students2.jpg"/>
-					        </div>
-					    </div>
-					</div>
-				</a>
-	      	</div>
-	      	<div class="large-3  medium-6  columns">
-	      		<a>
-	      			<div class="container-module">
-					    <div class="outer  r16x9">
-					        <div class="inner">
-					        	<div class="module">
-					        		<h3>International students</h3>
-					        		<p>Interested to be part of our stirring college atmosphere?</p>
-					        	</div>
-					            <img src="res/images/students.jpg"/>
-					        </div>
-					    </div>
-					</div>
-				</a>
-	      	</div>
-	      </div>
-	      <hr />
-	      
-	      <div class="row">
-	      	<div class="large-6  columns">
-	      		<div class="you-know-panel">
-	      			<h2>Víte, že&hellip;</h2>
-	      			<p>fakulta aktivně podporuje studenty v tom, aby během svého studia alespoň na semestr vycestovali na jednu z partnerských univerzit? — Studovat můžete například v rámci programu Erasmus Plus na desítkách univerzit po celé Evropě. — Chcete-li vycestovat mimo Evropu, máme pro vás řadu dalších atraktivních studijních programů.</p>
-	      		</div>
-	      		<hr />
-	      		<div>
-	      			<h3>O fakultě a studijních oborech</h3>
-	      			<div class="flex-video">
-        				<iframe width="560" height="315" src="//www.youtube.com/embed/zXnYvg0E-EA" frameborder="0" allowfullscreen></iframe>
-					</div>
-	      		</div>
-	      	</div>
-	      	<div class="large-3  medium-6  columns">
-	      		<div class="events">
-      				<h3>Sledujte nás</h3>
-					<div class="row  social-networks-event">
-	      				<div class="small-2  columns">
-							<img src="images/icons/facebook.svg" class="icon" />
-						</div>
-						<div class="small-10  columns">
-							<h4><a>Fakulta sociálních studií&nbsp;Brno</a></h4>
-							<span class="date-hour-place">26.&nbsp;4.&nbsp;2014</span>
-						</div>
-						<div class="columns">
-							<p>Chcete se aktivně zapojit do dění na Masarykově univerzitě? Tak si tento čtvrtek 25. 9. nenechte ujít tradiční Jarmark spolků, který obsadí naše atrium od 11 do 15 hodin.</p>
-							<img src="res/images/students2.jpg" />
-							<p class="odkazy"><a>To se mi líbí</a><span class="divider">&bull;</span><a>Přidat komentář</a><span class="divider">&bull;</span><a>Sdílet</a></p>
-						</div>
-	      			</div>
-	      			<hr />
-	      			<div class="row  social-networks-event">
-	      				<div class="small-2  columns">
-							<img src="images/icons/twitter.svg" class="icon" />
-						</div>
-						<div class="small-10  columns">
-							<h4><a>Fakulta sociálních studií</a></h4>
-							<span class="nick">@MUNI_FSS</span>
-							<span class="date-hour-place">RETWEETED BY <a>FILOZOFICKÁ FAKULTA</a> <span class="nick">@ffmuni</span> 2.&nbsp;9.&nbsp;2014</span>
-						</div>
-						<div class="columns">
-							<p>Chcete se aktivně zapojit do dění na Masarykově univerzitě? Tak si tento čtvrtek 25. 9. nenechte ujít tradiční Jarmark spolků, který obsadí naše atrium od 11 do 15 hodin.</p>
-							<p class="odkazy"><a>Sleduj @MUNI_FSS na Twitteru</a></p>
-						</div>
-	      			</div>
-	      		</div>
-	      		
-	      	</div>
-	      	<div class="large-3  medium-6  columns">
-	      		<div class="events">
-      				<h3>Nejbližší události</h3>
-					<div class="row">
-	      				<div class="small-2  columns">
-							<div class="date-icon-module">
-								<div class="outer  r1x1">
-									<div class="inner">
-										<div class="date  d17">&nbsp;</div>
-										<div class="month  m9-cs">&nbsp;</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="small-10  columns">
-							<h4><a>Den otevřených dveří</a></h4>
-							<p>Pojďte si prohlédnout svoji budoucí fakultu</p>
-							<span class="date-hour-place"><i class="fa  fa-map-marker"></i>Budova FSS, Joštova 10</span>
-						</div>
-	      			</div>
-	      			<hr />
-	      			<div class="row  events">
-	      				<div class="small-2  columns">
-							<div class="date-icon-module">
-								<div class="outer  r1x1">
-									<div class="inner">
-										<div class="date  d2">&nbsp;</div>
-										<div class="month  m10-cs">&nbsp;</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="small-10  columns">
-							<h4><a>Mobilní týden na MU</a></h4>
-							<p>Srdečně zveme všechny zájemce o&nbsp;studium v&nbsp;zahraničí na veletrh mobilních programů MU</p>
-							<span class="date-hour-place"><i class="fa  fa-map-marker"></i>Aula FSS</span>
-							<span class="date-hour-place"><i class="fa  fa-clock-o"></i>9:45&ndash;11:00</span>
-						</div>
-	      			</div>
-	      			<hr />
-	      			<div class="row  events">
-	      				<div class="small-2  columns">
-							<div class="date-icon-module">
-								<div class="outer  r1x1">
-									<div class="inner">
-										<div class="date  d3">&nbsp;</div>
-										<div class="month  m10-cs">&nbsp;</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="small-10  columns">
-							<h4><a>Blok expertů</a></h4>
-							<p>Werner Binder: Sociology and the Study of Culture</p>
-							<span class="date-hour-place"><i class="fa  fa-map-marker"></i>Posluchárna A123</span>
-							<span class="date-hour-place"><i class="fa  fa-clock-o"></i>10:00&ndash;12:00</span>
-						</div>
-	      			</div>
-	      			<hr />
-	      			<div class="row  events">
-	      				<div class="small-2  columns">
-							<div class="date-icon-module">
-								<div class="outer  r1x1">
-									<div class="inner">
-										<div class="date  d15">&nbsp;</div>
-										<div class="month  m12-cs">&nbsp;</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="small-10  columns">
-							<h4><a>5.&nbsp;psychoterapeutické sympozium v&nbsp;Brně</a></h43>
-							<p>Mezinárodní konference</p>
-							<span class="date-hour-place"><i class="fa  fa-map-marker"></i>Kongresové centrum</span>
-						</div>
-	      			</div>
-	      			<div class="row  events">
-	      				<div class="columns">
-							<a class="button  small  main-h1">Další události<i class="fa  fa-caret-right"></i></a>
-						</div>
-	      			</div>
-	      		</div>
-	      	</div>
-	      </div>
+      
+    <div class="row">
+	    <div class="large-10  columns  small-uncentered  large-centered text-right">
+            <ul class="breadcrumbs">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Features</a></li>
+              <li class="unavailable"><a href="#">Gene Splicing</a></li>
+              <li class="current"><a href="#">Cloning</a></li>
+            </ul>
 	    </div>
 	</div>
-	
+    
+	<div class="row">
+	    <div class="large-10  columns  small-uncentered  large-centered">
+            <h1>Nadpis H1 na začátku stránky <small>ukázka textových elementů</small></h1>
+	    </div>
+	</div>
+    
+    <div class="row  small-wide">
+	    	<div class="large-10  columns  large-centered  small-uncentered">
+                <div class="contain-to-grid-sec">
+                <nav class="main-bar" data-mainbar role="navigation"> 
+                    <ul class="title-area"> 
+                        <li class="name"></li>
+                        <li class="toggle-mainbar  menu-icon"><a href="#"><span></span></a></li> 
+                    </ul> 
+                    <section class="main-bar-section"> 
+                        <ul> 
+                            <li class="has-form  hide-for-small-up">
+                                <div class="row">
+                                    <div class="small-9  columns">
+                                        <div class="row  collapse">
+                                            <div class="small-10  columns">
+                                                <input type="text" placeholder="Hledat" />
+                                            </div>
+                                            <div class="small-2  columns">
+                                                <a href="#" class="button  tiny  postfix"><i class="fa  fa-search"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="small-3  columns">
+                                        <a class="button  tiny  language"><img src="images/flag-czech.png"/></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="has-dropdown">
+                                <a href="index.html"><span>Úvod</span></a>
+                                <ul class="dropdown">
+                                    <li><a href="#">Úřední deska</a></li>
+                                    <li><a href="#">Aktuality</a></li>
+                                    <li><a href="#">Předpisy, normy a zákony</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-dropdown">
+                                <a href="typografie.html"><span>O&nbsp;fakultě</span></a>
+                                <ul class="dropdown">
+                                    <li><a href="#">Vedení fakulty</a></li>
+                                    <li><a href="#">Orgány fakulty</a></li>
+                                    <li><a href="#">Lidé na&nbsp;fakultě</a></li>
+                                    <li><a href="#">Prezentace fakulty</a></li>
+                                    <li><a href="#">Historie a současnost</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-dropdown">
+                                <a href="osoba.html"><span>Zájemci o&nbsp;studium</span></a>
+                                <ul class="dropdown">
+                                    <li><a href="#">Přijímací řízení</a></li>
+                                    <li><a href="#">F&amp;Q</a></li>
+                                    <li><a href="#">Studim jinak</a></li>
+                                    <li><a href="#">Studium v zahraničí</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-dropdown">
+                                <a href="druha-uroven.html"><span>Studium</span></a>
+                                <ul class="dropdown">
+                                    <li>
+                                        <a href="#">Bakalářské studium</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Magisterské studium</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Doktorské studium</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Studijní obory</a>
+                                    </li>
+                                    <li><a href="#">Přijímací řízení</a></li>
+                                    <li><a href="#">Den otevřených dveří</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-dropdown">
+                                <a href="moduly.html"><span>Věda a&nbsp;výzkum</span></a>
+                                <ul class="dropdown  right">
+                                    <li><a href="#">Oddělení pro vědu a výzkum</a></li>
+                                    <li><a href="#">Výzkumná činnost</a></li>
+                                    <li><a href="#">Publikační činnost</a></li>
+                                    <li><a href="#">Výzkumná pracoviště</a></li>
+                                    <li><a href="#">Klíčová výzkumná témata</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-dropdown">
+                                <a><span>Zahraniční spolupráce</span></a>
+                                <ul class="dropdown  right">
+                                    <li><a href="#">Oddělení zahraničních vztahů</a></li>
+                                    <li><a href="#">Aktuální nabídky</a></li>
+                                    <li><a href="#">Letní školy</a></li>
+                                    <li><a href="#">Studijní programy v zahraničí</a></li>
+                                    <li><a href="#">Informace pro zahraniční studenty</a></li>
+                                    <li><a href="#">Zahraniční vyučující a výzkumníci</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-dropdown">
+                                <a><span>Média</span></a>
+                                <ul class="dropdown  right">
+                                    <li><a href="#">Tiskové zprávy</a></li>
+                                    <li><a href="#">Archiv TZ</a></li>
+                                    <li><a href="#">FSS v číslech</a></li>
+                                    <li><a href="#">Fotobanka</a></li>
+                                    <li><a href="#">Kontakty pro média</a></li>
+                                    <li><a href="#">Databáze expertů</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-dropdown">
+                                <a><span>Kontakty</span></a>
+                                <ul class="dropdown  right">
+                                    <li><a href="#">Zaměstnanci</a></li>
+                                    <li><a href="#">Kontakty pro média</a></li>
+                                    <li><a href="#">Studijní oddělení</a></li>
+                                </ul>
+                            </li>
+                        </ul> 
+                    </section> 
+                  </nav>
+                </div>
+            </div>
+	    </div>
+      
+	<div class="row">
+	  <div class="large-10  columns  small-uncentered  large-centered text-center">
+        <a href="typografie.html" class="button large secondary">Přehledové stránky</a>
+      </div>
+    </div>
+  </div> <!-- konec main -->
+  <div id="footer">
 	<div class="row-wide  footer-upper">
 		<div class="row">
 			<div class="large-10  columns  small-uncentered  large-centered">
@@ -547,51 +456,39 @@ bádání.&ensp;Naši absolventi reprezentují jméno Masarykovy univerzity po c
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/foundation/js/foundation.js"></script>
-    <script src="bower_components/foundation/js/foundation/foundation.interchange.js"></script>
-    <script src="bower_components/foundation/js/foundation.dropdown.js"></script>
-    <script src="js/foundation.topbar.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.clearing.js"></script>
     <script src="js/foundation.mainbar.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/jquery.mobile-detect.js"></script>
+    <script src="js/elementQuery.js"></script>
+    <script src="js/classie.js"></script>
     
     <script>
-    	$(document).foundation('topbar', 'reflow');
-  	</script>
-      
-  	<script src="js/jquery.mobile-detect.js"></script>
-  	<script src="js/jquery.horizontalNav.js"></script>
-    <script src="js/elementQuery.js"></script>
-  	
-  	<script>
-  		$(document).ready(function(){  
-		  if($(window).width() > 599) {
-    		  $('.nav-align').horizontalNav( {responsive: true} );
-          }
+        // počká až je dokument ready
+        $(document).ready(function(){  
+            // Převedení výšky patičky na padding-bottom u pomocného containeru #main - aby obsah nebyl překrytý patičkou
+            function onResize() {
+              $("#main").css( "padding-bottom", $("#footer").outerHeight(true) );
+            }
             
-		  $('.tab-content-switcher').click( function() {
-		  	$(this).toggleClass('active');
-		    var target_element = $('#'+$(this).attr('data-hide-and-seek'));
-		    if(target_element.is(':hidden')) {
-		      target_element.show();
-		    }
-		    else {
-		      target_element.hide();
-		    }
-		  });
-          
-        var md = new MobileDetect(window.navigator.userAgent);
-        
-        if(md.tablet()) {
-            $('.top-bar-section').toggleClass('top-tablet-hide-dropdown');
-            $('.main-bar-section').toggleClass('main-tablet-hide-dropdown');
-        }
-		});
+            onResize(); // při načtení stránky
+            $( window ).resize(onResize); // při změné velikosti okna
+            
+            // Start Foundation a nastavení JS settings komponent
+            $(document).foundation();
+            
+              $('.tab-content-switcher').click( function() {
+                $(this).toggleClass('active');
+                var target_element = $('#'+$(this).attr('data-hide-and-seek'));
+                if(target_element.is(':hidden')) {
+                  target_element.show();
+                }
+                else {
+                  target_element.hide();
+                }
+              });
+        });
   	</script>
-  	
-    <script src="js/classie.js"></script>
-	<script src="js/uisearch.js"></script>
-	<script>
-	  new UISearch( document.getElementById( 'sb-search' ) );
-	</script>
-  	
+  	</div>
+  	</div> <!-- konec has-two-footers -->
   </body>
 </html>

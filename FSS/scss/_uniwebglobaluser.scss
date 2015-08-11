@@ -1,12 +1,27 @@
-// a. Doplněk gridu
+// a. Doplněk gridu 
 // b. Barvy a doplnění UNIWEB tříd pro pozadí
 // c. Prvky layoutu
 // d. Editorial
 // e. Sociální sítě a Events
 // f. Footer
-// I. media queries
+// g. th thumbs
+// h. Simple Nav
+// I. media queries 
 
-@import "mixins";
+@import "../scss-common/mixins";
+
+html, body { height: 100%; }
+
+#has-footer {
+    min-height: 100%;
+    position: relative;
+
+  #footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+  }
+}
 
 // -----------------------------------------------------------------------
 
@@ -14,11 +29,12 @@
 
 .row-wide {
   width: 100%;
+  padding: 0;
 }
 
 .row {
   &.margin-around {
-    margin: rem-calc(25 0) !important;
+    margin: rem-calc(25) auto !important;
   }
     
   @media #{$small-only} {
@@ -38,6 +54,7 @@
   }
 }
 
+
 // -----------------------------------------------------------------------
 
 
@@ -51,6 +68,7 @@
   &.primary-dark { background: $primary-dark-color; }
   &.gray { background: $gray-color; }
   &.gray-transparent { background: $gray-transparent-color; }
+  &.secondary { background: $secondary-color; }
   &.third { background: $third-color; }
   &.top-header {
     background: rgb(0,107,91); /* Old browsers */
@@ -85,6 +103,7 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
     
   a {
     font-weight: $font-weight-normal;
+    text-decoration: none;
     @include transition(all 0.1s ease);
   }
     
@@ -94,7 +113,7 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
     span {
       font-size: rem-calc(12);
       line-height: $height-above-header-bar;
-      margin-left: 1rem;
+      margin-left: 0.8rem;
         
       &:first-child {
         margin-left: 0;
@@ -104,6 +123,7 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
         color: $white;
         &:hover {
           color: $primary-light-color;
+          text-decoration: none;
         }
       }
         
@@ -118,64 +138,74 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
   }
 }
 
+hr, .row hr {
+  margin: rem-calc(20 0);
+}
+
 .top-header {
   min-height: rem-calc(90);
-    
-  @media #{$medium-up} {
-    //min-height: rem-calc(ů188);
-  }
 
-  .title-a, .title-b {
+  a {
+    @include transition(color 0.2s ease);
     color: $white;
-    display: block;
-    font-family: $font-family-serif;
-    font-weight: 700;
-    text-shadow: 1px 1px 1px $primary-dark-color;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-      
-    a {
-      color: $white;
-      @include transition(all 0.1s ease);
-      &:hover { color: $primary-light-color; }
-    }
-  }
-
-  .title-a {
-    position: relative;
-    font-size: rem-calc(36);
-    letter-spacing: 0.033em;
-    text-transform: uppercase;
-    margin: rem-calc(17 0 0 0);
+    text-decoration: none !important;
+    &:hover { color: $primary-light-color; }
     
-    @media #{$medium-up} {
-      font-size: rem-calc(18) !important;
-      letter-spacing: 0.1em !important;
-      line-height: rem-calc(40);
-      margin: rem-calc(20 0 0 0);
-    }
-  }
-
-  .title-b {
-      position: relative;
-      height: 40px;
-      margin-bottom: rem-calc(41);
+    .title-a, .title-b {
       
+      display: block;
+      font-family: $font-family-sans-serif;
+      font-weight: $font-weight-normal;
+      text-shadow: 1px 1px 1px $primary-dark-color;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .title-a {
+      position: relative;
+      font-size: rem-calc(36);
+      text-transform: uppercase;
+      margin: rem-calc(17 0 0 0);
+      padding-left: rem-calc(85);
+    
       @media #{$medium-only} {
-        font-size: rem-calc(30);
-        letter-spacing: 0.033em;
-        line-height: rem-calc(35);
+        font-size: rem-calc(21) !important;
+        line-height: rem-calc(24);
+        margin: rem-calc(30 0 0 0);
+        padding-left: rem-calc(120);
       }
       
       @media #{$large-up} {
-        font-size: rem-calc(32);
-        letter-spacing: 0.033em;
+        font-size: rem-calc(21) !important;
+        line-height: rem-calc(24);
+        margin: rem-calc(30 0 0 0);
+        padding-left: 0;
       }
+    }
+
+    .title-b {
+      position: relative;
+      line-height: 1.2em;
+      margin-bottom: rem-calc(35);
+      text-transform: uppercase;
+      
+      @media #{$medium-only} {
+        font-size: rem-calc(33);
+        padding-left: rem-calc(115);
+        margin-bottom: rem-calc(18);
+        padding-left: rem-calc(120);
+      }
+      
+      @media #{$large-up} {
+        font-size: rem-calc(36);
+        margin-bottom: rem-calc(18);
+      }
+    }
   }
 
   .secondary-menu {
     display: inline-block;
-    width: 100%;
+    float: right;
     text-align: right;
     margin-top: 1em;
 
@@ -184,7 +214,52 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
     }
     
     // g1. Search
+    
+    .search-row {
+        margin-top: 2.5rem;
+        /*@media #{$medium-only} {
+            margin-top: 0;
+        }*/
+        
+        input {
+          background: none;
+          border: 1px solid transparent;
+          border-bottom-color:$primary-light-color;
+          color: $white;
+          box-shadow: none;
+          @include transition(border 0.5s ease);
+            
+          &:focus {
+            border-top-color :$primary-light-color;
+            border-left-color: $primary-light-color;
+            border-right-color: $primary-light-color;
+          }
+        }
+        
+        .button {
+          border: 1px solid transparent;
+          border-bottom-color:$primary-light-color;
+          color: $primary-light-color;
+          margin: 0;
+          padding: 0;
+          @include transition(border 0.5s ease);
+            
+          &:hover {
+            border-top-color :$primary-light-color;
+            border-right-color: $primary-light-color;
+            border-left-color: $primary-light-color;
+            color: $white;
+          }
+            
+          .fa {
+            margin: 0;
+            padding: 0;
+          }
+        }
+    }
 
+
+    /*
     $search-size: 30px;
 
     .sb-search {
@@ -209,9 +284,9 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
         height: $search-size;
         margin: 0;
         z-index: 10;
-        padding: ($search-size / 4) 10px;
+        padding: ($search-size / 3) 10px;
         font-family: inherit;
-        font-size: ($search-size / 2);
+        font-size: ($search-size / 3);
         color: $gray-dark-color;
 
         &::-webkit-input-placeholder {
@@ -248,9 +323,9 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
       }
 
       .sb-search-submit {
-        //background: transparent; /* IE needs this */
-        //-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; /* IE 8 */
-        //filter: alpha(opacity=0); /* IE 5-7 */
+        //background: transparent; // IE needs this
+        //-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; // IE 8
+        //filter: alpha(opacity=0); // IE 5-7
         //opacity: 0;
         display: none;
         color: transparent;
@@ -267,7 +342,7 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
         speak: none;
         -webkit-font-smoothing: antialiased;
       }
-    }
+    }*/
 
 
     /* Open state */
@@ -298,7 +373,7 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
   float: left;
   height: $title-logo-height;
   width: $title-logo-height;
-  margin: rem-calc(18 20 16 14);
+  margin: rem-calc(18 0 16 14);
   padding: rem-calc(6);
   z-index: 2000;
   
@@ -313,16 +388,42 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
   @media #{$medium-only} { 
     height: rem-calc(90);
     width: rem-calc(90);
-    margin-right: rem-calc(22);
   }
 
   @media #{$large-up} {
     height: rem-calc(90);
     width: 90% !important;
-    margin: rem-calc(20 0 16);
+    //margin: rem-calc(20 0 16);
   }
 }
 
+.logo-faculty {
+  height: 70px;
+  width: 70px;
+  display: inline-block;
+  margin: rem-calc(0 5 10 0);
+  &:first-child { margin-left: rem-calc(20); }
+    
+  @media #{$medium-only} {
+    &:first-child { margin-left: rem-calc(0); }
+  }
+
+  @media #{$large-up} {
+    height: 90px;
+    width: 90px;
+    margin: rem-calc(0 5 20 0);
+    &:first-child { margin-left: rem-calc(-5); }
+  }
+}
+
+.logo-prehled {
+  margin: 1em;
+  max-height: 80px;
+
+  @media #{$large-up} {
+    margin: 0 1em;
+  }
+}
 //.prezi je otázkou zda používat, dle návrhu ano
 .prezi {
   @media #{$large-up} {
@@ -335,7 +436,7 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
   position: relative;
   margin-top: rem-calc(10);
   border: none;
-  
+    
   &::before {
     content: "";
     position: absolute;
@@ -356,6 +457,7 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
     font-weight: 400;
     letter-spacing: 0.025em;
     text-transform: none;
+    margin: rem-calc(20 0);
     
     @media #{$medium-up} { 
       font-size: rem-calc(35); 
@@ -371,6 +473,13 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
       font-size: rem-calc(21); 
     }
   }
+}
+
+.carousel-panel {
+  @include panel($bg:$white);
+  position: relative;
+  margin-top: rem-calc(10);
+  border: 1px solid scale-color($white, $lightness: -10%);
 }
 
 .tabs-content {
@@ -392,12 +501,14 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
   letter-spacing: 0.1em;
   line-height: rem-calc(24);
   text-transform: uppercase;
+  text-decoration: none;
   margin: rem-calc(20 0);
   padding: rem-calc(0 20 0 23);
                    
   &:hover {
     background-color: $secondary-color;
     color: $white;
+    text-decoration: none;
   }
     
   &.active {
@@ -424,31 +535,50 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
 // d. Editorial
 
 .editorial {
+  //margin-bottom: rem-calc(35) !important;
+  //color: $gray-color;
+  padding: rem-calc(15 0);
+    
   h1 {
-    color: $gray-color; 
-    font-size: rem-calc(26);
+    //color: $gray-color; 
+    font-size: rem-calc(36);
     font-weight: $font-weight-normal;
-    letter-spacing: 0.03em;
+    line-height: 2rem;
     text-transform: uppercase !important;
-    margin: rem-calc(20 0 10 0); 
+    margin: rem-calc(24 0 12 0) !important; 
       
     strong {
       color: $primary-color;
       font-weight: $font-weight-bold;
     }
+      
     @media #{$medium-up} {
-      font-size: rem-calc(50);
-      letter-spacing: 0.03em;
-      margin: rem-calc(40 0); 
+      font-size: rem-calc(48);
+      line-height: 3rem;
+      margin: rem-calc(48 0); 
     }
   }
 
   p {
-    font-size: rem-calc(15);
-    letter-spacing: 0.015em;
+    font-size: rem-calc(18);
+    letter-spacing: 0;
 
     @media #{$medium-up} {
-      font-size: rem-calc(19);
+      font-size: rem-calc(20);
+    }
+  }
+
+  ul li {
+    list-style: disc outside;
+  }
+
+  button, .button {
+    &.main-h1 {
+      margin: rem-calc(5 0);
+        
+      @media #{$medium-up} {
+        margin: rem-calc(24 0);
+      }
     }
   }
 }
@@ -459,6 +589,8 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
 // e. Sociální sítě a Events - aktuality
 
 .events, .social-networks-event {
+  //background: gray;
+    
   h4 {
     font-size: $h4-font-size - rem-calc(2);
     line-height: 1.4em;
@@ -505,6 +637,10 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
         margin: rem-calc(0 5);
       } 
     }
+  }
+
+  hr {
+    
   }
 
   span {
@@ -638,6 +774,7 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
 .footer-upper, .footer-lower {
   a {
     color: $gray-footer-link-color;
+    text-decoration: none;
     @include transition(all 0.1s ease);
       
     &:hover {
@@ -654,6 +791,7 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
     margin-top: 0;
     margin-left: 0;
   }
+    
   .panel {
     @include panel($bg:$gray-footer-box-color, $padding:10px, $adjust:false);
     color: $gray-footer-link-color;
@@ -702,13 +840,14 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
   }
 
   ul {
-    list-style: square;
+    list-style: square !important;
     list-style-position: inside;
     font-size: rem-calc(13);
     text-transform: uppercase;
     margin: 0 0 2em 0;
       
     li {
+      list-style-image: none;
       color: $gray-footer-link-hover-color;
       vertical-align: middle;
         
@@ -853,19 +992,17 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
 }
 
 .footer-upper {
-  padding: rem-calc(20) 0;
-  margin-top: rem-calc(45);
+  padding: rem-calc(20 0);
 }
 
 .footer-lower {
   padding: 0.5em 0;
-  height: auto !important; /* for modern browsers */
-  height: 100%;
     
   .logo {
     max-height: 3em;
     width: 100%;
     max-width: rem-calc(100);
+    margin: 0 !important;
   }
     
   p {
@@ -892,6 +1029,61 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
 // -----------------------------------------------------------------------
 
 
+// h. Simple Nav
+
+$simple-nav-font-size: rem-calc(13) !default;
+$simple-nav-link-color: $gray-dark-color !default;
+$simple-nav-link-color-hover: $anchor-font-color-hover !default;
+$simple-nav-link-color-active: $anchor-font-color-hover !default;
+$simple-nav-link-color-active-hover: $primary-color !default;
+
+.simple-nav {
+  position: relative;
+  //margin-bottom: rem-calc(20);  
+  padding: rem-calc(10 0);
+    
+  ul {
+    list-style: none;
+    margin: 0;
+      
+    li {
+      display: inline-block;
+      list-style-image: none;
+        
+      a {
+        font-size: $simple-nav-font-size;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: $font-weight-normal;
+        color: $simple-nav-link-color;
+        padding: rem-calc(0 15);
+        border-right: 1px solid $gray-color;
+        &:hover, &:focus {
+          color: $simple-nav-link-color-hover;
+        }
+      }
+      &:last-child {
+        a {
+          border-right: none;
+        }
+      }
+      &.active {
+        a {
+          color: $simple-nav-link-color-active;
+          font-weight: $font-weight-bold;
+          &:hover, &:focus {
+            color: $simple-nav-link-color-active-hover;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// -----------------------------------------------------------------------
+
+
 // g. th thumb people-photo
 
 .th {
@@ -904,6 +1096,7 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
 
 
 // -----------------------------------------------------------------------
+
 
 
 // I. media queries
@@ -931,27 +1124,27 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
     
   .has-side-slides {
     .columns {
-      .slideshow-module {
+      .slideshow-module, .container-module {
         margin-bottom: $column-gutter / 4;
         margin-top: $column-gutter / 4;
       }
         
       &:first-child {
-        .slideshow-module {
+        .slideshow-module, .container-module {
           margin-bottom: 0;
           margin-top: 0;
         }
       }
         
       &:nth-child(2) {
-        .slideshow-module {
+        .slideshow-module, .container-module {
           margin-bottom: $column-gutter / 4;
           margin-top: 0;
         }
       }
         
       &:last-child {
-        .slideshow-module {
+        .slideshow-module, .container-module {
           margin-bottom: 0;
           margin-top: $column-gutter / 4;
         }
