@@ -160,10 +160,6 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       ul {
         margin-bottom: 0;
         list-style: none;
-          
-        li {
-          list-style-image: none !important;
-        }
       }
 
       .row { max-width: none; }
@@ -209,7 +205,6 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
             width: 75%;
             display: block;
             padding: 0 $topbar-link-padding;
-            text-decoration: none;
           }
         }
       }
@@ -326,7 +321,6 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
           font-size: $topbar-link-font-size;
           font-weight: $topbar-link-weight;
           text-transform: $topbar-link-text-transform;
-          text-decoration: none;
             @media (min-width:#{lower-bound($medium-range)}) and (max-width: 702px) {
                 font-size: rem-calc(9.5);
                 letter-spacing: 0.01em;
