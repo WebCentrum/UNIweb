@@ -8,7 +8,7 @@
 
     settings : {
       index : 0,
-      start_offset : -51,
+      start_offset : 0,
       sticky_class : 'sticky-sec',
       custom_back_text : true,
       back_text : 'Back',

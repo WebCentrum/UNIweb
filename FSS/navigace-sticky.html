@@ -61,14 +61,14 @@
               <a class="logo  l-white">&nbsp;</a>
 	      </div>
                  
-	      <div class="medium-8  columns  hide-for-small-only">
+	      <div class="large-8  medium-9  columns  hide-for-small-only">
 	      	<a class="logo  l-white  show-for-medium-only">&nbsp;</a>
                <a href="index.html">
                  <p class="title-a">Masarykova univerzita</p>
                  <p class="title-b">Fakulta sociálních studií</p>
               </a>
 	      </div>
-	      <div class="large-2  medium-4  columns  end  hide-for-small-only secondary-menu">
+	      <div class="large-2  medium-3  columns  end  hide-for-small-only secondary-menu">
               <div class="row collapse search-row">
                 <div class="small-9 columns">
                   <input type="text" placeholder="Hledej" />
@@ -86,30 +86,31 @@
         <div class="row  small-wide">
 	    	<div class="large-10  columns  large-centered  small-uncentered">
                 <div id="prim-top-bar-cont" class="contain-to-grid sticky">
-                <nav id="prim-top-bar" class="top-bar hide-dropdown" data-topbar role="navigation" data-options="scrolltop: false" > 
+                <nav id="prim-top-bar" class="top-bar" data-topbar role="navigation" data-options="scrolltop: false" > 
                     <ul class="title-area"> 
                         <li class="name"></li>
                         <li class="toggle-topbar  menu-icon"><a href="#"><span></span></a></li> 
                     </ul> 
                     <section class="top-bar-section"> 
                         <ul> 
-                            <li class="has-form  hide-for-small-up">
-                                <div class="row">
-                                    <div class="small-9  columns">
-                                        <div class="row  collapse">
-                                            <div class="small-10  columns">
-                                                <input type="text" placeholder="Hledat" />
-                                            </div>
-                                            <div class="small-2  columns">
-                                                <a href="#" class="button  tiny  postfix"><i class="fa  fa-search"></i></a>
-                                            </div>
-                                        </div>
+                            <li class="has-form  show-for-small-only">
+                                  <div class="row  collapse">
+                                    <div class="small-11  columns">
+                                      <input type="text" placeholder="Hledat" />
                                     </div>
-                                    <div class="small-3  columns">
-                                        <a class="button  tiny  language"><img src="images/flag-czech.png"/></a>
+                                    <div class="small-1  columns">
+                                      <a href="#" class="button postfix"><i class="fa  fa-search"></i></a>
                                     </div>
-                                </div>
-                            </li>
+                                  </div>
+                                </li>
+                                <li class="has-dropdown  show-for-small-only">
+                                    <a  class="language-choice"><img src="images/flags/CzechRepublic.png">Čeština</a>
+                                    <ul class="dropdown">
+                                      <li class="active"><a href="#"  class="language-choice"><img src="images/flags/CzechRepublic.png">Čeština</a></li>
+                                      <li><a href="#"  class="language-choice"><img src="images/flags/Germany.png">Deutsch</a></li>
+                                      <li><a href="#"  class="language-choice"><img src="images/flags/UnitedKingdom.png">English</a></li>
+                                    </ul>
+                                </li>
                             <li>
                                 <a href="index.html"><span>Úvod</span></a>
                             </li>
@@ -134,13 +135,13 @@
                                 <a href="navigace-sticky.html"><span>Sticky navigace</span></a>
                             </li>
                             <li>
-                                <a href="#"><span>Moduly</span></a>
+                                <a href="moduly.html"><span>Moduly</span></a>
                             </li>
                             <li>
-                                <a href="#"><span>Ikonodlaždice</span></a>
+                                <a href="vizitka.html"><span>Vizitka</span></a>
                             </li>
                             <li>
-                                <a href="#"><span>Osobní stránka</span></a>
+                                <a href="ikonodlazdice.html"><span>Ikonodlaždice</span></a>
                             </li>
                         </ul> 
                     </section> 
@@ -153,10 +154,8 @@
     <div class="row">
 	    <div class="large-10  columns  small-uncentered  large-centered text-right">
             <ul class="breadcrumbs">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Features</a></li>
-              <li class="unavailable"><a href="#">Gene Splicing</a></li>
-              <li class="current"><a href="#">Cloning</a></li>
+              <li><a href="index.html">Úvod</a></li>
+              <li class="current"><a href="navigace-sticky.html">Sticky navigace</a></li>
             </ul>
 	    </div>
 	</div>
@@ -693,10 +692,9 @@
     <script src="bower_components/foundation/js/foundation.js"></script>
     <script src="bower_components/foundation/js/foundation/foundation.clearing.js"></script>
     <script src="js/foundation.mainbar.js"></script>
-    <script src="js/jquery.mobile-detect.js"></script>
-    <script src="js/elementQuery.js"></script>
-    <script src="js/classie.js"></script>
-    
+    <script src="js/ResizeSensor.js"></script>
+    <script src="js/ElementQueries.js"></script>
+      
     <script>
         // počká až je dokument ready
         $(document).ready(function(){  

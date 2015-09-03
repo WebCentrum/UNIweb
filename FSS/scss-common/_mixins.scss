@@ -113,6 +113,31 @@
   }
 }
 
+@mixin inner-logo-cont {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+    
+  &::after {
+    content: attr(data-size);
+    position: absolute;
+    top: -1em;
+    left:0;
+  }
+    
+  img {
+    position: relative;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-55%);
+    -webkit-transform: translateY(-27%);
+    -o-transform: translateY(-27%);
+    z-index: 800;
+  }
+}
+
 // MODULE PEREX --------------------------------------------------------------------------------------------------------
 
 @mixin cont-header($h-font-size, $h-letter-spacing) {

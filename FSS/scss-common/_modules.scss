@@ -1,7 +1,7 @@
 @import "mixins";
 
 a {
-    &.sneak {
+    &.module {
       display: block;
       margin-bottom: 1em;
       width: 100%;
@@ -12,7 +12,7 @@ a {
         .inner {
           @include inner-cont;
 
-          .module {
+          .content {
             background: none;
             bottom: 0;
             height: 100%;
@@ -21,7 +21,7 @@ a {
             z-index: 1100;
             @include transition(all 0.3s ease);  
               
-            .text-module {
+            .text-content {
               bottom: 0; //default pozice
               position: absolute;
               width: 100%;
@@ -57,41 +57,42 @@ a {
                 width: 100%;
               }
             }
-            
-            &.inverse {
-              .text-module {
-                h3 {
-                  background: rgba($white, 0.9);  
-                  color: $body-font-color;
-                }
-                p {
-                  background: rgba($white, 0.8);
-                  color: $body-font-color;
-                }
-              }
-            }
           }
         }
+      }
+      
+      &.inverse {
+          .outer{
+            .inner {
+              .content {
+                .text-content {
+                  h3 {
+                  background: rgba($white, 0.9);  
+                  color: $body-font-color;
+                  }
+                  p {
+                  background: rgba($white, 0.8);
+                  color: $body-font-color;
+                  }
+                }
+              }
+            }   
+          }
       }
         
       &:hover {
-        .outer {
-          .inner {
-            .module {
-              background: rgba(0, 0, 0, 0.4);
-                
-              .text-module {
-                bottom: 0;
-              }
-                
-              &.inverse {
-                background: rgba(255, 255, 255, 0.5);
-              }
-            }
+      .outer .inner .content {
+          background: rgba(0, 0, 0, 0.4);
+          .text-content {
+            bottom: 0;
+          }
+        }
+        &.inverse {
+          .outer .inner .content {
+              background: rgba(255, 255, 255, 0.5);
           }
         }
       }
-        
     }
 }
 
@@ -101,6 +102,7 @@ a {
 .slideshow-module {
   width: 100%;
   margin-bottom: $column-gutter;
+  display: block;
   
   .outer {
     @include outer-cont;
@@ -108,7 +110,7 @@ a {
     .inner {
       @include inner-cont;
         
-        .perex-position {
+        .content {
           position: absolute;
           background: none;
           //bottom: 0;
@@ -120,7 +122,7 @@ a {
           z-index: 1200;
           @include transition(background 0.3s ease);
           
-          .perex-cont {
+          .text-content {
             position: relative;
             top: 100%;
             width: 100%;
@@ -154,10 +156,10 @@ a {
         }
             
         @media #{$medium-up} { //@media pro .slideshow-module .outer .inner
-          .perex-position {
+          .content {
             padding: 0 2em 0 0;
               
-            .perex-cont {
+            .text-content {
               top: 15%;
               @include transform(translateY(0));
                 
@@ -169,10 +171,10 @@ a {
             
           //element queries pro .perex-position    
             
-          .perex-position[min-width~="0px"][max-width~="273px"] {
+          .content[min-width~="0px"][max-width~="273px"] {
             padding: 0; 
               
-            .perex-cont {
+            .text-content {
               top: 100%;
               @include transform(translateY(-100%));
                 
@@ -191,10 +193,10 @@ a {
             }
           }
               
-          .perex-position[min-width~="274px"][max-width~="400px"] {
+          .content[min-width~="274px"][max-width~="400px"] {
             padding: 0; 
               
-            .perex-cont {
+            .text-content {
               top: 100%;
               @include transform(translateY(-100%));
                 
@@ -215,8 +217,8 @@ a {
         }
         
         @media #{$medium-only} {
-          .perex-position {
-            .perex-cont {
+          .content {
+            .text-content {
               .title {
                 margin-bottom: rem-calc(20);
                   
@@ -242,8 +244,8 @@ a {
         }
     
         @media #{$large-up} {
-          .perex-position {
-            .perex-cont {
+          .content {
+            .text-content {
               .title {
                 margin-bottom: rem-calc(20);
                 .highlight, .name { padding: rem-calc(5 20); @include transition(background 0.1s ease); }
@@ -264,11 +266,11 @@ a {
 }
 
 @media #{$medium-up} {
-  a .slideshow-module {
+  a.slideshow-module {
     &:hover {
       .outer {
         .inner {
-          .perex-position {
+          .content {
             background: rgba(0,0,0,0.25);
           }
         }

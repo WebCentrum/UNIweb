@@ -33,6 +33,16 @@
   <![endif]-->
 <div id="has-footer">
   <div id="main">
+    <div class="row-wide secondary">
+      <div class="row">
+        <div class="large-8 columns large-centered">
+            <div data-alert class="alert-box agreement" tabindex="0" aria-live="assertive" role="alertdialog">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce venenatis lorem ut consectetur feugiat. Maecenas semper arcu eget tempus aliquam. Mauris sit amet maximus enim, vitae pretium enim. Integer finibus sodales arcu, ut vehicula justo. Nunc eu dignissim mauris, iaculis lobortis libero. Praesent lacinia metus vitae suscipit faucibus. Fusce euismod quam id augue pellentesque pharetra.</p>
+              <button tabindex="0" class="close" aria-label="Close Alert">Souhlasím</button>
+            </div>
+        </div>
+      </div>
+    </div>
   	<div class="row-wide  above-header-bar">
   		<div class="row">
   			<div class="large-10  columns  small-uncentered  large-centered">
@@ -60,14 +70,14 @@
 	      <div class="large-1  columns  show-for-large-up">
               <a class="logo  l-white">&nbsp;</a>
 	      </div>
-	      <div class="large-8  medium-8  columns  hide-for-small-only">
+	      <div class="large-8  medium-9  columns  hide-for-small-only">
 	      	<a class="logo  l-white  show-for-medium-only">&nbsp;</a>
             <a href="index.html">
               <p class="title-a">Masarykova univerzita</p>
               <p class="title-b">Fakulta sociálních studií</p>
             </a>
 	      </div>
-	      <div class="large-2  medium-4  columns  end  hide-for-small-only secondary-menu">
+	      <div class="large-2  medium-3  columns  end  hide-for-small-only secondary-menu">
               <div class="row collapse search-row">
                 <div class="small-9 columns">
                   <input type="text" placeholder="Hledej" />
@@ -85,8 +95,8 @@
         
         <div class="row  small-wide">
 	    	<div class="large-10  columns  large-centered  small-uncentered">
-                <div class="contain-to-grid">
-                <nav class="top-bar" data-topbar role="navigation"> 
+                <div id="prim-top-bar-cont" class="contain-to-grid sticky">
+                <nav id="prim-top-bar" class="top-bar" data-topbar role="navigation" data-options="scrolltop: false"> 
                     <ul class="title-area"> 
                         <li class="name"></li>
                         <li class="toggle-topbar  menu-icon"><a href="#"><span></span></a></li> 
@@ -110,7 +120,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="has-dropdown">
+                            <li class="active has-dropdown">
                                 <a href="index.html"><span>Úvod</span></a>
                                 <ul class="dropdown">
                                     <li><a href="#">Úřední deska</a></li>
@@ -119,7 +129,7 @@
                                 </ul>
                             </li>
                             <li class="has-dropdown">
-                                <a href="typografie.html"><span>O&nbsp;fakultě</span></a>
+                                <a href="#"><span>O&nbsp;fakultě</span></a>
                                 <ul class="dropdown">
                                     <li><a href="#">Vedení fakulty</a></li>
                                     <li><a href="#">Orgány fakulty</a></li>
@@ -129,7 +139,7 @@
                                 </ul>
                             </li>
                             <li class="has-dropdown">
-                                <a href="osoba.html"><span>Zájemci o&nbsp;studium</span></a>
+                                <a href="#"><span>Zájemci o&nbsp;studium</span></a>
                                 <ul class="dropdown">
                                     <li><a href="#">Přijímací řízení</a></li>
                                     <li><a href="#">F&amp;Q</a></li>
@@ -138,7 +148,7 @@
                                 </ul>
                             </li>
                             <li class="has-dropdown">
-                                <a href="druha-uroven.html"><span>Studium</span></a>
+                                <a href="#"><span>Studium</span></a>
                                 <ul class="dropdown">
                                     <li>
                                         <a href="#">Bakalářské studium</a>
@@ -157,7 +167,7 @@
                                 </ul>
                             </li>
                             <li class="has-dropdown">
-                                <a href="moduly.html"><span>Věda a&nbsp;výzkum</span></a>
+                                <a href="#"><span>Věda a&nbsp;výzkum</span></a>
                                 <ul class="dropdown  right">
                                     <li><a href="#">Oddělení pro vědu a výzkum</a></li>
                                     <li><a href="#">Výzkumná činnost</a></li>
@@ -207,10 +217,7 @@
     <div class="row">
 	    <div class="large-10  columns  small-uncentered  large-centered text-right">
             <ul class="breadcrumbs">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Features</a></li>
-              <li class="unavailable"><a href="#">Gene Splicing</a></li>
-              <li class="current"><a href="#">Cloning</a></li>
+              <li class="current"><a href="#">Úvod</a></li>
             </ul>
 	    </div>
 	</div>
@@ -223,8 +230,8 @@
     
     <div class="row  small-wide">
 	    	<div class="large-10  columns  large-centered  small-uncentered">
-                <div class="contain-to-grid-sec">
-                <nav class="main-bar" data-mainbar role="navigation"> 
+                <div id="sec-top-bar-cont" class="contain-to-grid-main sticky-sec top-one-row">
+                <nav id="sec-top-bar" class="main-bar" data-mainbar role="navigation" data-options="scrolltop: false"> 
                     <ul class="title-area"> 
                         <li class="name"></li>
                         <li class="toggle-mainbar  menu-icon"><a href="#"><span></span></a></li> 
@@ -453,25 +460,55 @@
 					</div>
 		</div>
 	</div>
+  </div>
+</div> <!-- konec has-two-footers -->
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/foundation/js/foundation.js"></script>
     <script src="bower_components/foundation/js/foundation/foundation.clearing.js"></script>
     <script src="js/foundation.mainbar.js"></script>
-    <script src="js/jquery.mobile-detect.js"></script>
-    <script src="js/elementQuery.js"></script>
-    <script src="js/classie.js"></script>
-    
+    <script src="js/ResizeSensor.js"></script>
+    <script src="js/ElementQueries.js"></script>
+      
     <script>
         // počká až je dokument ready
         $(document).ready(function(){  
             // Převedení výšky patičky na padding-bottom u pomocného containeru #main - aby obsah nebyl překrytý patičkou
             function onResize() {
               $("#main").css( "padding-bottom", $("#footer").outerHeight(true) );
+                
+              if( $('#sec-top-bar-cont').hasClass( 'fixed' ) ) {
+                    $('#prim-top-bar-cont').css( "top", -$("#prim-top-bar-cont").outerHeight(true)-5 );
+                } else {
+                    $('#prim-top-bar-cont').css("top", 0);
+                }
             }
-            
             onResize(); // při načtení stránky
             $( window ).resize(onResize); // při změné velikosti okna
+            
+            var senseSpeed = 5;
+            var previousScroll = 0;
+            $(window).scroll(function(){
+                
+                if( $("#prim-top-bar-cont").hasClass("fixed") && $("#sec-top-bar-cont").hasClass("fixed") ) {
+                    $("#prim-top-bar").addClass("hide-dropdown");
+                } else {
+                    $("#prim-top-bar").removeClass("hide-dropdown");
+                }
+                
+               var scroller = $(this).scrollTop();
+                
+               if( $('#prim-top-bar-cont').hasClass("fixed") && $('#sec-top-bar-cont').hasClass("fixed") ){
+                   if (scroller-senseSpeed > previousScroll) {
+                     $('#prim-top-bar-cont').css( "top", -$("#prim-top-bar-cont").outerHeight(true)-4 );
+                     $('#sec-top-bar-cont').css( "top", 0 );
+                   } else if (scroller+senseSpeed < previousScroll) {
+                      $('#prim-top-bar-cont').css( "top", 0 );
+                      $('#sec-top-bar-cont').css( "top", $("#prim-top-bar-cont").outerHeight(true) );
+                   }
+               }
+               previousScroll = scroller;
+            });
             
             // Start Foundation a nastavení JS settings komponent
             $(document).foundation();
@@ -486,9 +523,9 @@
                   target_element.hide();
                 }
               });
+            
+            
         });
   	</script>
-  	</div>
-  	</div> <!-- konec has-two-footers -->
   </body>
 </html>

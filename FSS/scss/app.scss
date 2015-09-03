@@ -1,4 +1,4 @@
-// settings  
+ // settings
 @import "settings/settings-a-base";
 @import "settings/settings-b-grid";
 @import "settings/settings-c-global";
@@ -9,7 +9,7 @@
 @import "settings/settings-02-alert-boxes";
 @import "settings/settings-03-block-grid";
 @import "settings/settings-04-breadcrumbs";
-@import "settings/settings-05-buttons";
+@import "settings/settings-05-buttons"; 
 @import "settings/settings-06-button-groups";
 @import "settings/settings-07-clearing";
 @import "settings/settings-08-dropdown";
@@ -25,7 +25,7 @@
 @import "settings/settings-18-off-canvas";
 @import "settings/settings-19-orbit";
 @import "settings/settings-20-pagination";
-@import "settings/settings-21-panels";
+@import "settings/settings-21-panels"; 
 @import "settings/settings-22-pricing-tables";
 @import "settings/settings-23-progress-bar";
 @import "settings/settings-24-range-slider";
@@ -41,9 +41,14 @@
 @import "settings/settings-34-top-bar";
 @import "settings/settings-35-main-bar";
 @import "settings/settings-36-visibility-classes";
+@import "settings/settings-37-simple-nav";
+@import "settings/settings-38-modules";
+@import "settings/settings-39-icotiles";
 // styles
-@import "../scss-common/foundation"; 
+@import "scss-common/foundation"; 
 @import "main-bar";
 @import "uniwebglobaluser";
 @import "components-edited";
-@import "../scss-common/modules"
+@import "scss-common/modules";
+@import "scss-common/simple-modules";
+@import "scss-common/icotiles"
