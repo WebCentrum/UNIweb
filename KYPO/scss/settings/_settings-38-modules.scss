@@ -1,0 +1,26 @@
+// 38. Modules
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// Barva pro tmavou variantu modulu
+// $module-dark-color: $black; 
+// Barva pro světlou variantu modulu
+// $module-inverse-color: $white; 
+// Barva textu tmavého modulu - světlá
+// $module-dark-text-color: $module-inverse-color; 
+// Inverzní barva textu světlého modulu
+// $module-inverse-text-color: $module-dark-color; 
+
+// $module-radius: $global-radius;
+
+// $module-cuff-color: $primary-color;
+// $module-cuff-size-small: rem-calc(10);
+// $module-cuff-size-medium: rem-calc(15);
+// $module-cuff-size-large: rem-calc(20);
+
+// $module-dark-background-factor: 0.5;
+// $module-dark-header-factor: 0.8;
+
+// Text na světlém pozadí s přechodem bottom je špatně čitelný, factor zmírňuje průhlednost a vylepšuje čitelnost
+// $module-inverse-background-factor-hover-correction: 1.5;
+// $module-inverse-background-factor: 0.5;
+// $module-inverse-header-factor: 0.8;

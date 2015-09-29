@@ -1,0 +1,557 @@
+@import "mixins";
+
+$module-dark-color: $black !default; // Barva pro tmavou variantu modulu
+$module-inverse-color: $white !default; // Barva pro svetlou variantu modulu
+$module-dark-text-color: $module-inverse-color !default; // Barva textu tmaveho modulu - svetla
+$module-inverse-text-color: $module-dark-color !default; // Inverzni barva textu svetleho modulu
+$module-radius: $global-radius !default;
+$module-cuff-color: $primary-color !default;
+$module-cuff-size-small: rem-calc(10) !default;
+$module-cuff-size-medium: rem-calc(15) !default;
+$module-cuff-size-large: rem-calc(20) !default;
+$module-dark-background-factor: 0.5 !default;
+$module-dark-header-factor: 0.8 !default;
+$module-inverse-background-factor: 0.5 !default;
+$module-inverse-background-factor-hover-correction: 1.5 !default; // Text na svetlem pozadi s prechodem bottom je spatne citelny, factor zmirnuje pruhlednost a vylepsuje citelnost
+$module-inverse-header-factor: 0.8 !default;
+
+
+// Proměnné pevné - nemožno editovat v _settings
+$module-margin-bottom: $column-gutter / 2 !default; //Vyrovnání modulů pod sebou
+
+
+@mixin cuff {
+  &[max-width^='499px'] {
+    .inner .content .bgrd-over .text-content {
+      h2, h3, h4, h5 {
+        border-left: $module-cuff-size-small solid $module-cuff-color;
+        padding-left: $module-cuff-size-small;
+      }
+      p {
+        padding-left: $module-cuff-size-small * 2;
+      }
+    }
+  }
+    
+  &[max-width^='849px'] {
+    .inner .content .bgrd-over .text-content {
+      h2, h3, h4, h5 {
+        border-left: $module-cuff-size-medium solid $module-cuff-color;
+        padding-left: $module-cuff-size-medium;
+      }
+      p {
+        padding-left: $module-cuff-size-medium * 2;
+      }
+    }
+  }
+    
+  &[min-width='850px'] {
+    .inner .content .bgrd-over .text-content {
+      h2, h3, h4, h5 {
+        border-left: $module-cuff-size-large solid $module-cuff-color;
+        padding-left: $module-cuff-size-large;
+      }
+      p {
+        padding-left: $module-cuff-size-large * 2;
+      }
+    }
+  }
+}
+
+@mixin no-cuff { 
+  .inner .content .bgrd-over .text-content {
+    h2, h3, h4, h5 { border-left: none; } 
+  }
+    
+  &[max-width^='499px'] {
+    .inner .content .bgrd-over .text-content p { padding-left: $module-cuff-size-small; }
+  } 
+  
+  &[max-width^='849px'] {
+   .inner .content .bgrd-over .text-content p { padding-left: $module-cuff-size-medium; }
+  } 
+    
+  &[min-width='850px'] {
+    .inner .content .bgrd-over .text-content p { padding-left: $module-cuff-size-large; }
+  } 
+}
+
+
+@mixin typography {
+  &[max-width^='499px'] {
+    .inner .content .bgrd-over .text-content {
+      h2, h3, h4, h5 { @include font-size(rem-calc(15), 0.05em); }
+      p { @include font-size(rem-calc(14), 0.05em); }
+    }
+    
+  }
+    
+  &[max-width^='849px'] {
+    .inner .content .bgrd-over .text-content {
+      h2, h3, h4, h5 { @include font-size(rem-calc(18), 0.05em); }
+      p { @include font-size(rem-calc(15), 0.05em); }
+    }
+  }
+    
+  .inner .content .bgrd-over .text-content {
+    h2, h3, h4, h5 { @include font-size(rem-calc(22), 0.05em); }
+    p { @include font-size(rem-calc(16), 0.05em); line-height: 1.41em; }
+  }
+}
+
+@mixin module-base {
+  display: block;
+  margin-bottom: $module-margin-bottom;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+    
+  @include cuff;
+    
+  @include typography;
+}
+
+
+// v této části je vkládán obrázek
+@mixin module-inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+    
+  // vůbec netuším proč to tady je
+  &::after {
+    content: attr(data-size);
+    position: absolute;
+    top: -1em !important;
+  }
+    
+  img {
+    left: 0;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    z-index: 800;
+      
+    @include translate(0, -50%);
+  }
+  
+  .content {
+    background: none;
+    bottom: 0;
+    height: 100%;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1100;
+    @include transition(all 0.4s ease);
+      
+    .bgrd-over {
+      height: 100%;
+      width: 100%;
+      position: relative;
+
+      .text-content {
+        height: auto;
+        position: absolute;
+        width: 100%;
+
+        h2, h3, h4, h5 {
+          background: rgba($module-dark-color, $module-dark-header-factor); 
+          color: $module-dark-text-color;
+          font-weight: $font-weight-normal;
+          max-height: rem-calc(58);
+          margin: 0;
+          overflow: hidden;
+          padding: rem-calc(5 15);
+          position: relative;
+          text-transform: uppercase;
+          width: 100%;
+            
+          .highlight {
+            background: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@mixin inverse {
+    .inner .content .bgrd-over .text-content {
+      h2, h3, h4, h5 {
+        background: rgba($module-inverse-color, $module-inverse-header-factor);
+        color: $module-inverse-text-color;
+      }
+    }
+}
+
+@mixin inverse-hover {
+    .inner .content {
+      background: rgba($module-inverse-color, $module-inverse-background-factor);
+    }
+}
+
+@mixin hide-header-bgrd {
+  .inner .content .bgrd-over .text-content {
+    h2, h3, h4, h5 { 
+      background: none;
+    }
+  }
+}
+
+@mixin has-gradient {
+    
+  &:not(.inverse) {
+    @include hide-header-bgrd;
+      
+    &.left {
+      .inner .content .bgrd-over {
+        &[max-width^='499px'] {
+          @include gradient-bottom($module-dark-color, 45%, 75%);
+        }
+        &[min-width='500px'] {
+          @include gradient-left($module-dark-color, 45%, 60%);
+        }
+      }
+    }
+      
+    &.bottom {
+      .inner .content .bgrd-over {
+        @include gradient-bottom($module-dark-color, 55%, 77%);
+      }
+    }
+      
+    &.top {
+      .inner .content .bgrd-over {
+          
+        &[max-width^='499px'] {
+          @include gradient-bottom($module-dark-color, 55%, 77%);
+        }
+      }
+    }
+      
+    &.r16x3 {
+      .inner .content .bgrd-over {
+        &[max-width^='499px'] {
+          @include gradient-bottom($module-dark-color, 25%, 57%);
+        }
+      }
+    }
+  }
+    
+  &.inverse {
+    @include hide-header-bgrd;
+      
+    &.left {
+      .inner .content .bgrd-over {
+        &[max-width^='499px'] {
+          @include gradient-bottom($module-inverse-color, 45%, 75%);
+        }
+        &[min-width='500px'] {
+          @include gradient-left($module-inverse-color, 45%, 60%);
+        }
+      }
+    }
+      
+    &.bottom {
+      .inner .content .bgrd-over {
+        @include gradient-bottom($module-inverse-color, 55%, 77%);
+      }
+    }
+      
+    &.top {
+      .inner .content .bgrd-over {
+          
+        &[max-width^='499px'] {
+          @include gradient-bottom($module-inverse-color, 55%, 77%);
+        }
+          
+        &[max-width^='849px'] {
+          .text-content {
+            h2, h3, h4, h5 { 
+              .highlight {
+                background: $module-inverse-color;
+              }
+            }
+          }
+        }
+          
+        &[min-width='850px'] {
+          .text-content {
+            h2, h3, h4, h5 { 
+              .highlight {
+                background: $module-inverse-color;
+              }
+            }
+          }
+        }
+      }
+    }
+      
+    &.r16x3 {
+      .inner .content .bgrd-over {
+        &[max-width^='499px'] {
+          @include gradient-bottom($module-inverse-color, 25%, 57%);
+        }
+      }
+    }
+  }
+}
+
+
+@mixin module-top {
+  .inner .content .bgrd-over {
+    &[max-width^='499px'] {
+      .text-content {
+        bottom: 0;
+        margin-right: 0;
+        top: auto;
+        width: 100%;
+      }
+    }
+
+    &[max-width^='849px'] {
+      .text-content {
+        bottom: auto;
+        margin-right: 30%;
+        top: rem-calc(20);
+        width: auto;
+          
+        h2, h3, h4, h5 { 
+          background: none;
+          max-height: rem-calc(62); 
+          padding: 0; 
+            
+          .highlight {
+            background: $module-dark-color;
+            line-height: 1.7em;
+            padding: rem-calc(6 15);
+            -webkit-box-decoration-break: clone;
+                -ms-box-decoration-break: clone;
+                 -o-box-decoration-break: clone;
+                    box-decoration-break: clone;
+          }
+        }
+      }
+    }
+      
+    &[min-width='850px'] {
+      .text-content {
+        bottom: auto;
+        margin-right: 30%;
+        top: rem-calc(40);
+        width: auto;
+          
+        h2, h3, h4, h5 {
+          background: none;
+          padding: 0;
+          max-height: none; 
+            
+          .highlight {
+            background: $module-dark-color;
+            line-height: 1.8em;
+            padding: rem-calc(10 20);
+            -webkit-box-decoration-break: clone;
+                -ms-box-decoration-break: clone;
+                 -o-box-decoration-break: clone;
+                    box-decoration-break: clone;
+          }
+        }
+      }
+    }
+  }
+    
+  &.inverse {
+    .inner .content .bgrd-over {
+      &[min-width='500px'] {
+          .text-content {
+            h2, h3, h4, h5 { 
+              .highlight {
+                background: $module-inverse-color;
+              }
+            }
+          }
+      }
+    }
+  }
+}
+
+@mixin module-bottom {
+  .inner .content .bgrd-over .text-content {
+    &[max-width^='499px'] {
+      bottom: 0;
+      top: auto;
+    }
+
+    &[min-width='500px'] {
+      bottom: 0;
+      top: auto;
+      h2, h3, h4, h5, h6 { padding: rem-calc(15); }
+    }
+  }
+}
+
+@mixin module-left {
+  .inner .content .bgrd-over {
+    &[max-width^='499px'] {
+      .text-content {
+        bottom: 0;
+        top: auto;
+      }
+    }
+
+    &[min-width='500px'] {
+      .text-content {
+        bottom: auto;
+        height: 100%;
+        padding-top: rem-calc(20);
+        top: 0;
+        width: 45%;
+      }
+    }
+  }
+    
+  &:not(.has-gradient) {
+    @include hide-header-bgrd;
+      
+    &:not(.inverse) {
+      .inner .content .bgrd-over {
+        .text-content {
+          background: rgba($module-dark-color, $module-dark-header-factor);
+        }
+      }
+    }
+      
+    &.inverse {
+      .inner .content .bgrd-over {
+        .text-content {
+          background: rgba($module-inverse-color, $module-dark-header-factor);
+        }
+      }
+    }
+  }
+    
+  &.has-perex {
+    .inner .content .bgrd-over { 
+      &[max-width^='499px'] {
+        .text-content {
+          bottom: -50px;
+          top: auto;
+          @include transition(bottom 0.4s ease);
+        }
+      }
+    }
+  }
+}
+ 
+
+// Přidání a práce s perexem
+@mixin has-perex {
+  // ošetření zapumenutého paragraphu, kdy se nemá zobrazit
+  &.top, &.bottom, &.left:not(.has-perex), &.left.r16x3 {
+    p {
+      display: none;
+      visibility: hidden;
+    }
+  }
+  
+  &.left {
+    &:not(.inverse) {
+      p {
+        color: $module-dark-text-color;
+      }
+    }
+    
+    &.inverse {
+      p {
+        color: $module-inverse-text-color;
+      }
+    }
+
+    p {
+      //font-size: rem-calc(15);
+      //letter-spacing: 0;
+      line-height: 1.35em;
+      margin: 0;
+      overflow: hidden;
+      padding: rem-calc(20 20 20 35);
+      position: relative;
+      width: 100%;
+    }
+    
+    &[max-width^='499px'] {
+      p {
+        height: 50px;
+        padding: rem-calc(5 20 5 35);
+      }
+    }
+
+    &[min-width='500px'] {
+      p {
+        height: auto;
+        padding: rem-calc(5 20 10 35);
+      }
+    }
+  }
+}
+
+
+// --------------------------------------------------------------------------------
+
+// Exports celé pičoviny 
+
+@include exports("module") {
+  a.module, div.module {
+    @include module-base;
+      & > .inner {
+        @include module-inner;
+      }
+      
+    &.r16x9 { padding-top: 56.25%; }
+    &.r2x1 { padding-top: 50%; }
+    &.r8x3 { padding-top: 37.5%; }
+    &.r16x3 { padding-top: 18.75%; }
+      
+    &.radius { @include radius($module-radius); }
+      
+    &.has-gradient { @include has-gradient; }
+      
+    &.inverse { @include inverse; }
+      
+    &.top { @include module-top; }
+    &.bottom { @include module-bottom; }
+    &.left { @include module-left; }
+      
+    &.has-perex { @include has-perex; }
+      
+    &.no-cuff { @include no-cuff; }
+  
+    // pojištění zmizení p v případě špatně zvolené třídy
+    &.top, &.bottom, &.left:not(.has-perex) {
+      .inner .content .bgrd-over .text-content {
+        p {
+          visibility: hidden;
+          display: none;
+        }
+      }
+    }
+  }
+    
+  a.module:hover {
+    .content { background: rgba($module-dark-color, $module-dark-background-factor); }
+    &.inverse { 
+      .content { background: rgba($module-inverse-color, $module-inverse-background-factor); } 
+      &.has-perex.left {
+        &[max-width^='499px'] {
+          .content { background: rgba($module-inverse-color, $module-inverse-background-factor * $module-inverse-background-factor-hover-correction); } 
+        }
+      }
+    }
+    &.left {
+      &.has-perex .inner .content .bgrd-over .text-content { bottom: 0; }
+    }
+  }
+}
