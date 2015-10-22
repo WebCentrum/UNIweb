@@ -34,6 +34,14 @@ html, body { height: 100%; }
   margin-bottom: 2rem;
 }
 
+.margin-top {
+  margin-top: 1rem;
+}
+
+.margin-top-half {
+  margin-top: 0.5rem;
+}
+
 // -----------------------------------------------------------------------
 
 // a. Doplněk gridu - Rows
@@ -122,7 +130,7 @@ $height-above-header-bar-base: rem-calc(6); //horní tmavá lišta - pro small p
     span {
       font-size: rem-calc(12);
       line-height: $height-above-header-bar;
-      margin-left: 0.8rem;
+      margin-left: 0.5rem;
         
       &:first-child {
         margin-left: 0;
@@ -153,7 +161,7 @@ hr, .row hr {
 
 .top-header {
   min-height: rem-calc(90);
-
+  
   a {
     @include transition(color 0.2s ease);
     color: $white;
@@ -215,59 +223,80 @@ hr, .row hr {
   .secondary-menu {
     display: inline-block;
     float: right;
+    font-size: rem-calc(20);
     text-align: right;
-    margin-top: 1em;
+    margin-top: rem-calc(23);
 
-    @media #{$medium-up} { //@media k secondary-menu
-      margin-top: 0;
-    }
-    
-    // g1. Search
-    
-    .search-row {
-        margin-top: 2.5rem;
-        /*@media #{$medium-only} {
-            margin-top: 0;
-        }*/
+    a {
+      color: $primary-light-color;
         
-        input {
-          background: none;
-          border: 1px solid transparent;
-          border-bottom-color:$primary-light-color;
-          color: $white;
-          box-shadow: none;
-          @include transition(border 0.5s ease);
-            
-          &:focus {
-            border-top-color :$primary-light-color;
-            border-left-color: $primary-light-color;
-            border-right-color: $primary-light-color;
-          }
-        }
-        
-        .button {
-          border: 1px solid transparent;
-          border-bottom-color:$primary-light-color;
-          color: $primary-light-color;
-          margin: 0;
-          padding: 0;
-          @include transition(border 0.5s ease);
-            
-          &:hover {
-            border-top-color :$primary-light-color;
-            border-right-color: $primary-light-color;
-            border-left-color: $primary-light-color;
-            color: $white;
-          }
-            
-          .fa {
-            margin: 0;
-            padding: 0;
-          }
-        }
+      &:hover, &:focus {
+        color: $white;
+      }
     }
   }
 }
+
+// g1. Search
+    
+.search-row {
+  margin-top: rem-calc(4) !important;
+  *::-webkit-input-placeholder { color: $primary-light-color; }
+  *:-moz-placeholder { color: $primary-light-color; }
+  *::-moz-placeholder { color: $primary-light-color; }
+  *:-ms-input-placeholder { color: $primary-light-color; }
+        
+  input[type="text"] {
+    background: none;
+    border: 1px solid transparent;
+    border-bottom-color:$primary-light-color;
+    box-shadow: none;
+    color: $white;
+    margin-top: 0  !important;
+            
+    @include transition(border 0.5s ease);
+            
+    &:focus {
+      border-top-color :$primary-light-color;
+      border-left-color: $primary-light-color;
+      border-right-color: $primary-light-color;
+    }
+  }
+
+  .button {
+    background: transparent url(../images/ico-search.svg) no-repeat center center !important;
+    background-size: 14px !important;
+    border: 1px solid transparent;
+    border-bottom-color: $primary-light-color;
+    color: transparent;
+    margin: 0 !important;
+    padding: 0;
+            
+    @include transition(border 0.5s ease);
+            
+    &:hover {
+      background: transparent url(../images/ico-search-hover.svg) no-repeat center center !important;
+      background-size: 14px !important;
+      border-color: $primary-light-color;
+    }
+            
+    .fa {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  @media #{$medium-up} {
+    &:not(.with-sec-menu) {
+      margin-top: rem-calc(48) !important;
+    }
+      
+    &.with-sec-menu {
+      margin-top: rem-calc(67) !important;
+    }
+  }
+}
+
 
 .logo {
   position: relative;
@@ -716,6 +745,7 @@ hr, .row hr {
     h2 {
       font-size: rem-calc(17);
       text-transform: uppercase;
+      margin-top: rem-calc(2);
     }
       
     .logo {
@@ -793,6 +823,7 @@ hr, .row hr {
           height: 100%;
           width: 100%;
           padding: rem-calc(3 0);
+          @include transition(background 0.4s ease);
          -webkit-font-smoothing: antialiased;
          -moz-osx-font-smoothing: grayscale;
 
@@ -1067,7 +1098,7 @@ $simple-nav-link-color-active-hover: $primary-color !default;
     }
     
       
-    &[max-width^='300px'] {
+    &.eq-small {
       h2 {
         clear: both;
         font-size: $h2-font-size - $h2-font-reduction * 2;
@@ -1083,7 +1114,7 @@ $simple-nav-link-color-active-hover: $primary-color !default;
       }
     }
       
-    &[max-width^='450px'] {
+    &.eq-medium {
       h2 {
         clear: both;
         font-size: $h2-font-size - $h2-font-reduction * 2;
@@ -1096,7 +1127,7 @@ $simple-nav-link-color-active-hover: $primary-color !default;
       }
     }
       
-    &[max-width^='849px'] {
+    &.eq-large {
       h2 {
         font-size: $h2-font-size - $h2-font-reduction;
       }  

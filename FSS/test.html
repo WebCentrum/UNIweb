@@ -67,12 +67,11 @@
                   <input type="text" placeholder="Hledej" />
                 </div>
                 <div class="small-3 columns">
-                  <input class="button transparent postfix" type="submit" value="">
+                  <input class="button postfix" type="submit" value="" />
                 </div>
               </div>
 	      </div>
 	    </div>
-        
         <div class="row  small-wide">
 	    	<div class="columns">
               <div id="prim-top-bar-cont" class="contain-to-grid sticky">
@@ -122,7 +121,7 @@
                       <li>
                         <a href="paticka2.html"><span>Patička mini</span></a>
                       </li>
-                      <li class="active">
+                      <li>
                         <a href="navigace-sticky.html"><span>Sticky navigace</span></a>
                       </li>
                       <li>
@@ -143,20 +142,132 @@
 	</div>
       
     <div class="row">
-	    <div class="columns  text-right">
+	    <div class="columns text-right">
             <ul class="breadcrumbs">
               <li><a href="index.html">Úvod</a></li>
-              <li class="current"><a href="paticka.html">Krátká patička</a></li>
+              <li class="current"><a href="navigace-sticky.html">Sticky navigace</a></li>
             </ul>
 	    </div>
 	</div>
-      
-    <div class="row">
-	  <div class="columns">
-        <h1>Krátká patička</h1>
-	  </div>
+    
+	<div class="row">
+	    <div class="columns">
+            <h1 data-magellan-destination="texty">Nadpis H1 na začátku stránky <small>ukázka textových elementů</small></h1><a name="texty"></a>
+	    </div>
 	</div>
         
+    <div class="row">
+      <div class="columns">
+        <h2>čtyři moduly na large, dva a dva na medium</h2>
+      </div>
+        
+	  <div class="large-3  medium-6  columns">
+        <a class="module r2x1 bottom has-gradient inverse">
+		  <div class="inner">
+		    <img src="res/images/students2.jpg"/>
+		    <div class="content">
+		      <div class="bgrd-over">
+		        <div class="text-content">
+		          <h3>r16x3</h3>
+		        </div>
+			  </div>
+            </div>
+		  </div>
+		</a>
+      </div>
+      <div class="large-3  medium-6  columns">
+        <a class="module r2x1 bottom has-gradient inverse">
+		  <div class="inner">
+		    <img src="res/images/students2.jpg"/>
+		    <div class="content">
+		      <div class="bgrd-over">
+		        <div class="text-content">
+		          <h3>r16x3</h3>
+		        </div>
+			  </div>
+            </div>
+		  </div>
+		</a>
+      </div>
+      <div class="large-3  medium-6  columns">
+        <a class="module r2x1 bottom has-gradient inverse">
+		  <div class="inner">
+		    <img src="res/images/students2.jpg"/>
+		    <div class="content">
+		      <div class="bgrd-over">
+		        <div class="text-content">
+		          <h3>r16x3</h3>
+		        </div>
+			  </div>
+            </div>
+		  </div>
+		</a>
+      </div>
+      <div class="large-3  medium-6  columns">
+        <a class="module r2x1 bottom has-gradient inverse">
+		  <div class="inner">
+		    <img src="res/images/students2.jpg"/>
+		    <div class="content">
+		      <div class="bgrd-over">
+		        <div class="text-content">
+		          <h3>r16x3</h3>
+		        </div>
+			  </div>
+            </div>
+		  </div>
+		</a>
+      </div>
+	</div>
+      
+    <div class="row">
+      <div class="columns">
+        <h2>tři moduly na large i medium</h2>
+      </div>
+        
+	  <div class="medium-4  columns">
+        <a class="module r2x1 bottom has-gradient inverse">
+		  <div class="inner">
+		    <img src="res/images/students2.jpg"/>
+		    <div class="content">
+		      <div class="bgrd-over">
+		        <div class="text-content">
+		          <h3>r16x3</h3>
+		        </div>
+			  </div>
+            </div>
+		  </div>
+		</a>
+      </div>
+      <div class="large-4  medium-4  columns">
+        <a class="module r2x1 bottom has-gradient inverse">
+		  <div class="inner">
+		    <img src="res/images/students2.jpg"/>
+		    <div class="content">
+		      <div class="bgrd-over">
+		        <div class="text-content">
+		          <h3>r16x3</h3>
+		        </div>
+			  </div>
+            </div>
+		  </div>
+		</a>
+      </div>
+      <div class="large-4  medium-4  columns">
+        <a class="module r2x1 bottom has-gradient inverse">
+		  <div class="inner">
+		    <img src="res/images/students2.jpg"/>
+		    <div class="content">
+		      <div class="bgrd-over">
+		        <div class="text-content">
+		          <h3>r16x3</h3>
+		        </div>
+			  </div>
+            </div>
+		  </div>
+		</a>
+      </div>
+	</div>
+      
   </div> <!-- konec main -->
   <div id="footer">
 	<div class="row-wide  footer-upper">
@@ -257,15 +368,13 @@
 		</div>
 	</div>
   </div>
-  	</div> <!-- konec pičoviny -->
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/foundation/js/foundation.js"></script>
     <script src="js/foundation.mainbar.js"></script>
     <script src="js/wc-element-query.js"></script>
-      
     <script>
-      // počká až je dokument ready
+    // počká až je dokument ready
       $(document).ready(function(){  
         // Převedení výšky patičky na padding-bottom u pomocného containeru #main - aby obsah nebyl překrytý patičkou
         function onResize() {
@@ -320,6 +429,6 @@
           }
         });
       });
-  	</script>
+    </script>
   </body>
 </html>

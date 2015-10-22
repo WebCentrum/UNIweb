@@ -14,7 +14,7 @@
       back_text : 'Back',
       mobile_show_parent_link : true,
       is_hover : true,
-      scrolltop : true, // jump to top when sticky nav menu toggle is clicked
+      scrolltop : false, // jump to top when sticky nav menu toggle is clicked
       sticky_on : 'all',
       dropdown_autoclose: true
     },
@@ -433,12 +433,12 @@
       if (self.settings.sticky_mainbar && self.is_sticky(this.settings.sticky_mainbar,this.settings.sticky_mainbar.parent(), this.settings)) {
         var distance = this.settings.sticky_mainbar.data('stickyoffset') + this.settings.start_offset;
         if (!self.S(klass).hasClass('expanded')) {
-          if ($window.scrollTop() > (distance)) {
+          if ($(window).scrollTop() > (distance)) {
             if (!self.S(klass).hasClass('fixed')) {
               self.S(klass).addClass('fixed');
               self.S('body').addClass('f-mainbar-fixed');
             }
-          } else if ($window.scrollTop() <= distance) {
+          } else if ($(window).scrollTop() <= distance) {
             if (self.S(klass).hasClass('fixed')) {
               self.S(klass).removeClass('fixed');
               self.S('body').removeClass('f-mainbar-fixed');

@@ -1,0 +1,67 @@
+@import "scss-common/mixins";
+
+$fac-tag-bg-color: $white;
+$fac-tag-bg-image: "../images/znak-mu-green.svg";
+$fac-tag-width: rem-calc(65);
+$fac-tag-height: rem-calc(146);
+
+$fac-tag-text-height: rem-calc(50);
+$fac-tag-text-image: "../images/fss-text-white.svg";
+
+.mu-tag {
+  padding-left: ( $fac-tag-width + rem-calc(19) );
+}
+
+.identity-row {
+  min-height: rem-calc(135);
+
+  @media #{$medium-up} {
+    min-height: rem-calc(165);
+  }
+}
+
+@mixin fac-tag-base($bg, $bg-img) {
+  background: $bg url($bg-img) no-repeat center 48px;
+  background-size: 43px 52px;
+  display: block;
+  height: $fac-tag-height - $height-above-header-bar;
+  left: 0;
+  margin-left: $column-gutter / 2;
+  position: absolute;
+  top: -$height-above-header-bar-base;
+  width: $fac-tag-width;
+  z-index: 7000;
+
+  @media #{$medium-up} {
+    background-position: center 76px;
+    height: $fac-tag-height;
+    top: -$height-above-header-bar;
+    width: $fac-tag-width;
+  }
+}    
+
+@mixin fac-tag-text {
+  background: transparent url($fac-tag-text-image) no-repeat left top;
+  background-size: contain;
+  left: ( rem-calc(84) + ( $column-gutter / 2 ) );
+  position: absolute;
+  top: rem-calc(42);
+  height: $fac-tag-text-height;
+  width: rem-calc(200);
+
+  @media #{$medium-up} {
+    top: rem-calc(48);
+  }
+}
+
+@include exports("faculty-tag") {
+  .faculty-tag {
+    @include fac-tag-base($fac-tag-bg-color, $fac-tag-bg-image);
+  }
+}
+
+@include exports("faculty-tag-text") {
+  .faculty-tag-text {
+    @include fac-tag-text;
+  }
+}

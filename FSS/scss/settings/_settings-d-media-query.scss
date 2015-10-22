@@ -1,11 +1,16 @@
 // d. Media Query Ranges
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
- $small-range: (0em, 37.4375em); //0 až 599px 
- $medium-range: (37.5em, 74.9375em); //600px až 1199px
- $large-range: (75em, 89.9375em); //1200px až 1439px
- $xlarge-range: (90em, 119.9375em); //1440px až 1919px
- $xxlarge-range: (90.063em, 99999999em); //1920px až bžilion
+ $small-breakpoint:  em-calc(590);
+ $medium-breakpoint: em-calc(800);
+ $large-breakpoint:  em-calc(1440);
+ $xlarge-breakpoint: em-calc(1920);
+
+// $small-range:   (0, $small-breakpoint);
+// $medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint);
+// $large-range:   ($medium-breakpoint + em-calc(1), $large-breakpoint);
+// $xlarge-range:  ($large-breakpoint  + em-calc(1), $xlarge-breakpoint);
+// $xxlarge-range: ($xlarge-breakpoint + em-calc(1), em-calc(99999999));
 
 // $screen: "only screen";
 
@@ -27,14 +32,24 @@
 // $xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})";
 // $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})";
 
+// $retina: (
+//  "#{$screen} and (-webkit-min-device-pixel-ratio: 2)",
+//  "#{$screen} and (min--moz-device-pixel-ratio: 2)",
+//  "#{$screen} and (-o-min-device-pixel-ratio: 2/1)",
+//  "#{$screen} and (min-device-pixel-ratio: 2)",
+//  "#{$screen} and (min-resolution: 192dpi)",
+//  "#{$screen} and (min-resolution: 2dppx)"
+// );
+
 // Legacy
 // $small: $medium-up;
 // $medium: $medium-up;
-// $large: $xlarge-up;
+// $large: $large-up;
 
 // We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet
 // $cursor-crosshair-value: crosshair;
 // $cursor-default-value: default;
+// $cursor-disabled-value: not-allowed;
 // $cursor-pointer-value: pointer;
 // $cursor-help-value: help;
 // $cursor-text-value: text;

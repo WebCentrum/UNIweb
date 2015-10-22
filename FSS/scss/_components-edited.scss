@@ -279,6 +279,7 @@
 h1, h2, h3, h4, h5, h6 { 
   @include font-smoothing;
   line-height: 1.5rem;
+  @include transition(color 0.2s ease);
 }
 
 h4, h5, h6 {
@@ -454,22 +455,23 @@ strong {
   }
 }
 
-ul {
-  li {
-    //list-style-image: url('../images/list-arrow.png');
-  }
-}
-
 a {
   @include transition(all 0.2s ease);
+    
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
+      
+    h1, h2, h3, h4, h5, h6 {
+      color: $anchor-font-color-hover;
+    }
   }
+    
   &:focus { outline: none; }
 }
 
 .language-choice {
     text-decoration: none;
+    
     img {
       height: 15px;
       margin: rem-calc(-3 12 0 0);
@@ -694,14 +696,13 @@ table {
         }
 
       .orbit-prev, .orbit-next, .orbit-timer {
-        background: none;
-        height: 30px;
+        background: transparent no-repeat center center;
+        background-size: 21px 42px;
+        height: 50px;
         margin-top: 0; 
-        top: 45%;
+        top: 40%;
         width: 30px;
         z-index: 8000;
-        @include radius($radius:50%);
-        @include transition(background-color 0.2s ease);
 
         & > span {
           visibility: hidden;
@@ -711,13 +712,13 @@ table {
       }
     
       .orbit-prev {
-        left: 50%;
-        @include translate(-200%, -30px);
+        left: 15px;
+        @include translate(0, -21px);
       }
     
       .orbit-next {
-        right: 50%;
-        @include translate(200%, -30px);
+        right: 15px;
+        @include translate(0, -21px);
       }
 
       .orbit-timer {
@@ -731,26 +732,24 @@ table {
       }
     
     &:hover, &:focus {
-       .orbit-prev, .orbit-next, .orbit-timer {
-         border: 2px solid white;
-       }
-        
        .orbit-prev {
-         background: $secondary-color url('../images/orbit-arrow-left.svg') no-repeat 7px center;
-         background-size: 12px;
+         background: transparent url('../images/orbit-arrow-left.svg') no-repeat center center;
+         background-size: 21px 42px;
        }
     
        .orbit-next {
-         background: $secondary-color url('../images/orbit-arrow-right.svg') no-repeat 8px center;
-         background-size: 12px;
+         background: transparent url('../images/orbit-arrow-right.svg') no-repeat center center;
+         background-size: 21px 42px;
        } 
         
        .orbit-timer {
-          background: $secondary-color url('../images/orbit-play.svg') no-repeat 8px center;
+          visibility: hidden;
+          background: transparent url('../images/orbit-play.svg') no-repeat 8px center;
           background-size: 12px;
         
           &.paused {
-            background: $secondary-color url('../images/orbit-pause.svg') no-repeat 7px center;
+            visibility: hidden;
+            background: transparent url('../images/orbit-pause.svg') no-repeat 7px center;
             background-size: 12px;
           }
        }
@@ -809,7 +808,8 @@ table {
 // -----------------------------------------------------------------------
 
 
-// j. Top Bar - použitý pro sekundární navigaci
+// j. Top Bar
+
 .contain-to-grid {
     z-index: 9900;
     @include transition(top 0.2s ease);
@@ -820,9 +820,8 @@ table {
     background: $topbar-title-area-bg;
   }
   .top-bar-section {
-
+      
     ul li {
-    
         @media #{$small-only} {
           border-bottom: $topbar-border;
         }
@@ -886,6 +885,7 @@ table {
 
 .fixed {
     @media #{$small-only} { 
+        z-index: 9950;
         .top-bar {
           .title-area {
             border-top: 5px solid $primary-dark-color;
@@ -1003,9 +1003,8 @@ table {
       border-bottom: none !important;
           
       .top-bar {
-        .top-bar-section {
-            
-        }
+        padding-left: $column-gutter / 2;
+        padding-right: $column-gutter / 2;
           
         &.hide-dropdown, &.hide-dropdown-tablet {
           .has-dropdown {
@@ -1019,19 +1018,10 @@ table {
     }
 }
 
-@media #{$large-up} {
-    .fixed {
-        .top-bar {
-            max-width: 1185px;
-        }
-    }
-}
-
-
 // -----------------------------------------------------------------------
 
 
-// k. Blockquote
+// k. Blockquote & Testimonials
 
 blockquote {
   font-style: italic;
@@ -1048,6 +1038,7 @@ blockquote {
       top: rem-calc(25);
     }
   }
+    
   &:lang(cs) {
     &::before {
       color: $gray-lighter-color;
@@ -1060,6 +1051,24 @@ blockquote {
       top: rem-calc(-1);
     }
   }
+
+  &.en-lang {
+    &::before {
+      content: "\201C" !important;
+      margin-left: rem-calc(-20);
+      margin-right: rem-calc(5);
+      top: rem-calc(25);
+    }  
+  }
+    
+  &.cs-lang {
+    &::before {
+      content: "\201E" !important;
+      margin-left: rem-calc(-15);
+      margin-right: rem-calc(0);
+      top: rem-calc(-1);
+    }  
+  }
     
   cite {
     font-weight: $font-weight-bold;
@@ -1069,6 +1078,51 @@ blockquote {
   }
 }
 
+.testimonial {
+  margin: 0 0 1em 0;
+  text-align: left;
+  
+  img {
+    border-radius: 50%;
+    float: left;
+    height: 150px;
+    margin: rem-calc(0 30 10 15);
+    width: 150px;
+            
+/*  // IE hacks
+    height: 158px\0;
+    margin: 11px 0 24px 0\0;
+    padding: 0\0;
+    width: 158px\0;*/
+  }
+    
+  .name {
+    clear: none;
+    display: block;
+    font-weight: $font-weight-bold;
+    font-style: italic;
+    margin: rem-calc(0 0 0 20);
+    width: auto;
+  }
+    
+  blockquote {
+    //text-align: left;
+  }
+    
+  &.eq-small {
+    text-align: center;
+      
+    img {
+      float: none;
+      margin: rem-calc(0 0 10 0);
+    }
+      
+    .name {
+      clear: both;
+      width: 100%;
+    }
+  }
+}
 
 // -----------------------------------------------------------------------
 
@@ -1296,7 +1350,7 @@ blockquote {
           }
             
           ul li {
-            border-bottom: none;
+            border-bottom: $mainbar-border;
             border-right: $mainbar-border;
             flex: 1 1 auto;
             -ms-flex: 1 1 auto;
@@ -1327,7 +1381,7 @@ blockquote {
             }
             
             &.has-dropdown {
-              border-bottom: $mainbar-border;
+              //border-bottom: $mainbar-border;
                 
               &.hover, &.not-click:hover {
                 border-bottom-color: $mainbar-link-bg-hover;
@@ -1353,6 +1407,7 @@ blockquote {
 
             li {
               border-right: none;
+              border-bottom: none;
 
               a {
                 background: $mainbar-dropdown-link-bg;
@@ -1385,10 +1440,10 @@ blockquote {
     .fixed.contain-to-grid-main {
       border-bottom: $mainbar-border;
       top: 0; //$topbar-height + rem-calc(4);
+        
       .main-bar {
-        .main-bar-section {
-            
-        }
+        padding-left: $column-gutter / 2;
+        padding-right: $column-gutter / 2;
           
         &.hide-dropdown {
           .has-dropdown {
@@ -1401,16 +1456,6 @@ blockquote {
         
     }
 }
-
-@media #{$large-up} {
-    .fixed {
-        .main-bar {
-            max-width: 1185px;
-        }
-    }
-}
-
-
 
 // -----------------------------------------------------------------------
 
@@ -1436,20 +1481,29 @@ blockquote {
   margin-bottom: $alert-bottom-margin / 2;
 
   p {
-    padding-right: 15%;
-    font-size: 1em;
+    padding-right: 100px;
+    font-size: 0.9em;
+    line-height: 1.1em;
     margin-bottom: 0;
+    width: 100%;
   }
     
   .close {
     @include alert-close();
-    margin: rem-calc(0 5 0 20);
+    margin: rem-calc(0 5);
     font-size: 1em;
     opacity: 1;
     color: $white;
     padding: rem-calc(8);
     border: 1px solid scale-color($secondary-color, $lightness: -20%);
     @include translate(0, -50%);
+  }
+    
+  @media #{$large-up} {
+    p {
+      font-size: 1em;
+      line-height: 1.3em;
+    }
   }
 }
 

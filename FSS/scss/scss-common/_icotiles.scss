@@ -72,8 +72,9 @@ $icotile-inverse-color: $white !default;
     top: 50%;
     @include translate(0, -50%);
   }
+
     
-  &[max-width^='200px'] {
+  &.eq-small {
     & > .fa {
       text-align: center;
       width: 100%;
@@ -98,7 +99,8 @@ $icotile-inverse-color: $white !default;
   &:hover, &:focus {
     color: if($bg-lightness > 70%, $icotile-font-color-alt, $icotile-font-color);
     background: scale-color($bg, $lightness: $lightness-hover-factor);
-    .hover { 
+    // třída pro hover nad obrázkem - je tam div prázdný pes celý obrázek, který se obarvuje pro hover efekt. doplnění další třídy .inverse zabarví do světlé barvy - obě barvy definované v settings
+    .hover {
       background: rgba($icotile-dark-color, 0.4); 
       &.inverse {
         background: rgba($icotile-inverse-color, 0.4);
@@ -108,7 +110,6 @@ $icotile-inverse-color: $white !default;
 }
 
 @mixin has-text {
-    
   & > .fa {
     float: left;
     height: 100%;
@@ -150,7 +151,7 @@ $icotile-inverse-color: $white !default;
   }
       
     
-  &[max-width^='200px'] {
+  &.eq-small {
     & > .fa {
       height: auto;
       position: absolute;
