@@ -1,0 +1,91 @@
+// 34. Top Bar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// $include-html-main-bar-classes: $include-html-classes;
+
+// Background color for the top bar
+ $mainbar-bg-color: $body-bg;
+ $mainbar-bg: $mainbar-bg-color;
+
+// Height and margin
+ $mainbar-height: rem-calc(47);
+ $mainbar-margin-bottom: rem-calc(35); 
+
+// Controlling the styles for the title in the top bar
+// $mainbar-title-weight: $font-weight-bold;
+// $mainbar-title-font-size: rem-calc(17);
+
+// Style the top bar dropdown elements
+ $mainbar-dropdown-bg: $white;
+ $mainbar-dropdown-link-color: $anchor-font-color;
+ $mainbar-dropdown-link-bg: $white;
+ $mainbar-dropdown-link-bg-hover: $white;
+// $mainbar-dropdown-link-weight: $font-weight-normal;
+ $mainbar-dropdown-toggle-size: 4px;
+ $mainbar-dropdown-toggle-color: $secondary-color;
+ $mainbar-dropdown-toggle-alpha: 1;
+
+
+// Set the link colors and styles for top-level nav
+ $mainbar-link-color: $body-font-color;
+ $mainbar-link-color-hover: $secondary-color;
+ $mainbar-link-color-active: $secondary-color;
+ $mainbar-link-color-active-hover: scale-color($secondary-color, $lightness: -20%);
+ $mainbar-link-weight: $font-weight-normal;
+ $mainbar-link-font-size: rem-calc(14);
+// $mainbar-link-hover-lightness: -10%; // Darken by 10%
+ $mainbar-link-bg: $white; //$mainbar-bg-color;
+ $mainbar-link-bg-hover: $white;
+ $mainbar-link-bg-color-hover: $white;
+ $mainbar-link-bg-active: $mainbar-bg-color;
+ $mainbar-link-bg-active-hover: $mainbar-link-bg-color-hover;
+// $mainbar-link-font-family: $body-font-family;
+ $mainbar-link-text-transform: none;
+ $mainbar-link-padding: $mainbar-height / 4;
+ $mainbar-back-link-size: rem-calc(14);
+// $mainbar-link-dropdown-padding: 20px;
+// $mainbar-back-link-color: $mainbar-link-color;
+ $mainbar-back-link-color-hover: $gray-light-color;
+
+// $mainbar-button-font-size: 0.75rem;
+// $mainbar-button-top: 7px;
+
+ $mainbar-dropdown-label-color: $gray-dark-color;
+ $mainbar-dropdown-label-text-transform: uppercase;
+ $mainbar-dropdown-label-font-weight: $font-weight-bold;
+// $mainbar-dropdown-label-font-size: rem-calc(10);
+ $mainbar-dropdown-label-bg: $white;
+
+// Top menu icon styles 
+// $mainbar-menu-link-transform: uppercase;
+// $mainbar-menu-link-font-size: rem-calc(13);
+// $mainbar-menu-link-weight: $font-weight-bold;
+// $mainbar-menu-link-color: $white;
+ $mainbar-menu-icon-color: $body-font-color;
+ $mainbar-menu-link-color-toggled: $mainbar-menu-icon-color;
+ $mainbar-menu-icon-color-toggled: $mainbar-menu-icon-color;
+ $mainbar-menu-icon-bg: $gray-dark-color;
+ $mainbar-menu-icon-bg-hover: $primary-dark-color;
+
+// Transitions and breakpoint styles
+// $mainbar-transition-speed: 300ms;
+// Using rem-calc for the below breakpoint causes issues with top bar
+// $mainbar-breakpoint: #{lower-bound($medium-range)}; // Change to 9999px for always mobile layout
+// $mainbar-media-query: $medium-up;
+
+// Divider Styles
+// $mainbar-divider-border-bottom: solid 1px  scale-color($mainbar-bg-color, $lightness: 13%);
+// $mainbar-divider-border-top: solid 1px scale-color($mainbar-bg-color, $lightness: -50%);
+
+// Sticky Class
+ $mainbar-sticky-class: ".sticky";
+ $mainbar-arrows: false; //Set false to remove the triangle icon from the menu item
+
+// Vlastní proměnné
+ $mainbar-border: 1px solid $gray-light-color;
+ $mainbar-dropdown-border: 1px solid $gray-light-color;
+
+ $mainbar-title-area-bg: $mainbar-bg-color; //user class: pozadí řádku pod hamburgerem;
+
+ $mainbar-parentlink-color-hover: $primary-light-color;
+ $mainbar-parentlink-transform: uppercase;

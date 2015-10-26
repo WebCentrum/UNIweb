@@ -1,0 +1,280 @@
+@import "mixins";
+
+a {
+    &.module {
+      display: block;
+      margin-bottom: 1em;
+      width: 100%;
+
+      .outer {
+        @include outer-cont;
+
+        .inner {
+          @include inner-cont;
+
+          .content {
+            background: none;
+            bottom: 0;
+            height: 100%;
+            position: relative;
+            width: 100%;
+            z-index: 1100;
+            @include transition(all 0.3s ease);  
+              
+            .text-content {
+              bottom: 0; //default pozice
+              position: absolute;
+              width: 100%;
+              @include transition(all 0.3s ease);
+
+              &.has-perex {
+                bottom: -50px;  //když má perex tak se posune o jeho výšku níž - schová se
+              }
+
+              h3 {
+                @include cont-header(rem-calc(15), 0);
+
+                background: rgba($gray-dark-color, 0.9);
+                border-left: rem-calc(20) solid $primary-color;
+                clear: both;
+                padding: rem-calc(5);
+                position: relative;
+                margin: 0;
+                width: 100%;
+              }
+
+              p {
+                background: rgba($gray-color, 0.9); //$gray-dark-color;
+                color: $white;
+                font-size: rem-calc(13);
+                height: 50px;
+                letter-spacing: 0;
+                line-height: 1.2em;
+                margin: 0;
+                overflow: hidden;
+                padding: rem-calc(8 10 8 25);
+                position: relative;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+      
+      &.inverse {
+          .outer{
+            .inner {
+              .content {
+                .text-content {
+                  h3 {
+                  background: rgba($white, 0.9);  
+                  color: $body-font-color;
+                  }
+                  p {
+                  background: rgba($white, 0.8);
+                  color: $body-font-color;
+                  }
+                }
+              }
+            }   
+          }
+      }
+        
+      &:hover {
+      .outer .inner .content {
+          background: rgba(0, 0, 0, 0.4);
+          .text-content {
+            bottom: 0;
+          }
+        }
+        &.inverse {
+          .outer .inner .content {
+              background: rgba(255, 255, 255, 0.5);
+          }
+        }
+      }
+    }
+}
+
+
+// SLIDESHOW --------------------------------------------------------------------------------------------------------
+
+.slideshow-module {
+  width: 100%;
+  margin-bottom: $column-gutter;
+  display: block;
+  
+  .outer {
+    @include outer-cont;
+      
+    .inner {
+      @include inner-cont;
+        
+        .content {
+          position: absolute;
+          background: none;
+          //bottom: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          z-index: 1200;
+          @include transition(background 0.3s ease);
+          
+          .text-content {
+            position: relative;
+            top: 100%;
+            width: 100%;
+            @include transform(translateY(-100%));
+        
+            .title {
+              position: relative;
+              font-size: rem-calc(20);
+              font-weight: $font-weight-normal;
+              letter-spacing: 0.03em;
+              width: 100%;  
+              margin: 0;
+              padding: 0;
+                
+              &:last-child  { bottom: 50px; }
+              &:first-child { bottom: 0; }
+                        
+              @include transition(all 0.3s ease);
+                        
+              .highlight { 
+                @include slide-highlight(rem-calc(15), 0.15em, 20px); 
+                padding: rem-calc(5 10); 
+              }
+                  
+              .name { 
+                display: none; 
+                visibility: hidden; 
+              }
+            }
+          }
+        }
+            
+        @media #{$medium-up} { //@media pro .slideshow-module .outer .inner
+          .content {
+            padding: 0 2em 0 0;
+              
+            .text-content {
+              top: 15%;
+              @include transform(translateY(0));
+                
+              .title {
+                width: 85%;
+              }
+            }
+          }
+            
+          //element queries pro .perex-position    
+            
+          .content[min-width~="0px"][max-width~="273px"] {
+            padding: 0; 
+              
+            .text-content {
+              top: 100%;
+              @include transform(translateY(-100%));
+                
+              .title {
+                line-height: 1em;
+                width: 100%;
+                margin-bottom: 0 !important;
+                  
+                .highlight { 
+                  @include slide-highlight(rem-calc(11), 0.15em, 20px);
+                  display: inline-block;
+                  width: 100%;
+                  padding: rem-calc(5 10);
+                }
+              }
+            }
+          }
+              
+          .content[min-width~="274px"][max-width~="400px"] {
+            padding: 0; 
+              
+            .text-content {
+              top: 100%;
+              @include transform(translateY(-100%));
+                
+              .title {
+                line-height: 1.2em;
+                width: 100%;
+                margin-bottom: 0 !important;
+                  
+                .highlight {
+                  @include slide-highlight(rem-calc(15), 0.15em, 20px);
+                  display: inline-block;
+                  width: 100%;
+                  padding: rem-calc(5 10);
+                }
+              }
+            }
+          }
+        }
+        
+        @media #{$medium-only} {
+          .content {
+            .text-content {
+              .title {
+                margin-bottom: rem-calc(20);
+                  
+                .highlight, .name {
+                  padding: rem-calc(5 15); 
+                  @include transition(background 0.1s ease); 
+                }
+                  
+                .highlight { 
+                  @include slide-highlight(rem-calc(20), 0.05em, 30px);
+                }
+                  
+                .name {
+                  @include slide-highlight(rem-calc(14), 0.025em, 0);
+                  text-transform: none;
+                  border-left: none;
+                  margin: rem-calc(50) 0 0 rem-calc(30);
+                  visibility: visible;
+                }
+              }
+            }
+          }
+        }
+    
+        @media #{$large-up} {
+          .content {
+            .text-content {
+              .title {
+                margin-bottom: rem-calc(20);
+                .highlight, .name { padding: rem-calc(5 20); @include transition(background 0.1s ease); }
+                .highlight { @include slide-highlight(rem-calc(24), 0.05em, 40px); }
+                .name {
+                  @include slide-highlight(rem-calc(15), 0.025em, 0);
+                  text-transform: none;
+                  border-left: none;
+                  margin: rem-calc(50 0 0 40);
+                  visibility: visible;
+                }
+              }
+            }
+          }
+        } 
+    }
+  }
+}
+
+@media #{$medium-up} {
+  a.slideshow-module {
+    &:hover {
+      .outer {
+        .inner {
+          .content {
+            background: rgba(0,0,0,0.25);
+          }
+        }
+      }
+    }
+  }
+}

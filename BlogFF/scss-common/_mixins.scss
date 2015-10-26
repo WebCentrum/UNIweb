@@ -1,0 +1,171 @@
+// DIFFERENT --------------------------------------------------------------------------------------------------------
+ 
+@mixin center($xy:xy) {
+  @if $xy == xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    @include transform(translateX(-50%) translateY(-50%));
+  } @else if $xy == x {
+      left: 50%;
+      right: auto;
+      @include transform(translateX(-50%));
+  } @else if $xy == y {
+      top: 50%;
+      bottom: auto;
+      @include transform(translateY(-50%));
+  }
+}
+
+// FONT --------------------------------------------------------------------------------------------------------
+
+// antialiasing mode font rendering
+
+@mixin font-smoothing {
+   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin font-size ($f-size, $l-spacing) {
+    font-size: $f-size;
+    letter-spacing: $l-spacing;
+}
+
+// TRANSITIONS & TRANSFORMS --------------------------------------------------------------------------------------------------------
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+      -ms-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+
+@mixin transform($transforms) {
+     -moz-transform: $transforms;
+       -o-transform: $transforms;
+      -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+          transform: $transforms;
+}
+
+@mixin translate($x, $y) {
+   @include transform(translate($x, $y));
+}
+
+// SOCIAL NETWORKS ICONS --------------------------------------------------------------------------------------------------------
+
+@mixin ikona-soc-net {
+  background: $primary-color;
+  height: auto;
+  width: 100%;
+  margin: rem-calc(5 0 0 0);
+  padding: 0;
+}
+
+// MODULES --------------------------------------------------------------------------------------------------------
+
+// 8:3     100:37.5 %
+// 16:9    100:56.25 %
+// 2:1     100:50 %
+
+@mixin outer-cont {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+    &.r1x1  { padding-top: 100%; }
+    &.r2x1  { padding-top: 50%; }  // prozatím převod modulů na 2:1 pro small
+    &.r8x3  { padding-top: 50%; }
+    &.r16x9 { padding-top: 50%; }
+    
+    @media #{$medium-up} {
+      &.r1x1  { padding-top: 100%; }
+      &.r2x1  { padding-top: 50%; }      
+      &.r8x3  { padding-top: 37.5%; }
+      &.r16x9 { padding-top: 56.25%; }
+    }
+}
+
+@mixin inner-cont {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+    
+  &::after {
+    content: attr(data-size);
+    position: absolute;
+    top: -1em;
+    left:0;
+  }
+    
+  img {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translate(0,-50%);
+    -webkit-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    z-index: 800;
+  }
+}
+
+@mixin inner-logo-cont {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+    
+  &::after {
+    content: attr(data-size);
+    position: absolute;
+    top: -1em;
+    left:0;
+  }
+    
+  img {
+    position: relative;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-55%);
+    -webkit-transform: translateY(-27%);
+    -o-transform: translateY(-27%);
+    z-index: 800;
+  }
+}
+
+// MODULE PEREX --------------------------------------------------------------------------------------------------------
+
+@mixin cont-header($h-font-size, $h-letter-spacing) {
+  position: absolute;
+  color: $white;
+  @include font-size ($h-font-size, $h-letter-spacing);
+  font-family: $font-family-sans-serif;
+  font-weight: $font-weight-normal;
+  text-transform: uppercase;
+  margin: 0;
+} 
+
+// SLIDESHOW PEREX --------------------------------------------------------------------------------------------------------
+
+@mixin slide-highlight ($h-font-size, $h-letter-spacing, $border-left-size) {
+  position: relative;
+  display: inline;
+  background: $gray-dark-color;
+  color: white; 
+  @include font-size ($h-font-size, $h-letter-spacing);
+  text-transform: uppercase;
+  -webkit-box-decoration-break: clone;
+      -ms-box-decoration-break: clone;
+       -o-box-decoration-break: clone;
+          box-decoration-break: clone;
+  //box-shadow: 0.35em 0 0 $gray-color, 0.35em 0 0 $gray-color;
+  border-left: $border-left-size solid $primary-color;
+}
+
+// TOP BAR --------------------------------------------------------------------------------------------------------
+
