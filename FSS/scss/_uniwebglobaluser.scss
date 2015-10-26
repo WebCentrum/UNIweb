@@ -225,7 +225,7 @@ hr, .row hr {
     float: right;
     font-size: rem-calc(20);
     text-align: right;
-    margin-top: rem-calc(23);
+    margin-top: rem-calc(20);
 
     a {
       color: $primary-light-color;
@@ -241,10 +241,10 @@ hr, .row hr {
     
 .search-row {
   margin-top: rem-calc(4) !important;
-  *::-webkit-input-placeholder { color: $primary-light-color; }
-  *:-moz-placeholder { color: $primary-light-color; }
-  *::-moz-placeholder { color: $primary-light-color; }
-  *:-ms-input-placeholder { color: $primary-light-color; }
+  ::-webkit-input-placeholder { color: $primary-light-color; }
+  :-moz-placeholder { color: $primary-light-color; }
+  ::-moz-placeholder { color: $primary-light-color; }
+  :-ms-input-placeholder { color: $primary-light-color; }
         
   input[type="text"] {
     background: none;
@@ -288,11 +288,11 @@ hr, .row hr {
 
   @media #{$medium-up} {
     &:not(.with-sec-menu) {
-      margin-top: rem-calc(48) !important;
+      margin-top: rem-calc(43) !important;
     }
       
     &.with-sec-menu {
-      margin-top: rem-calc(67) !important;
+      margin-top: rem-calc(63) !important;
     }
   }
 }

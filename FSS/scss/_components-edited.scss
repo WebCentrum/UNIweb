@@ -822,16 +822,25 @@ table {
   .top-bar-section {
       
     ul li {
+      p {
+        color: $topbar-link-color;
+        font-size: $topbar-link-font-size;
+        font-weight: $topbar-link-weight;
+        padding: 12px $topbar-link-padding;
+        margin: 0;
+      }
+        
         @media #{$small-only} {
           border-bottom: $topbar-border;
         }
       
-        & > a {
+        & > a, & > p span {
           text-decoration: none;
           @media (min-width:#{lower-bound($medium-range)}) and (max-width: 702px) {
                 font-size: rem-calc(11);
                 letter-spacing: 0.01em;
             }
+      
             @media (min-width:703px) and (max-width: 1024px) {  //jinak min-width: 703px
                 font-size: rem-calc(13);
                 letter-spacing: 0.02em;
@@ -919,17 +928,16 @@ table {
             flex: 1 1 auto;
             -ms-flex: 1 1 auto;
               
-              
             &:last-child { border-right: none; }
               
-            & > a {
-                height: $topbar-height;
-                overflow: hidden;
+            & > a, & > p {
+              height: $topbar-height;
+              overflow: hidden;
             }
               
             &:not(.has-form) {
               a:not(.button) {
-                  
+                 line-height: inherit;
                   &::before {
                     content: '';
                     display: inline-block;
@@ -947,6 +955,31 @@ table {
                     text-align: center;
                     vertical-align: middle;
                   }
+              }
+                
+              p {
+                display: inline;
+                padding: 0;
+                margin: 0;
+        
+                &::before {
+                    content: '';
+                    display: inline-block;
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                    vertical-align: middle;
+                }
+                  
+                span {
+                  display: inline-block;
+                  line-height: 1.2em;
+                  padding: 0 $topbar-link-padding;
+                  width: 100%;
+                  text-transform: uppercase;
+                  text-align: center;
+                  vertical-align: middle;
+                }
               }
             }
           }

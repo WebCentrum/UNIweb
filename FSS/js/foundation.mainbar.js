@@ -114,7 +114,7 @@
           .toggleClass('expanded')
           .css('height', '');
       }
-
+      
       if (settings.scrolltop) {
         if (!mainbar.hasClass('expanded')) {
           if (mainbar.hasClass('fixed')) {
@@ -430,16 +430,20 @@
           $window = this.S(window),
           self = this;
 
+      var secBarHeight = $("#sec-top-bar-wrapper").height();
+      
       if (self.settings.sticky_mainbar && self.is_sticky(this.settings.sticky_mainbar,this.settings.sticky_mainbar.parent(), this.settings)) {
         var distance = this.settings.sticky_mainbar.data('stickyoffset') + this.settings.start_offset;
         if (!self.S(klass).hasClass('expanded')) {
           if ($(window).scrollTop() > (distance)) {
             if (!self.S(klass).hasClass('fixed')) {
+              $("#sec-top-bar-placeholder").css('height', secBarHeight);
               self.S(klass).addClass('fixed');
               self.S('body').addClass('f-mainbar-fixed');
             }
           } else if ($(window).scrollTop() <= distance) {
             if (self.S(klass).hasClass('fixed')) {
+              $("#sec-top-bar-placeholder").css('height', 0);
               self.S(klass).removeClass('fixed');
               self.S('body').removeClass('f-mainbar-fixed');
             }

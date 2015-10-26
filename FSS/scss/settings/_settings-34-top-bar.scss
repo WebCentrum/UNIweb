@@ -16,7 +16,7 @@
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
- $topbar-dropdown-bg: $primary-color; //$white;
+ $topbar-dropdown-bg: scale-color($primary-color, $lightness: -20%);;
  $topbar-dropdown-link-color: $anchor-font-color;
  $topbar-dropdown-link-bg: $white;
  $topbar-dropdown-link-bg-hover: $white;
