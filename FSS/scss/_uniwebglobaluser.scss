@@ -223,16 +223,25 @@ hr, .row hr {
   .secondary-menu {
     display: inline-block;
     float: right;
-    font-size: rem-calc(20);
+    font-size: rem-calc(16);
     text-align: right;
     margin-top: rem-calc(20);
 
     a {
       color: $primary-light-color;
+      margin-left: rem-calc(13);
         
       &:hover, &:focus {
         color: $white;
       }
+        
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+      
+    @media screen and (min-width: 890px) {
+      font-size: rem-calc(20);
     }
   }
 }
