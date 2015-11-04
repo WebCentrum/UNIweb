@@ -344,17 +344,17 @@ hr, .row hr {
   height: 70px;
   width: 70px;
   display: inline-block;
-  margin: rem-calc(10 5 20 0);
+  margin: rem-calc(5 5 5 0);
   &:first-child { margin-left: rem-calc(20); }
     
   @media #{$medium-only} {
-    margin: rem-calc(15 5 25 0);
+    margin: rem-calc(5 5 5 0);
   }
 
   @media #{$large-up} {
     height: 90px;
     width: 90px;
-    margin: rem-calc(20 5 35 0);
+    margin: rem-calc(5 5 5 0);
     &:first-child { margin-left: rem-calc(0); }
   }
 }
