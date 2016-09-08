@@ -1,0 +1,442 @@
+<!doctype html>
+<html class="no-js" lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+      
+    <title>Jednotná univerzitní webová prezentace MU | &#35;uniweb</title>
+      
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="../uniweb-v1/css/font-awesome.min.css" />
+      
+    <script src="../uniweb-v1/bower_components/modernizr/modernizr.js"></script>
+  </head>
+  
+  <body>
+  <!--[if gte IE 9]>
+	  <style type="text/css">
+	    .top-header	 {
+	       filter: none;
+	    }
+	  </style>
+  <![endif]-->
+  	<div class="row-wide  above-header-bar">
+  		<div class="row">
+		  <div class="medium-7  columns  hide-for-small-only">
+	  	    <span class="mu-tag"><a href="http://www.muni.cz">Masarykova univerzita</a></span>
+		  </div>
+		  <div class="medium-5  columns  hide-for-small-only  text-right">
+	  		<span><a href="#" data-dropdown="language-choice" data-options="is_hover:true">čeština<img src="images/flags/CzechRepublic.png"></a></span>
+            <ul id="language-choice" class="f-dropdown" data-dropdown-content>
+              <li><a href="#">English<img src="images/flags/UnitedKingdom.png"></a></li>
+            </ul>
+		  </div>
+  		</div>
+    </div>
+    
+  	<div class="row-wide  top-header">
+	  	<div class="row identity-row">
+	      <div class="large-10  medium-9  columns">
+	        <a href="http://www.muni.cz" class="faculty-tag"></a>
+            <a href="index.html" class="logo-top-header">&nbsp;</a>
+            <a href="index.html" class="faculty-tag-text"><strong>Jednotná univerzitní webová prezentace MU</strong><br />&#35;uniweb</a>
+	      </div>
+	      <div class="large-2  medium-3  columns  hide-for-small-only">
+            <div class="row additional-menu">
+              <div class="columns">
+                <a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-google-plus-square"></i></a><a href="#"><i class="fa fa-instagram"></i></a><a href="#"><i class="fa fa-youtube"></i></a>
+              </div>
+            </div>
+            <div class="row collapse search-row">
+              <div class="small-9 columns">
+                <input type="text" placeholder="Hledej" />
+              </div>
+              <div class="small-3 columns">
+                <input class="button postfix" type="submit" value="" />
+              </div>
+            </div>
+	      </div>
+	    </div>
+        <div class="row  small-wide top-bar-nav">
+	    	<div class="columns">
+              <div id="prim-top-bar-cont" class="contain-to-grid sticky">
+                <nav id="prim-top-bar" class="top-bar" data-topbar role="navigation" data-options="sticky_on:[medium,large]"> 
+                  <ul class="title-area"> 
+                    <li class="name"></li>
+                    <li class="toggle-topbar  menu-icon"><a href="#"><span></span></a></li> 
+                  </ul> 
+                    
+                  <section class="top-bar-section"> 
+                    <ul> 
+                      <li class="has-form  show-for-small-only">
+                        <div class="row  collapse  search-row">
+                          <div class="small-11  columns">
+                            <input type="text" placeholder="Hledat" />
+                          </div>
+                          <div class="small-1  columns">
+                            <input class="button postfix" type="submit" value="" />
+                          </div>
+                        </div>
+                      </li>
+                      <li class="has-dropdown  show-for-small-only">
+                        <a href="#" class="language-choice"><img src="images/flags/CzechRepublic.png">Čeština</a>
+                        <ul class="dropdown">
+                          <li class="active"><a href="#"  class="language-choice"><img src="images/flags/CzechRepublic.png">Čeština</a></li>
+                          <li><a href="#"  class="language-choice"><img src="images/flags/UnitedKingdom.png">English</a></li>
+                        </ul>
+                      </li>
+                      <li class="has-dropdown">
+                        <a href="#"><span>Dropdown položka</span></a>
+                        <ul class="dropdown">
+                          <li><a href="#">Položka</a></li>
+                          <li><a href="#">Položka s dlouhým textem v odkazu</a></li>
+                          <li><a href="#">Položka</a></li>
+                        </ul>
+                      </li>
+                      <li class="has-dropdown  active">
+                        <a href="#"><span>Aktivní položka dropdown</span></a>
+                        <ul class="dropdown">
+                          <li><a href="#">Položka s dlouhým textem v odkazu</a></li>
+                          <li><a href="#">Položka</a></li>
+                          <li><a href="#">Položka</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="veda-vyzkum.html"><span>Obyčejná položka</span></a></li>
+                      <li>
+                        <p><span>Helpdesk&emsp;&emsp;<i class="fa fa-phone-square"></i>594 49 2919 &emsp;<a href="#"><i class="fa fa-envelope"></i>cit&#64;ukb.muni.cz</a></span></p>
+                      </li>
+                    </ul> 
+                  </section> 
+                </nav>
+              </div>
+            </div>
+	    </div>
+	</div>
+      
+	<div class="row">
+	  <div class="columns">
+        <h1>Nadpis H1 na začátku stránky</h1>
+	  </div>
+	</div>
+      
+    <div class="row">
+      <div class="large-8 medium-6 columns">
+        <a class="module r8x3 has-gradient left has-perex inverse">
+		  <div class="inner">
+		    <img src="res/images/test-image.png"/>
+			<div class="content">
+              <div class="bgrd-over">
+			    <div class="text-content">
+				  <h3>Module r8x3 has-gradient left has-perex inverse</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae ligula mattis ipsum mattis egestas sed ac nibh. Mauris nec massa non erat faucibus maximus.</p>
+				</div>
+			  </div>
+			</div>
+		  </div>
+        </a>
+	  </div>
+      <div class="large-4 medium-6 columns">
+        <div class="events">
+          <h3>Sledujte nás</h3>
+          <div class="row events">
+	        <div class="small-2 columns">
+   			  <div class="date-icon-module">
+			    <div class="outer r1x1">
+				  <div class="inner">
+					<div class="date d3">&nbsp;</div>
+					<div class="month m10-cs">&nbsp;</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<div class="small-10 columns">
+			  <h4><a>Blok expertů</a></h4>
+			  <p>Werner Binder: Sociology and the Study of Culture</p>
+			  <span class="date-hour-place"><i class="fa fa-map-marker"></i>Posluchárna A123</span>
+			  <span class="date-hour-place"><i class="fa fa-clock-o"></i>10:00&ndash;12:00</span>
+            </div>
+	      </div>
+          <hr>
+          <div class="row events">
+	        <div class="small-2 columns">
+   			  <div class="date-icon-module">
+			    <div class="outer r1x1">
+				  <div class="inner">
+					<div class="date d3">&nbsp;</div>
+					<div class="month m10-cs">&nbsp;</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<div class="small-10 columns">
+			  <h4><a>Blok expertů</a></h4>
+			  <p>Werner Binder: Sociology and the Study of Culture</p>
+			  <span class="date-hour-place"><i class="fa fa-map-marker"></i>Posluchárna A123</span>
+			  <span class="date-hour-place"><i class="fa fa-clock-o"></i>10:00&ndash;12:00</span>
+            </div>
+	      </div>
+        </div>
+	  </div>
+	</div>
+      
+    <div class="row">
+	  <div class="large-8 medium-6 columns">
+        <h2>Nadpis druhé úrovně</h2>
+        <p>
+          <strong>Masarykova univerzita</strong> je jednou z nejvýznamnějších vzdělávacích a vědeckých institucí v České republice a uznávanou středoevropskou univerzitou s demokratickými tradicemi, prosazovanými již od jejího založení v roce 1919. Již několik let je nejžádanější vysokou školou v České republice. V současnosti <a href="#">sestává z devíti fakult</a> s více než 200 katedrami, ústavy a klinikami. Je také významným sociálním a kulturním aktérem v jihomoravském regionu. 
+        </p>
+	  </div>
+      <div class="large-4 medium-6 columns">
+        <div class="you-know-panel">
+	      <h2>Víte, že&hellip;</h2>
+	      <p>fakulta aktivně podporuje studenty v tom, aby během svého studia alespoň na semestr vycestovali na jednu z partnerských univerzit?</p>
+        </div>
+	  </div>
+	</div>
+      
+    <div class="row">
+	  <div class="large-8 medium-6 columns">
+        <a class="button small">Button<i class="fa fa-caret-right"></i></a>
+        &ensp;
+        <a class="button small radius">Button Small Radius<i class="fa fa-caret-right"></i></a>
+        &ensp;
+        <a class="button tiny secondary">Button Tiny Secondary<i class="fa fa-caret-right"></i></a>
+	  </div>
+      <div class="large-4 medium-6 columns">
+        <ul class="tabs" data-tab>
+          <li class="tab-title active"><a href="#panel11">A</a></li>
+          <li class="tab-title"><a href="#panel21">B</a></li>
+          <li class="tab-title"><a href="#panel31">C</a></li>
+          <li class="tab-title"><a href="#panel41">D</a></li>
+        </ul>
+        <div class="tabs-content">
+          <div class="content active" id="panel11">
+            <p>This is the first panel of the basic tab example. You can place all sorts of content here including a grid.</p>
+          </div>
+          <div class="content" id="panel21">
+            <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
+          </div>
+          <div class="content" id="panel31">
+            <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
+          </div>
+          <div class="content" id="panel41">
+            <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
+          </div>
+        </div>
+	  </div>
+	</div> 
+      
+    <div class="row">
+	  <div class="large-8 medium-6 columns">
+        <table class="fullwidth">
+          <thead>
+            <tr>
+              <th width="200">Table Header</th>
+              <th>Table Header</th>
+              <th width="150">Table Header</th>
+              <th width="150">Table Header</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Content Goes Here</td>
+              <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+              <td>Content Goes Here</td>
+              <td>Content Goes Here</td>
+            </tr>
+            <tr>
+              <td>Content Goes Here</td>
+              <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+              <td>Content Goes Here</td>
+              <td>Content Goes Here</td>
+            </tr>
+          </tbody>
+        </table>
+	  </div>
+      <div class="large-4 medium-6 columns">
+        <a class="tab-content-switcher" data-hide-and-seek="ridici-funkce">Akademická a řídící funkce</a>
+        <div id="ridici-funkce" class="display-none  tab-content">
+            <table class="fullwidth">
+              <thead>
+                <tr>
+                  <th colspan="2"><a>Fakulta sociálních studií</a></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td width="150">Pracovní zařazení</td>
+                  <td>proděkanka pro strategický rozvoj</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        <a class="tab-content-switcher" data-hide-and-seek="ridici-funkce2">Akademická a řídící funkce 2</a>
+        <div id="ridici-funkce2" class="display-none  tab-content">
+            <table class="fullwidth">
+              <thead>
+                <tr>
+                  <th colspan="2"><a>Fakulta sociálních studií</a></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td width="150">Pracovní zařazení</td>
+                  <td>proděkanka pro strategický rozvoj</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+	  </div>
+	</div>
+      
+    <div class="row">
+	  <div class="columns">
+        <h2>Ukázkové stránky</h2>
+        <a href="typografie.html" class="button small radius">Typografe</a>
+        &ensp;
+        <a href="moduly.html" class="button small radius">Moduly</a>
+        &ensp;
+        <a href="ikonodlazdice.html" class="button small radius">Dlaždice</a>
+        &ensp;
+        <a href="navigace-sticky.html" class="button small radius">Navigace</a>
+        &ensp;
+        <a href="vizitka.html" class="button small radius">Vizitky</a>
+	  </div>
+	</div>
+      
+    <div class="row-wide  footer-upper">
+      <div class="row">
+        <div class="large-3  medium-6  columns  show-for-large-up">
+          <ul>
+            <li><a>Úvodní strana</a></li>
+            <li><a>Zájemci o studium</a></li>
+            <li><a>Studium</a></li>
+            <li><a>Věda a výzkum</a></li>
+            <li><a>Zahraniční spolupráce</a></li>
+            <li><a>Pro média</a></li>
+          </ul>
+        </div>
+        <div class="large-3  medium-6  columns  show-for-large-up">
+          <ul>
+            <li><a>Úřední deska</a></li>
+            <li><a>Harmonogram semestru</a></li>
+            <li><a>Dokumenty ke stažení</a></li>
+            <li><a>Mobilita studentů</a></li>
+            <li><a>Stipendijní programy</a></li>
+            <li><a>Mapy pracovišť</a></li>
+          </ul>
+        </div>
+        <div class="large-3  medium-6  columns">
+          <div class="panel  radius  contact-panel">
+            <div class="logo footer-logo">&nbsp;</div>
+            <h2>Kontakt</h2>
+            <p>	
+              Masarykova univerzita<br />
+              Ústav<br />
+              Ulice XX/X<br />
+              XXX XX&nbsp;&bull;&nbsp;Brno<br />
+              Česká republika<br />
+            </p>
+          </div>
+        </div>
+        <div class="large-3  medium-6  columns">
+          <div class="panel  footer-small  radius  social-networks-footer">
+            <ul>
+              <li class="social-icon-footer"><a class="facebook" title="facebook"><i class="fa  fa-facebook"></i></a></li><li class="social-icon-footer"><a class="twitter" href="#" title="Title"><i class="fa  fa-twitter"></i></a></li><li class="social-icon-footer"><a class="google" href="#" title="Title"><i class="fa  fa-google-plus"></i></a></li><li class="social-icon-footer"><a class="youtube" href="#" title="Title"><i class="fa  fa-youtube"></i></a></li><li class="social-icon-footer"><a class="instagram" href="#" title="Title"><i class="fa  fa-instagram"></i></a></li>
+            </ul>
+          </div>
+          <div class="panel  radius  footer-small">
+            <p>	
+              URL: <a href="#">http://www.xxxxx.cz/</a>
+            </p>
+          </div>
+          <div class="panel  radius  footer-small">
+            <p>	
+              Telefon: (+420) XXX XX XXXX
+            </p>
+          </div>
+        </div>
+      </div>
+	</div>
+	<div class="row-wide  footer-lower">
+      <div class="row">
+        <div class="large-6  columns large-push-6">
+          <img src="images/uvt_logotyp_barva.svg" class="logo hide-for-small-only" />
+          <p class="text-left">
+            Webová prezentace Masarykovy univerzity je ve správě Ústavu výpočetní techniky MU
+          </p>
+        </div>
+        <div class="large-6  columns large-pull-6">
+          <p>&copy;&ensp;2016 <a>Masarykova univerzita</a>&ensp;|&ensp;<a>Mapa stránek</a>&ensp;|&ensp;<a>Správce stránky</a>&ensp;|&ensp;<a>Kontakty</a></p>
+        </div>
+      </div>
+	</div>
+
+    <script src="../uniweb-v1/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../uniweb-v1/bower_components/foundation/js/foundation.min.js"></script>
+    <script src="../uniweb-v1/js/foundation.mainbar.min.js"></script>
+    <script src="../uniweb-v1/js/app.js"></script>
+    <script src="../uniweb-v1/js/wc-element-query.js"></script>
+    <script>
+    // počká až je dokument ready
+      $(document).ready(function(){  
+        
+        var senseSpeed = 5;
+        var previousScroll = 0;
+        $(window).scroll(function(){
+            
+          if( $("#prim-top-bar-cont").hasClass("fixed") && $("#sec-top-bar-cont").hasClass("fixed") ) {
+            $("#prim-top-bar").addClass("hide-dropdown");
+          } else {
+            $("#prim-top-bar").removeClass("hide-dropdown");
+          }
+                
+          var scroller = $(this).scrollTop();
+                
+          if( $('#prim-top-bar-cont').hasClass("fixed") && $('#sec-top-bar-cont').hasClass("fixed") ){
+            if (scroller-senseSpeed > previousScroll) {
+              $('#prim-top-bar-cont').css( "top", -$("#prim-top-bar-cont").outerHeight(true)-4 );
+              $('#sec-top-bar-cont').css( "top", 0 );
+            } else if (scroller+senseSpeed < previousScroll) {
+              $('#prim-top-bar-cont').css( "top", 0 );
+              $('#sec-top-bar-cont').css( "top", $("#prim-top-bar-cont").outerHeight(true) );
+            }
+          }
+            
+          previousScroll = scroller;
+        });
+            
+        $('.tab-content-switcher').click( function() {
+          $(this).toggleClass('active');
+          var target_element = $('#'+$(this).attr('data-hide-and-seek'));
+          if(target_element.is(':hidden')) {
+            target_element.show();
+          }
+          else {
+            target_element.hide();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

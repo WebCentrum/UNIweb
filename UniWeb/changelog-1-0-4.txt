@@ -1,0 +1,109 @@
+Uniweb v1.0.4
+
+Pøidána statická poloka pro menu dle CIT. v poloce LI navigace topbar je monost mít místo A odstavec P s textem. Struktura dle pøíkladu v index2.html. Settings styly v sekci Top Bar pod // statická poloka v navigaci.
+
+// statická poloka v navigaci
+// $topbar-static-item-background: $third-color;
+// $topbar-static-font-color: $white;
+// $topbar-static-anchor-color: $white;
+// $topbar-static-anchor-color-hover: $white;
+
+
+// --------------------------------------------------------------------------------------------------------------------------------------------
+
+Uniweb v1.0.3
+
+Sjednocení settings do jednoho souboru. 
+Kompletní settings pro pøístup ke všem komponentám. Vıbìr nefunguje v praxi.
+Oprava cesty v app.scss.
+
+// --------------------------------------------------------------------------------------------------------------------------------------------
+
+Uniweb v1.0.2
+
+// Korekce pro padding u .row na small rozlišení – zvìtšené odsazení u krajù.
+
+// Nové nastavení $column-gutter: rem-calc(20) – lépe vypadající mezery mezi sloupci, bylo 15.
+
+// Oprava pro delší názvy poloek v dropdown
+
+// Oprava odsazení panelu v patièce pro medium
+
+// Top Header
+
+Kompletnì pøepracovanı Top Header
+Nastavení zvláš pro "úzkı" row a zvláš pro "wide" row hlavièky, ale obì totoná.
+
+// Úzkı øádek v gridu
+
+$topheader-narrow-type: transparent !default; // Základní typ. Monosti: default | solid | texture | image;
+// Toto je kombinace pouze k typu image. Defaultní je transparent – tj. vloí obrázek, ale zùstává prùhlednı. Pak bude vidìt pozadí širokého øádku.
+$topheader-narrow-image-combination: transparent !default; // transparent | default | solid | texture
+
+// Pøevzatá barva pro solid a definovatelná.
+$topheader-narrow-bg-color: $topheader-bg-solid !default;
+
+// Èást vìnující se textuøe – toto nastavení pøebírá i kombinace typu texture
+// $topheader-narrow-texture-src: "../res/images/cerit_sc_zahlavi2.png" ; //zdroj textury
+// $topheader-narrow-texture-repeat: repeat-x; // opakování textury dle zdroje, monosti: repeat, repeat-x, repeat-y
+// $topheader-narrow-texture-position: left bottom; // pozice textury: horizontální vertikální smìr
+
+$topheader-narrow-image-src: "../res/images/header-img.png" !default; //zdroj obrázku
+
+// Napø.: contain | cover | 80% | 300px | initial pro originální velikost obrázku apod.
+// !!! Pro kombinaci s texturou lze nastavit pouze cover nebo contain !!!
+$topheader-narrow-image-part-size-sml: contain; // Pro small
+$topheader-narrow-image-part-size-med: contain; // Pro medium
+$topheader-narrow-image-part-size-lrg: initial; // Pro large
+$topheader-narrow-image-position: right bottom; // Pozice obrázku v horizontální a vertikálním smìru
+
+$topheader-narrow-image-sml-turn-off: false;    // Vypne zobrazení obrázku na small, true | false, true = ano, je vypnutı
+$topheader-narrow-image-med-turn-off: false;    // Vypne zobrazení obrázku na medium, true | false, true = ano, je vypnutı
+
+// toté celé platí pro sérii promìnnıch $topheader-wide-...
+
+
+
+// Vlastní logo v hlavièce
+
+$logo-header: true !default;
+$logo-header-img: "../images/logo-uniweb-blue.svg" !default;
+$logo-header-height: rem-calc(52) !default; // Pro small
+$logo-header-width: rem-calc(52) !default;  // Pro small
+$logo-header-height-med: rem-calc(52) !default; // Pro medium up
+$logo-header-width-med: rem-calc(52) !default;  // Pro medium up
+$logo-header-top: rem-calc(44) !default;
+
+
+
+// Oprava tvrzení – topheader nemá vlastnost se natáhnout na vıšku, jeliko logo a text jsou plovoucí v absolutní pozici.
+// Tudí jsou hodnoty finální a pevné.
+$top-header-height-small: rem-calc(135) !default;
+$top-header-height-med: rem-calc(135) !default;
+
+
+
+// Text vedle loga
+// Kompletnì pøepracováno.
+
+$fac-tag-text-color: $gray-color !default;
+$fac-tag-text-color-hover: $anchor-font-color-hover !default;
+
+// Nastavení dle rozlišení, velikost písma, odsazení nahoøe, odsazení vlevo, maximální šíøka pro nucené "zalomení" textu u dlouhıch názvù
+$fac-tag-text-font-size-sml: rem-calc(13) !default;
+$fac-tag-text-top-sml: rem-calc(63) !default;
+$fac-tag-text-left-sml: ($fac-tag-width + $column-gutter) !default;
+$fac-tag-text-max-width-sml: auto !default;
+
+$fac-tag-text-font-size-med: rem-calc(18) !default;
+$fac-tag-text-top-med: rem-calc(35) !default;
+$fac-tag-text-left-med: ($fac-tag-width + $column-gutter) !default;
+$fac-tag-text-max-width-med: auto !default;
+
+$fac-tag-text-font-size-lrg: rem-calc(23) !default;
+$fac-tag-text-top-lrg: rem-calc(37) !default;
+$fac-tag-text-left-lrg: ($fac-tag-width + $column-gutter) !default;
+$fac-tag-text-max-width-lrg: auto !default;
+
+// Vıška pro obrázkovı text se Syntaxem
+$fac-tag-text-img-height: rem-calc(60) !default;

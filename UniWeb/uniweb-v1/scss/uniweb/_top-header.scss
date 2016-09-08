@@ -1,0 +1,541 @@
+@import "../core/mixins";
+
+// Barvy pro gradient v pozadí
+$topheader-colorstop-1: scale-color($gray-very-light-color, $lightness: -20%) !default;     // nahoře nejtmavší barva
+$topheader-colorstop-2: $gray-very-light-color !default;                                    // středová barva, 10px od horního okraje
+$topheader-colorstop-3: $gray-very-light-color !default;                                    // barva největší plochy, dolní barva
+
+$topheader-bg-solid: $topheader-colorstop-3 !default; // jednobarevné pozadí, pozadí za obrázkem a texturou
+
+// Settings pry typy hlavičky
+
+// Úzký řádek v gridu
+
+$topheader-narrow-type: transparent !default; // Možnosti: default | solid | texture | image;
+$topheader-narrow-image-combination: transparent !default; // transparent | default | solid | texture
+
+$topheader-narrow-bg-color: $topheader-bg-solid !default;
+
+$topheader-narrow-texture-src: "../res/images/texture.png" !default; //zdroj textury
+$topheader-narrow-texture-repeat: repeat !default; // opakování textury dle zdroje, možnosti: repeat, repeat-x, repeat-y
+$topheader-narrow-texture-position: left bottom !default; // pozice textury: horizontální vertikální směr
+
+$topheader-narrow-image-src: "../res/images/header-img.png" !default; //zdroj obrázku
+// Např.: contain | cover | 80% | 300px | initial pro originální velikost obrázku apod.
+// !!! Pro kombinaci s texturou lze nastavit pouze cover | contain !!!
+$topheader-narrow-image-part-size-sml: contain !default;
+$topheader-narrow-image-part-size-med: contain !default;
+$topheader-narrow-image-part-size-lrg: contain !default;
+$topheader-narrow-image-position: right center !default;
+
+$topheader-narrow-image-sml-turn-off: false !default;    // Vypne zobrazení obrázků na small
+$topheader-narrow-image-med-turn-off: false !default;    // Vypne zobrazení obrázku na medium
+
+/*
+$topheader-image-position možnosti:
+for Full Image Size: top | center | bottom;
+for Part Image Size: horizontal vertical; 
+    horizontal: left | center | right;
+    vertical: top | center | bottom; 
+*/
+
+// Široký řádek přes celou šířku stránky
+
+$topheader-wide-type: default !default; // Možnosti: default | solid | texture | image;
+$topheader-wide-image-combination: transparent !default; // transparent | default | solid | texture
+
+$topheader-wide-bg-color: $topheader-bg-solid !default;
+
+$topheader-wide-texture-src: "../res/images/texture.png" !default; //zdroj textury
+$topheader-wide-texture-repeat: repeat !default; // opakování textury dle zdroje, možnosti: repeat, repeat-x, repeat-y
+$topheader-wide-texture-position: left bottom !default; // pozice textury: horizontální vertikální směr
+
+$topheader-wide-image-src: "../res/images/header-img.png" !default; //zdroj obrázku
+// Např.: contain | cover | 80% | 300px | initial pro originální velikost obrázku apod.
+// !!! Pro kombinaci s texturou lze nastavit pouze cover | contain !!!
+$topheader-wide-image-part-size-sml: contain !default;
+$topheader-wide-image-part-size-med: contain !default;
+$topheader-wide-image-part-size-lrg: contain !default;
+$topheader-wide-image-position: right center !default;
+
+$topheader-wide-image-sml-turn-off: false !default;    // Vypne zobrazení obrázků na small
+$topheader-wide-image-med-turn-off: false !default;    // Vypne zobrazení obrázku na medium
+
+/*
+$topheader-image-position možnosti:
+for Full Image Size: top | center | bottom;
+for Part Image Size: horizontal vertical; 
+    horizontal: left | center | right;
+    vertical: top | center | bottom; 
+*/
+
+// Logo v hlavičce
+$logo-header: true !default;
+$logo-header-img: "../images/logo-uniweb-blue.svg" !default;
+$logo-header-height: rem-calc(52) !default;
+$logo-header-width: rem-calc(52) !default;
+$logo-header-height-med: rem-calc(52) !default;
+$logo-header-width-med: rem-calc(52) !default;
+$logo-header-top: rem-calc(44) !default;
+
+//Dodatečné menu
+$additional-menu-correction: true !default;  // true | false
+$additional-menu-after-correction-margin: rem-calc(63) !default;
+$additional-menu-text-size: rem-calc(12) !default;
+$additional-menu-icon-size: rem-calc(16) !default;
+$additional-menu-margin: 0.5rem !default;
+$additional-menu-anchor-color: $primary-color !default;
+$additional-menu-anchor-color-hover: $anchor-font-color-hover !default;
+
+
+@mixin topheader-base {
+  a {
+    @include transition(color 0.2s ease);
+    text-decoration: none !important;
+  }
+    
+  
+  .logo-top-header {
+    height: $logo-header-height;
+    position: absolute;
+    top: $logo-header-top;
+    width: $logo-header-width;
+      
+    @media #{$medium-up} {
+      height: $logo-header-height-med;
+      width: $logo-header-width-med;
+    }
+    
+    @if $fac-tag-mini == true {
+      @if $logo-header == true {
+        background: transparent url($logo-header-img) no-repeat left center;
+        background-size: contain;
+        display: block;
+        visibility: visible;
+        } @else if $logo-header == false {
+          background: none;
+          display: none;
+          visibility: hidden;
+        }
+    }
+    
+    @if $logo-header-position == left {
+      left: 0;
+      margin-left: $column-gutter / 2;
+    } @else if $logo-header-position == center {
+        left: 50%;
+        @include translate(-50%, 0);
+    }
+  }
+
+  .additional-menu {
+    display: inline-block;
+    float: right;
+    text-align: right;
+    margin-top: rem-calc(20);
+
+    a {
+      color: $additional-menu-anchor-color;
+      font-size: $additional-menu-text-size;
+      letter-spacing: 0.115em;
+      margin-left: $additional-menu-margin;
+      text-transform: uppercase;
+        
+      &:hover, &:focus {
+        color: $additional-menu-anchor-color-hover;
+      }
+        
+      .fa {
+        font-size: $additional-menu-icon-size;
+      }
+    }
+  }
+}
+
+@mixin topheader-default {
+  background: $topheader-colorstop-3; /* Old browsers */
+  background: -moz-linear-gradient(top,  $topheader-colorstop-1 0%, $topheader-colorstop-2 10px, $topheader-colorstop-3 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$topheader-colorstop-1), color-stop(10px,$topheader-colorstop-2), color-stop(100%,$topheader-colorstop-3)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* W3C */
+}
+
+@mixin topheader-solid($bg-solid) {
+  background: $bg-solid;
+}
+
+@mixin topheader-texture($bg-color, $bg-img, $bg-repeat, $bg-position) {
+  background-color: $bg-color;
+  background-image: url($bg-img);
+  background-repeat: $bg-repeat;
+  background-position: $bg-position;
+}
+
+@mixin topheader-image($image-src, $image-position, $image-part-size-sml, $image-part-size-med, $image-part-size-lrg, $image-combination, $image-sml-turn-off, $image-med-turn-off, $solid-bg-color, $texture-img, $texture-repeat, $texture-position) {
+
+  @if $image-combination == transparent {
+        @media #{$small-only} {
+          @if $image-sml-turn-off == false {
+            background: transparent url($image-src) no-repeat $image-position;
+            background-size: $image-part-size-sml;
+              
+          } @else if $image-sml-turn-off == true {
+              background: transparent;
+          }
+        }
+
+        @media #{$medium-only} {
+          @if $image-med-turn-off == false {
+            background: transparent url($image-src) no-repeat $image-position;
+            background-size: $image-part-size-med;
+              
+          } @else if $image-med-turn-off == true {
+              background: transparent;
+          }
+        }
+
+        @media #{$large-up} {
+          background: transparent url($image-src) no-repeat $image-position;
+          background-size: $image-part-size-lrg;
+        }
+
+  } @else if $image-combination == solid {
+        @media #{$small-only} {
+          @if $image-sml-turn-off == false {
+            background: $solid-bg-color url($image-src) no-repeat $image-position;
+            background-size: $image-part-size-sml;
+              
+          } @else if $image-sml-turn-off == true {
+              background: $solid-bg-color;
+          }
+        }
+
+        @media #{$medium-only} {
+          @if $image-med-turn-off == false {
+            background: $solid-bg-color url($image-src) no-repeat $image-position;
+            background-size: $image-part-size-med;
+              
+          } @else if $image-med-turn-off == true {
+              background: $solid-bg-color;
+          }
+        }
+
+        @media #{$large-up} {
+          background: $solid-bg-color url($image-src) no-repeat $image-position;
+          background-size: $image-part-size-lrg;
+        }
+  } @else if $image-combination == default {
+      @media #{$small-only} {
+        @if $image-sml-turn-off == false {
+          background: url($image-src) no-repeat $image-position, -moz-linear-gradient(top,  $topheader-colorstop-1 0%, $topheader-colorstop-2 10px, $topheader-colorstop-3 100%); /* FF3.6+ */
+          background: url($image-src) no-repeat $image-position, -webkit-gradient(linear, left top, left bottom, color-stop(0%,$topheader-colorstop-1), color-stop(10px,$topheader-colorstop-2), color-stop(100%,$topheader-colorstop-3)), transparent url($image-src) no-repeat $image-position; /* Chrome,Safari4+ */
+          background: url($image-src) no-repeat $image-position, -webkit-linear-gradient(top,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* Chrome10+,Safari5.1+ */
+          background: url($image-src) no-repeat $image-position, -o-linear-gradient(top,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* Opera 11.10+ */
+          background: url($image-src) no-repeat $image-position, -ms-linear-gradient(top,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* IE10+ */
+          background: url($image-src) no-repeat $image-position, linear-gradient(to bottom,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* W3C */
+          background-size: $image-part-size-sml;
+
+        } @else if $image-sml-turn-off == true {
+            @include topheader-default;
+        }
+      }
+
+      @media #{$medium-only} {
+        @if $image-med-turn-off == false {
+          background: url($image-src) no-repeat $image-position, -moz-linear-gradient(top,  $topheader-colorstop-1 0%, $topheader-colorstop-2 10px, $topheader-colorstop-3 100%); /* FF3.6+ */
+          background: url($image-src) no-repeat $image-position, -webkit-gradient(linear, left top, left bottom, color-stop(0%,$topheader-colorstop-1), color-stop(10px,$topheader-colorstop-2), color-stop(100%,$topheader-colorstop-3)), transparent url($image-src) no-repeat $image-position; /* Chrome,Safari4+ */
+          background: url($image-src) no-repeat $image-position, -webkit-linear-gradient(top,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* Chrome10+,Safari5.1+ */
+          background: url($image-src) no-repeat $image-position, -o-linear-gradient(top,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* Opera 11.10+ */
+          background: url($image-src) no-repeat $image-position, -ms-linear-gradient(top,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* IE10+ */
+          background: url($image-src) no-repeat $image-position, linear-gradient(to bottom,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* W3C */
+          background-size: $image-part-size-med;
+            
+        } @else if $image-med-turn-off == true {
+            @include topheader-default;
+        }
+      }
+
+      @media #{$large-up} {
+        background: url($image-src) no-repeat $image-position, -moz-linear-gradient(top,  $topheader-colorstop-1 0%, $topheader-colorstop-2 10px, $topheader-colorstop-3 100%); /* FF3.6+ */
+        background: url($image-src) no-repeat $image-position, -webkit-gradient(linear, left top, left bottom, color-stop(0%,$topheader-colorstop-1), color-stop(10px,$topheader-colorstop-2), color-stop(100%,$topheader-colorstop-3)), transparent url($image-src) no-repeat $image-position; /* Chrome,Safari4+ */
+        background: url($image-src) no-repeat $image-position, -webkit-linear-gradient(top,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* Chrome10+,Safari5.1+ */
+        background: url($image-src) no-repeat $image-position, -o-linear-gradient(top,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* Opera 11.10+ */
+        background: url($image-src) no-repeat $image-position, -ms-linear-gradient(top,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* IE10+ */
+        background: url($image-src) no-repeat $image-position, linear-gradient(to bottom,  $topheader-colorstop-1 0%,$topheader-colorstop-2 10px,$topheader-colorstop-3 100%); /* W3C */
+        background-size: $image-part-size-lrg;
+      }
+
+  } @else if $image-combination == texture {
+      @media #{$small-only} {
+        @if $image-sml-turn-off == false {
+          background-image: url($image-src), url($texture-img);
+          background-repeat: no-repeat, $texture-repeat;
+          background-position: $image-position, $texture-position;
+          background-size: $image-part-size-sml, contain;
+            
+        } @else if $image-sml-turn-off == true {
+            @include topheader-default;
+        }
+      }
+
+      @media #{$medium-only} {
+        @if $image-med-turn-off == false {
+          background-image: url($image-src), url($texture-img);
+          background-repeat: no-repeat, $texture-repeat;
+          background-position: $image-position, $texture-position;
+          background-size: $image-part-size-med, contain;
+            
+        } @else if $image-med-turn-off == true {
+            @include topheader-default;
+        }
+      }
+
+      @media #{$large-up} {
+        background-image: url($image-src), url($texture-img);
+        background-repeat: no-repeat, $texture-repeat;
+        background-position: $image-position, $texture-position;
+        background-size: $image-part-size-lrg, contain;
+      }
+  }
+}
+
+// Identity ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+$fac-tag-mini: true !default;
+
+$top-header-height-small: rem-calc(135) !default;
+$top-header-height-med: rem-calc(135) !default;
+
+$fac-tag-bg-color: $white !default;
+$fac-tag-logo-color: mu !default; // mu | cerna | bila | law | med | sci | phil | ped | econ | fi | fss | fsps | user
+$fac-tag-bg-user-image: "../images/znak-mu-mu.svg" !default;
+$fac-tag-width: rem-calc(52) !default;
+$fac-tag-height: rem-calc(130) !default;
+
+$fac-tag-gutter: rem-calc(20) !default;
+
+$fac-tag-text-color: $gray-color !default;
+$fac-tag-text-color-hover: $anchor-font-color-hover !default;
+
+$fac-tag-text-font-size-sml: rem-calc(13) !default;
+$fac-tag-text-top-sml: rem-calc(63) !default;
+$fac-tag-text-left-sml: ($fac-tag-width + $column-gutter) !default;
+$fac-tag-text-max-width-sml: auto !default;
+
+$fac-tag-text-font-size-med: rem-calc(18) !default;
+$fac-tag-text-top-med: rem-calc(35) !default;
+$fac-tag-text-left-med: ($fac-tag-width + $column-gutter) !default;
+$fac-tag-text-max-width-med: auto !default;
+
+$fac-tag-text-font-size-lrg: rem-calc(23) !default;
+$fac-tag-text-top-lrg: rem-calc(37) !default;
+$fac-tag-text-left-lrg: ($fac-tag-width + $column-gutter) !default;
+$fac-tag-text-max-width-lrg: auto !default;
+
+$fac-tag-text-img-height: rem-calc(60) !default;
+
+// není v settings
+$fac-tag-bg-image: "../images/znak-mu-#{$fac-tag-logo-color}.svg";
+
+
+.mu-tag {
+  padding-left: ( $fac-tag-width + $fac-tag-gutter );
+}
+
+.identity-row {
+  min-height: $top-header-height-small;
+
+  @media #{$medium-up} {
+    min-height: $top-header-height-med;
+  }
+}
+
+@mixin fac-tag-base($bg, $bg-img) {
+  background: $bg url($bg-img) no-repeat center 73px;
+  background-size: 34px 42px;
+  display: block;
+  height: $fac-tag-height;  // - $height-above-header-bar;
+  left: 0;
+  margin-left: $column-gutter / 2;
+  position: absolute;
+  top: -$height-above-header-bar-base;
+  width: $fac-tag-width;
+  z-index: 7000;
+
+  @media #{$medium-up} {
+    top: -$height-above-header-bar;
+  }
+
+  @if $fac-tag-mini == true {
+    background-size: 16px 20px;
+    background-position: center 5px;
+    height: $height-above-header-bar;
+  }
+
+}    
+
+@mixin fac-tag-text {
+    
+  @if $fac-tag-mini == true {
+    background: transparent;
+    color: $fac-tag-text-color;
+    display: block;
+    font-family: $font-family-sans-serif;
+      
+    line-height: 1.4em;
+    margin: rem-calc(-20 0 0 0);
+    position: absolute;
+    text-transform: uppercase;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    width: auto;
+    
+    &:hover { color: $fac-tag-text-color-hover; }
+    
+    img {
+      height: $fac-tag-text-img-height !important;
+      margin: rem-calc(-3 0 0 -5);
+    }
+      
+    @media #{$small-only} {
+      left: ( $fac-tag-text-left-sml + ( $column-gutter / 2 ) );
+      top: $fac-tag-text-top-sml;
+      font-size: $fac-tag-text-font-size-sml;
+      max-width: $fac-tag-text-max-width-sml;
+    }
+      
+    @media #{$medium-only} {
+      left: ( $fac-tag-text-left-med + ( $column-gutter / 2 ) );
+      top: $fac-tag-text-top-med;
+      font-size: $fac-tag-text-font-size-med;
+      max-width: $fac-tag-text-max-width-med;
+    }
+    
+    @media #{$large-up} {
+      left: ( $fac-tag-text-left-lrg + ( $column-gutter / 2 ) );
+      top: $fac-tag-text-top-lrg;
+      font-size: $fac-tag-text-font-size-lrg;
+      max-width: $fac-tag-text-max-width-lrg;
+    }
+        
+    @media #{$medium-up} {
+      line-height: 1.2em;
+      margin: rem-calc(8 0 0 0);
+      width: auto;
+        
+      img {
+        margin: rem-calc(-10 0 0 0);
+      }
+    }
+
+  } @else {
+      background: transparent;
+      color: $fac-tag-text-color;
+      display: block;
+      font-family: $font-family-sans-serif;
+      left: ( $fac-tag-width + $fac-tag-gutter + ( $column-gutter / 2 ) );
+      line-height: 1.4em;
+      position: absolute;
+      text-transform: uppercase;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      width: auto;
+        
+      &:hover { color: $fac-tag-text-color-hover; }
+        
+      img {
+        height: $fac-tag-text-img-height !important;
+        margin: rem-calc(-7 0 0 -5);
+      }
+      
+      @media #{$small-only} {
+        font-size: $fac-tag-text-font-size-sml;
+        top: $fac-tag-text-top-sml;
+        max-width: $fac-tag-text-max-width-sml;
+      }
+
+      @media #{$medium-only} {
+        font-size: $fac-tag-text-font-size-med;
+        top: $fac-tag-text-top-med;
+        max-width: $fac-tag-text-max-width-med;
+      }
+
+      @media #{$large-up} {
+        font-size: $fac-tag-text-font-size-lrg;
+        top: $fac-tag-text-top-lrg;
+        max-width: $fac-tag-text-max-width-lrg;
+      }
+
+      @media #{$medium-up} {
+        line-height: 1.2em;
+        width: auto;
+            
+        img {
+          margin: 0;
+        }
+      }
+    }
+}
+
+// Exports ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+@include exports("top-header") {
+  .top-header {
+      
+    @include topheader-base;
+      
+    // Narrow Row
+    @if $topheader-narrow-type == default {
+      .identity-row { @include topheader-default; }
+
+    } @else if $topheader-narrow-type == solid {
+        .identity-row { @include topheader-solid($topheader-narrow-bg-color); }
+
+    } @else if $topheader-narrow-type == texture {
+        .identity-row { @include topheader-texture($topheader-narrow-bg-color, $topheader-narrow-texture-src, $topheader-narrow-texture-repeat, $topheader-narrow-texture-position); }
+
+    } @else if $topheader-narrow-type == image {
+        .identity-row { 
+          @include topheader-image($topheader-narrow-image-src, $topheader-narrow-image-position, $topheader-narrow-image-part-size-sml, $topheader-narrow-image-part-size-med, $topheader-narrow-image-part-size-lrg, $topheader-narrow-image-combination, $topheader-narrow-image-sml-turn-off, $topheader-narrow-image-med-turn-off, $topheader-narrow-bg-color, $topheader-narrow-texture-src, $topheader-narrow-texture-repeat, $topheader-narrow-texture-position); 
+        }
+        
+    } @else if $topheader-narrow-type == transparent {
+        .identity-row { background: transparent; }
+      }
+      
+    // Wide Row
+    @if $topheader-wide-type == default {
+      @include topheader-default;
+
+    } @else if $topheader-wide-type == solid {
+        @include topheader-solid($topheader-wide-bg-color);
+        
+    } @else if $topheader-wide-type == texture {
+        @include topheader-texture($topheader-wide-bg-color, $topheader-wide-texture-src, $topheader-wide-texture-repeat, $topheader-wide-texture-position);
+
+    } @else if $topheader-wide-type == image {
+        @include topheader-image($topheader-wide-image-src, $topheader-wide-image-position, $topheader-wide-image-part-size-sml, $topheader-wide-image-part-size-med, $topheader-wide-image-part-size-lrg, $topheader-wide-image-combination, $topheader-wide-image-sml-turn-off, $topheader-wide-image-med-turn-off, $topheader-wide-bg-color, $topheader-wide-texture-src, $topheader-wide-texture-repeat, $topheader-wide-texture-position); 
+        
+    } @else if $topheader-wide-type == transparent {
+        background: transparent;
+      }
+    }
+}
+
+@include exports("faculty-tag") {
+  .faculty-tag {
+    @if $fac-tag-logo-color == user {
+        @include fac-tag-base($fac-tag-bg-color, $fac-tag-bg-user-image);
+      } @else {
+        @include fac-tag-base($fac-tag-bg-color, $fac-tag-bg-image);
+      }
+  }
+}
+
+@include exports("faculty-tag-text") {
+  .faculty-tag-text {
+    @include fac-tag-text;
+  }
+}
